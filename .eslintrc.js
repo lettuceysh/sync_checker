@@ -19,8 +19,10 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
+  rules: {
+    'react/prop-types': 0
+  },
   plugins: ['react', 'import'],
-  rules: {},
   ignorePatterns: ['node_modules', 'dist'],
   settings: {
     react: {
