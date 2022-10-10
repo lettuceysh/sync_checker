@@ -10,6 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './styles/theme';
 import Login from './pages/Login';
 import Main from './pages/Main';
+import PageNavigation from './pages/configuration/PageNavigation';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />,
           <Route path="/login" element={<Login />} />,
+          <Route path="/configuration" element={<PageNavigation />} />,
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
