@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import DragableRow from './DragableRow';
+import DraggableRow from './DraggableRow';
 import { TextField } from '@mui/material';
 
 const tableData = [
@@ -83,7 +83,7 @@ const DraggableTable = () => {
             {(droppableProvided) => (
               <TableBody ref={droppableProvided.innerRef} {...droppableProvided.droppableProps}>
                 {tableData.map((item, index) => (
-                  <DragableRow key={item.uuid} item={item} index={index} />
+                  <DraggableRow key={item.uuid} item={item} index={index} />
                 ))}
                 {droppableProvided.placeholder}
               </TableBody>

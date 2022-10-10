@@ -1,11 +1,6 @@
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
+import { Draggable } from 'react-beautiful-dnd';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
 
 const DragableRow = ({ item, index }) => {
@@ -21,7 +16,6 @@ const DragableRow = ({ item, index }) => {
               background: snapshot.isDragging ? 'rgba(245,245,245, 0.75)' : 'none'
             }}
           >
-            {/* note: `snapshot.isDragging` is useful to style or modify behaviour of dragged cells */}
             <TableCell align="left">
               <div {...draggableProvided.dragHandleProps}>
                 <DragHandleIcon />
