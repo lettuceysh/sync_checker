@@ -1,4 +1,3 @@
-import React from 'react';
 import TableRow from '@mui/material/TableRow';
 import { Checkbox, TableCell } from '@mui/material';
 

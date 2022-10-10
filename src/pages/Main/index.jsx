@@ -1,10 +1,8 @@
-import React from 'react';
 import { Grid, Paper, Typography } from '@mui/material';
 import CircleChart from '../../components/PieChart';
 
 import styled from '@emotion/styled';
 import OperationManageMentTable from '../../pageComponents/OperationManagement/OperationTable';
-import Dragabletable from '../../pageComponents/configuration/pageNavigation/DragableTable';
 
 const data = [
   { name: 'Bubble Tea Sold', value: 10 },
@@ -35,7 +33,6 @@ const Main = () => {
           </Grid>
         </Paper>
       </Grid>
-      <Dragabletable />
     </div>
   );
 };

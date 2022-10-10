@@ -38,7 +38,7 @@ const getListStyle = (isDraggingOver) => ({
   width: 250
 });
 
-const Dragabletable = () => {
+const DraggableTable = () => {
   const [localItems, setLocalItems] = useState(tableData);
 
   // normally one would commit/save any order changes via an api call here...
@@ -97,4 +97,4 @@ const Dragabletable = () => {
   );
 };
 
-export default Dragabletable;
+export default DraggableTable;

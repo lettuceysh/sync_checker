@@ -1,8 +1,7 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Dragabletable from '../../pageComponents/configuration/pageNavigation/DragableTable';
+import DraggableTable from '../../pageComponents/configuration/pageNavigation/DraggableTable';
 import Navigation from '../../pageComponents/configuration/pageNavigation/Navigation';
 
 const PageNavigation = () => {
@@ -18,7 +17,7 @@ const PageNavigation = () => {
 
       <Content>
         <Navigation />
-        <Dragabletable />
+        <DraggableTable />
       </Content>
     </Wrapper>
   );

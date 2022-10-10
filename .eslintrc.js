@@ -21,7 +21,8 @@ module.exports = {
   },
   rules: {
     'react/prop-types': 0,
-    'no-unused-vars': 0
+    'no-unused-vars': 0,
+    'react/react-in-jsx-scope': 0
   },
   plugins: ['react', 'import'],
   ignorePatterns: ['node_modules', 'dist'],

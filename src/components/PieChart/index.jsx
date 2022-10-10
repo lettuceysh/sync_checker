@@ -1,4 +1,3 @@
-import React from 'react';
 import { PieChart, Pie, Cell, Label, ResponsiveContainer } from 'recharts';
 
 const CircleChart = ({ data }) => {

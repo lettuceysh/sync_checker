@@ -1,5 +1,13 @@
-import { Avatar, Button, Checkbox, FormControlLabel, Grid, Paper, TextField, Typography } from '@mui/material';
-import React from 'react';
+import {
+  Avatar,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  Paper,
+  TextField,
+  Typography
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import styled from '@emotion/styled';
@@ -17,10 +25,26 @@ const Login = () => {
           <h2>Sign In</h2>
         </Grid>
         <WrapTest>
-          <TextField label="Username" placeholder="Enter username" variant="outlined" fullWidth required />
-          <TextField label="Password" placeholder="Enter password" type="password" variant="outlined" fullWidth required />
+          <TextField
+            label="Username"
+            placeholder="Enter username"
+            variant="outlined"
+            fullWidth
+            required
+          />
+          <TextField
+            label="Password"
+            placeholder="Enter password"
+            type="password"
+            variant="outlined"
+            fullWidth
+            required
+          />
         </WrapTest>
-        <FormControlLabel control={<Checkbox name="checkedB" color="primary" />} label="Remember me" />
+        <FormControlLabel
+          control={<Checkbox name="checkedB" color="primary" />}
+          label="Remember me"
+        />
         <Button type="submit" color="primary" variant="contained" style={btnstyle} fullWidth>
           Sign in
         </Button>
