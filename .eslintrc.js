@@ -20,7 +20,8 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    'react/prop-types': 0
+    'react/prop-types': 0,
+    'no-unused-vars': 0
   },
   plugins: ['react', 'import'],
   ignorePatterns: ['node_modules', 'dist'],

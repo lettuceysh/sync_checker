@@ -4,6 +4,7 @@ import CircleChart from '../../components/PieChart';
 
 import styled from '@emotion/styled';
 import OperationManageMentTable from '../../pageComponents/OperationManagement/OperationTable';
+import Dragabletable from '../../pageComponents/configuration/pageNavigation/DragableTable';
 
 const data = [
   { name: 'Bubble Tea Sold', value: 10 },
@@ -17,22 +18,25 @@ const data2 = [
 
 const Main = () => {
   return (
-    <Grid>
-      <Typography variant="h1" component="h2">
-        SyncChecker For Oracle GoldenGate
-      </Typography>
+    <div>
+      <Grid>
+        <Typography variant="h1" component="h2">
+          SyncChecker For Oracle GoldenGate
+        </Typography>
 
-      <Paper elevation={10}>
-        <CircleChartWrapper>
-          <CircleChart data={data} />
-          <CircleChart data={data2} />
-          <CircleChart data={data2} />
-        </CircleChartWrapper>
-        <Grid>
-          <OperationManageMentTable />
-        </Grid>
-      </Paper>
-    </Grid>
+        <Paper elevation={10}>
+          <CircleChartWrapper>
+            <CircleChart data={data} />
+            <CircleChart data={data2} />
+            <CircleChart data={data2} />
+          </CircleChartWrapper>
+          <Grid>
+            <OperationManageMentTable />
+          </Grid>
+        </Paper>
+      </Grid>
+      <Dragabletable />
+    </div>
   );
 };
 
