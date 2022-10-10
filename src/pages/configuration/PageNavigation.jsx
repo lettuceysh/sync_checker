@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import DraggableTable from '../../pageComponents/configuration/pageNavigation/DraggableTable';
-import Navigation from '../../pageComponents/configuration/pageNavigation/Navigation';
+import DraggableTable from '@/pageComponents/configuration/pageNavigation/DraggableTable';
+import Navigation from '@/pageComponents/configuration/pageNavigation/Navigation';
 
 const PageNavigation = () => {
   return (

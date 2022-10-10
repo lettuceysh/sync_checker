@@ -1,8 +1,8 @@
 {
+  "extends": "./jsconfig.paths.json",
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
-    "baseUrl": "./src"
+    "target": "es6"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

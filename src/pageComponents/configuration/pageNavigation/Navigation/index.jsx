@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { MenuItem, MenuList } from '@mui/material';
 
 const Navigation = () => {

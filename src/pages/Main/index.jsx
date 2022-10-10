@@ -1,8 +1,8 @@
 import { Grid, Paper, Typography } from '@mui/material';
-import CircleChart from '../../components/PieChart';
+import CircleChart from '@/components/PieChart';
 
 import styled from '@emotion/styled';
-import OperationManageMentTable from '../../pageComponents/OperationManagement/OperationTable';
+import OperationManageMentTable from '@/pageComponents/OperationManagement/OperationTable';
 
 const data = [
   { name: 'Bubble Tea Sold', value: 10 },

@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { useState } from 'react';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import DragHandleIcon from '@mui/icons-material/DragHandle';
 import DragableRow from './DragableRow';
 import { TextField } from '@mui/material';
 
