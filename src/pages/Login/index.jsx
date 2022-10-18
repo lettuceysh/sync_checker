@@ -16,25 +16,23 @@ const Login = () => {
   const avatarStyle = { backgroundColor: '#1bbd7e' };
   const btnstyle = { margin: '8px 0' };
   return (
-    <Grid>
-      <Paper elevation={10} style={paperStyle}>
-        <Grid align="center">
-          <Avatar style={avatarStyle}>
-            <LockResetIcon />
-          </Avatar>
-          <h2>Sign In</h2>
-        </Grid>
+    <Wrapper>
+      <Container>
+        <Top>
+          <Typography variant="h1">SyncChecker</Typography>
+          <Typography>For OracleGoldenGate</Typography>
+        </Top>
         <WrapTest>
           <TextField
             label="Username"
-            placeholder="Enter username"
+            placeholder="아이디를 입력해 주세요."
             variant="outlined"
             fullWidth
             required
           />
           <TextField
             label="Password"
-            placeholder="Enter password"
+            placeholder="비밀번호를 입력해 주세요."
             type="password"
             variant="outlined"
             fullWidth
@@ -43,26 +41,40 @@ const Login = () => {
         </WrapTest>
         <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
-          label="Remember me"
+          label="아이디 저장"
         />
         <Button type="submit" color="primary" variant="contained" style={btnstyle} fullWidth>
-          Sign in
+          Login
         </Button>
-        <Typography>
-          <Link href="#">Forgot password ?</Link>
-        </Typography>
-        <Typography>
-          Do you have an account ?<Link href="#">Sign Up</Link>
-        </Typography>
-      </Paper>
-    </Grid>
+      </Container>
+    </Wrapper>
   );
 };
 
+const Wrapper = styled.article`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Container = styled.div`
+  width: 400px;
+  height: 400px;
+`;
+
+const Top = styled.div`
+  text-align: center;
+  > p {
+    margin-top: 10px;
+  }
+`;
+
 const WrapTest = styled.div`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 `;
 
 export default Login;

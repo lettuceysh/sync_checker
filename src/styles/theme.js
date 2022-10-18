@@ -2,6 +2,18 @@ import { createTheme } from '@mui/material/styles';
 // import { colors } from './colors';
 
 const theme = createTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          height: '100%'
+        },
+        body: {
+          background: 'red'
+        }
+      }
+    }
+  },
   typography: {
     fontFamily: [
       '-apple-system',
@@ -23,6 +35,9 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: `
+      html  {
+
+      }
       `
     }
   }
