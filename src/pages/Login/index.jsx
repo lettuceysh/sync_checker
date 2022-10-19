@@ -11,56 +11,81 @@ import {
 import { Link } from 'react-router-dom';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import LoopIcon from '@mui/icons-material/Loop';
+
 const Login = () => {
-  const paperStyle = { padding: 20, height: '70vh', width: '500px', margin: '20px auto' };
-  const avatarStyle = { backgroundColor: '#1bbd7e' };
-  const btnstyle = { margin: '8px 0' };
   return (
     <Wrapper>
       <Container>
         <Top>
-          <Typography variant="h1">SyncChecker</Typography>
-          <Typography>For OracleGoldenGate</Typography>
+          <LockResetIcon color="primary" fontSize="large" />
+          <Typography variant="h1" sx={TitleCss}>
+            SyncChecker
+          </Typography>
+          <Typography variant="subtitle1">For OracleGoldenGate</Typography>
         </Top>
-        <WrapTest>
+        <InputWrapper>
           <TextField
-            label="Username"
+            label="아이디를 입력해 주세요."
             placeholder="아이디를 입력해 주세요."
             variant="outlined"
             fullWidth
             required
           />
           <TextField
-            label="Password"
+            label="비밀번호를 입력해 주세요."
             placeholder="비밀번호를 입력해 주세요."
             type="password"
             variant="outlined"
             fullWidth
             required
           />
-        </WrapTest>
+        </InputWrapper>
         <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
           label="아이디 저장"
+          style={{ marginTop: '10px' }}
         />
-        <Button type="submit" color="primary" variant="contained" style={btnstyle} fullWidth>
+        <CustomizedButton variant="large" type="submit" fullWidth>
           Login
-        </Button>
+        </CustomizedButton>
       </Container>
     </Wrapper>
   );
 };
+
+const TitleCss = css`
+  letter-spacing: 1px;
+`;
+
+const CustomizedButton = styled(Button)(
+  ({ theme }) => css`
+    background-color: ${theme.palette.colors.blue400};
+    margin-top: 20px;
+    height: 50px;
+    font-size: 14px;
+  `
+);
 
 const Wrapper = styled.article`
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(249, 250, 252);
 `;
 
 const Container = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 552px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(18, 24, 40);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 8px;
+  box-shadow: rgb(100 116 139 / 12%) 0px 10px 15px;
+  background-image: none;
+  overflow: hidden;
+  padding: 32px;
 `;
 
 const Top = styled.div`
@@ -70,11 +95,11 @@ const Top = styled.div`
   }
 `;
 
-const WrapTest = styled.div`
-  margin-top: 20px;
+const InputWrapper = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export default Login;

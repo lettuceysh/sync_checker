@@ -1,21 +1,25 @@
 import { createTheme } from '@mui/material/styles';
-// import { colors } from './colors';
 
 const theme = createTheme({
-  overrides: {
-    MuiCssBaseline: {
-      '@global': {
-        html: {
-          height: '100%'
-        },
-        body: {
-          background: 'red'
-        }
-      }
+  palette: {
+    colors: {
+      blue400: '#3366FF'
+    },
+    background: {
+      default: '#fff'
+    },
+    text: {
+      primary: 'rgb(18, 24, 40)',
+      secondary: 'rgb(101, 116, 139)',
+      disabled: 'rgba(0, 0, 0, 0.38)'
+    },
+    button: {
+      default: 'red'
     }
   },
   typography: {
     fontFamily: [
+      'roboto',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
@@ -34,11 +38,29 @@ const theme = createTheme({
   },
   components: {
     MuiCssBaseline: {
-      styleOverrides: `
-      html  {
-
+      styleOverrides: {}
+    },
+    MuiButton: {
+      large: {
+        height: '50px'
+      },
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          // ...(ownerState.variant === 'contained' &&
+          //   ownerState.color === 'primary' && {
+          //     backgroundColor: 'red',
+          //     color: '#fff'
+          //   }),
+          color: 'white'
+        })
       }
-      `
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          // border: '1px solid red'
+        })
+      }
     }
   }
 });

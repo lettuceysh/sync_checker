@@ -23,7 +23,8 @@ module.exports = {
     'react/prop-types': 0,
     'no-unused-vars': 0,
     'react/react-in-jsx-scope': 0,
-    'import/no-unresolved': 0
+    'import/no-unresolved': 0,
+    'react/no-unknown-property': ['error', { ignore: ['css'] }]
   },
   plugins: ['react', 'import'],
   ignorePatterns: ['node_modules', 'dist'],
