@@ -1,10 +1,12 @@
 import {
+  Alert,
   Avatar,
   Button,
   Checkbox,
   FormControlLabel,
   Grid,
   Paper,
+  Snackbar,
   TextField,
   Typography
 } from '@mui/material';
@@ -12,45 +14,74 @@ import { Link } from 'react-router-dom';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import LoopIcon from '@mui/icons-material/Loop';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 const Login = () => {
+  const { register, handleSubmit } = useForm();
+  const [open, setOpen] = useState(false);
+  const login = (value) => {
+    console.log('value', value);
+    setOpen(true);
+  };
+
   return (
     <Wrapper>
       <Container>
-        <Top>
-          <LockResetIcon color="primary" fontSize="large" />
-          <Typography variant="h1" sx={TitleCss}>
-            SyncChecker
-          </Typography>
-          <Typography variant="subtitle1">For OracleGoldenGate</Typography>
-        </Top>
-        <InputWrapper>
-          <TextField
-            label="아이디를 입력해 주세요."
-            placeholder="아이디를 입력해 주세요."
-            variant="outlined"
-            fullWidth
-            required
+        <form onSubmit={handleSubmit(login)}>
+          <Top>
+            <LockResetIcon color="primary" fontSize="large" />
+            <Typography variant="h1" sx={TitleCss}>
+              SyncChecker
+            </Typography>
+            <Typography variant="subtitle1">For OracleGoldenGate</Typography>
+          </Top>
+          <InputWrapper>
+            <TextField
+              label="아이디를 입력해 주세요."
+              placeholder="ID"
+              variant="outlined"
+              fullWidth
+              required
+              {...register('email', {
+                required: '이메일은 필수 입력입니다.'
+              })}
+            />
+            <TextField
+              label="비밀번호를 입력해 주세요."
+              placeholder="Password"
+              type="password"
+              variant="outlined"
+              fullWidth
+              required
+              {...register('password', {
+                required: '비밀번호는 필수 입력입니다.'
+              })}
+            />
+          </InputWrapper>
+          <FormControlLabel
+            control={<Checkbox name="checkedB" color="primary" {...register('save')} />}
+            label="아이디 저장"
+            style={{ marginTop: '10px' }}
           />
-          <TextField
-            label="비밀번호를 입력해 주세요."
-            placeholder="비밀번호를 입력해 주세요."
-            type="password"
-            variant="outlined"
-            fullWidth
-            required
-          />
-        </InputWrapper>
-        <FormControlLabel
-          control={<Checkbox name="checkedB" color="primary" />}
-          label="아이디 저장"
-          style={{ marginTop: '10px' }}
-        />
-        <CustomizedButton variant="large" type="submit" fullWidth>
-          Login
-        </CustomizedButton>
+          <CustomizedButton variant="large" type="submit" fullWidth>
+            Login
+          </CustomizedButton>
+        </form>
       </Container>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={() => setOpen(false)}
+      >
+        <Alert severity="error" sx={{ width: '100%' }}>
+          로그인을 실패하였습니다
+          <br />
+          아이디 또는 비밀번호를 다시 확인하세요! <br />※ 아이디/비밀번호 분실시 관리자에게
+          연락하세요.
+        </Alert>
+      </Snackbar>
     </Wrapper>
   );
 };
