@@ -1,43 +1,38 @@
-import { Grid, Paper, Typography } from '@mui/material';
-import CircleChart from '@/components/PieChart';
-
 import styled from '@emotion/styled';
-import OperationManageMentTable from '@/pageComponents/OperationManagement/OperationTable';
-
-const data = [
-  { name: 'Bubble Tea Sold', value: 10 },
-  { name: 'Bubble Tea Left', value: 4 }
-];
-
-const data2 = [
-  { name: 'Bubble Tea Sold', value: 20 },
-  { name: 'Bubble Tea Left', value: 2 }
-];
+import JobBoard from './JobBoard';
+import OperationStatus from './OperationStatus';
+import Records from './Records';
+import RefreshTime from './RefreshTime';
+import Summarization from './Summarization';
+import SynchronizationStatus from './SynchronizationStatus';
 
 const Main = () => {
   return (
-    <div>
-      <Grid>
-        <Paper elevation={10}>
-          <CircleChartWrapper>
-            <CircleChart data={data} />
-            <CircleChart data={data2} />
-            <CircleChart data={data2} />
-          </CircleChartWrapper>
-          <Grid></Grid>
-        </Paper>
-      </Grid>
-    </div>
+    <Wrapper>
+      <RefreshTime />
+      <Top>
+        <OperationStatus />
+        <SynchronizationStatus />
+        <Summarization />
+      </Top>
+      <Middle>
+        <JobBoard />
+      </Middle>
+      <Bottom>
+        <Records />
+      </Bottom>
+    </Wrapper>
   );
 };
 
-const CircleChartWrapper = styled.div`
+const Wrapper = styled.div``;
+
+const Top = styled.div`
   display: flex;
   width: 100%;
-  height: 200px;
-  > div {
-    min-width: 200px;
-  }
+  align-items: center;
 `;
+const Middle = styled.div``;
+const Bottom = styled.div``;
 
 export default Main;

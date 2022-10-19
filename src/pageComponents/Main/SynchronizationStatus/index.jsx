@@ -1,0 +1,30 @@
+import styled from '@emotion/styled';
+import CircleChart from '@/components/PieChart';
+import { CircleChartWrapper } from '../styled';
+import { Typography } from '@mui/material';
+
+const data = [
+  { name: 'Bubble Tea Sold', value: 10 },
+  { name: 'Bubble Tea Left', value: 4 }
+];
+
+const data2 = [
+  { name: 'Bubble Tea Sold', value: 20 },
+  { name: 'Bubble Tea Left', value: 25 }
+];
+
+const SynchronizationStatus = () => {
+  return (
+    <Wrapper>
+      <Typography>Synchronization Status</Typography>
+      <CircleChartWrapper>
+        <CircleChart data={data} color="blue" />
+        <CircleChart data={data2} color="orange" />
+      </CircleChartWrapper>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div``;
+
+export default SynchronizationStatus;

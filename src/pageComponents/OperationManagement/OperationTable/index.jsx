@@ -87,26 +87,6 @@ const OperationManageMentTable = () => {
           {rows.map((row) => {
             return <RowItem row={row} columns={columns} key={row.id} />;
           })}
-          {/* {rows.map((row) => {
-          return (
-            <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-              <TableCell rowSpan={row.sub.length}>
-                <CheckBox checked={false} />
-              </TableCell>
-              {columns.map((column) => {
-                const value = row[column.field];
-
-                return (
-                  <>
-                    <TableCell key={column.field} rowSpan={row.sub.length}>
-                      {value}
-                    </TableCell>
-                  </>
-                );
-              })}
-            </TableRow>
-          );
-        })} */}
         </TableBody>
       </Table>
     </TableContainer>
