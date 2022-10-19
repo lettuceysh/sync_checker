@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Main from './pages/Main';
 import PageNavigation from './pages/configuration/PageNavigation';
 import global from './styles/global';
+import OperationPage from './pages/Operation';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Main />} />,
           <Route path="/login" element={<Login />} />,
           <Route path="/configuration" element={<PageNavigation />} />,
+          <Route path="/operation" element={<OperationPage />} />,
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
