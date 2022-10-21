@@ -6,8 +6,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import RowItem from './RowItem';
-import { Checkbox, Typography } from '@mui/material';
+import { Button, Checkbox, Typography } from '@mui/material';
 import styled from '@emotion/styled';
+import { StyledTable } from '@/styles/components/StyledTable';
 
 const columns = [
   { field: 'checkbox', headerName: <Checkbox /> },
@@ -83,29 +84,29 @@ const Records = () => {
   return (
     <Wrapper>
       <Top>
-        <Typography>Out of Sync. Records</Typography>
+        <Typography variant="h2">Out of Sync. Records</Typography>
         <Info>JOB[DEC] TASK[Owner.table1  Owner.table2] DATE[2022-07-28 10:20:10</Info>
         <Buttons>
-          <Button>
+          <CustomButton>
             <strong>Cancel</strong>
             <br />
             Compare paris
-          </Button>
-          <Button>
+          </CustomButton>
+          <CustomButton>
             <strong>Repair</strong>
             <br />
             Out-of-Sync Dat
-          </Button>
-          <Button>
+          </CustomButton>
+          <CustomButton>
             <strong>Re-compare</strong>
             <br />
             Out-of-Sync Data
-          </Button>
+          </CustomButton>
         </Buttons>
       </Top>
 
-      <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
+      <TableContainer>
+        <StyledTable>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -118,7 +119,7 @@ const Records = () => {
               return <RowItem row={row} columns={columns} key={row.id} />;
             })}
           </TableBody>
-        </Table>
+        </StyledTable>
       </TableContainer>
     </Wrapper>
   );
@@ -130,19 +131,28 @@ const Wrapper = styled.div`
 
 const Top = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `;
 
 const Info = styled.div`
-  border: 1px solid blue;
+  border: 1px solid ${({ theme }) => theme.palette.border.primary};
+  border-radius: 8px;
+  margin: 0 10px;
+  padding: 10px;
 `;
 
-const Buttons = styled.button`
+const Buttons = styled.div`
   margin-left: auto;
   display: flex;
 `;
-const Button = styled.button`
-  border: 1px solid gray;
+const CustomButton = styled(Button)`
+  display: block;
+  line-height: normal;
+  font-size: 12px;
+  & + button {
+    margin-left: 5px;
+  }
 `;
 
 export default Records;

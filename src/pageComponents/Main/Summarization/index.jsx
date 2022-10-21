@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 const Summarization = () => {
   return (
     <Wrapper>
-      <Typography>Out-of-Sync Summarization</Typography>
+      <Typography variant="h2">Out-of-Sync Summarization</Typography>
       <List>
         <li>
           <button>
@@ -44,16 +44,18 @@ const Summarization = () => {
 
 const Wrapper = styled.div`
   flex: 1;
-  border: 1px solid blue;
-  padding-left: 10px;
-  height: 100px;
-  overflow-y: auto;
 `;
 
 const List = styled.ul`
+  border: 1px solid ${({ theme }) => theme.palette.border.primary};
+  background-color: ${({ theme }) => theme.palette.background.primary};
+
+  padding-left: 10px;
+  height: 100px;
+  overflow-y: auto;
   > li {
     padding: 5px 0;
-    border-bottom: 1px solid ${({ theme }) => theme.palette.colors.blue400};
+    border-bottom: 1px solid ${({ theme }) => theme.palette.border.primary};
   }
 `;
 export default Summarization;

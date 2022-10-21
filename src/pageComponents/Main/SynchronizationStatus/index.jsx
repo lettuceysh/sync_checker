@@ -16,7 +16,7 @@ const data2 = [
 const SynchronizationStatus = () => {
   return (
     <Wrapper>
-      <Typography>Synchronization Status</Typography>
+      <Typography variant="h2">Synchronization Status</Typography>
       <CircleChartWrapper>
         <CircleChart data={data} color="blue" />
         <CircleChart data={data2} color="orange" />

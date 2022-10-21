@@ -21,7 +21,7 @@ const data3 = [
 const OperationStatus = () => {
   return (
     <Wrapper>
-      <Typography>Operation Status</Typography>
+      <Typography variant="h2">Operation Status</Typography>
       <CircleChartWrapper>
         <CircleChart data={data} color="red" />
         <CircleChart data={data2} color="yellow" />

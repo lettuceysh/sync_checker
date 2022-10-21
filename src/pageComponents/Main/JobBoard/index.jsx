@@ -6,8 +6,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import RowItem from './RowItem';
-import { Checkbox, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
+import { StyledTable } from '@/styles/components/StyledTable';
 
 const columns = [
   { field: 'name', headerName: 'Name', width: 130 },
@@ -81,9 +82,9 @@ const rows = [
 const JobBoard = () => {
   return (
     <Wrapper>
-      <Typography>Job Synchronization Board</Typography>
+      <Typography variant="h2">Job Synchronization Board</Typography>
       <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
+        <StyledTable stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={3}>
@@ -111,7 +112,7 @@ const JobBoard = () => {
               return <RowItem row={row} columns={columns} key={row.id} />;
             })}
           </TableBody>
-        </Table>
+        </StyledTable>
       </TableContainer>
     </Wrapper>
   );

@@ -29,6 +29,9 @@ const Wrapper = styled.div``;
 
 const Top = styled.div`
   display: flex;
+  > * + * {
+    margin-left: 10px;
+  }
   width: 100%;
   align-items: center;
 `;

@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { colors } from './colors';
 
 const theme = createTheme({
   palette: {
@@ -6,15 +7,17 @@ const theme = createTheme({
       blue400: '#3366FF'
     },
     background: {
-      default: '#fff'
+      primary: '#fff',
+      secondary: colors.black100,
+      tHead: colors.black100
     },
     text: {
       primary: 'rgb(18, 24, 40)',
-      secondary: 'rgb(101, 116, 139)',
-      disabled: 'rgba(0, 0, 0, 0.38)'
+      secondary: 'white',
+      tHead: 'white'
     },
-    button: {
-      default: 'red'
+    border: {
+      primary: colors.gray900
     }
   },
   typography: {
@@ -34,6 +37,13 @@ const theme = createTheme({
     h1: {
       fontSize: '30px',
       fontWeight: 'bold'
+    },
+    h2: {
+      fontSize: '24px',
+      fontWeight: 'bold'
+    },
+    normal: {
+      fontSize: '14px'
     }
   },
   components: {
@@ -45,14 +55,14 @@ const theme = createTheme({
         height: '50px'
       },
       styleOverrides: {
-        root: ({ ownerState }) => ({
-          // ...(ownerState.variant === 'contained' &&
-          //   ownerState.color === 'primary' && {
-          //     backgroundColor: 'red',
-          //     color: '#fff'
-          //   }),
-          color: 'white'
-        })
+        root: {
+          color: 'white',
+          backgroundColor: colors.gray900,
+          textAlign: 'center',
+          '&:hover': {
+            backgroundColor: colors.gray800
+          }
+        }
       }
     },
     MuiTextField: {

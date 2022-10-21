@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Footer from './Footer';
 import Gnb from './Gnb';
 
 const DefaultLayout = ({ children }) => {
@@ -6,6 +7,7 @@ const DefaultLayout = ({ children }) => {
     <Wrapper>
       <Gnb />
       {children}
+      <Footer />
     </Wrapper>
   );
 };
