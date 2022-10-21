@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import RowItem from './RowItem';
 import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
-import { StyledTable } from '@/styles/components/StyledTable';
+import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 
 const columns = [
   { field: 'name', headerName: 'Name', width: 130 },
@@ -83,7 +83,7 @@ const JobBoard = () => {
   return (
     <Wrapper>
       <Typography variant="h2">Job Synchronization Board</Typography>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <StyledTableContainer>
         <StyledTable stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -113,7 +113,7 @@ const JobBoard = () => {
             })}
           </TableBody>
         </StyledTable>
-      </TableContainer>
+      </StyledTableContainer>
     </Wrapper>
   );
 };

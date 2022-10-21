@@ -35,7 +35,11 @@ const Top = styled.div`
   width: 100%;
   align-items: center;
 `;
-const Middle = styled.div``;
-const Bottom = styled.div``;
+const Middle = styled.div`
+  margin-top: 40px;
+`;
+const Bottom = styled.div`
+  margin-top: 40px;
+`;
 
 export default Main;

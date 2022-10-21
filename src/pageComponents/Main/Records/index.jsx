@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import RowItem from './RowItem';
 import { Button, Checkbox, Typography } from '@mui/material';
 import styled from '@emotion/styled';
-import { StyledTable } from '@/styles/components/StyledTable';
+import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 
 const columns = [
   { field: 'checkbox', headerName: <Checkbox /> },
@@ -105,7 +105,7 @@ const Records = () => {
         </Buttons>
       </Top>
 
-      <TableContainer>
+      <StyledTableContainer>
         <StyledTable>
           <TableHead>
             <TableRow>
@@ -120,7 +120,7 @@ const Records = () => {
             })}
           </TableBody>
         </StyledTable>
-      </TableContainer>
+      </StyledTableContainer>
     </Wrapper>
   );
 };
