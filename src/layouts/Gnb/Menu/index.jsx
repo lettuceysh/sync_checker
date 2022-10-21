@@ -15,7 +15,7 @@ const BasicMenu = () => {
 
   return (
     <div>
-      <DehazeIcon onClick={handleClick} />
+      <DehazeIcon onClick={handleClick} fontSize="large" />
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}

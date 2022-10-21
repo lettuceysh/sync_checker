@@ -2,9 +2,11 @@ import { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import EngineeringIcon from '@mui/icons-material/Engineering';
+import RefreshTime from './components/RefreshTime';
 
 const Setting = () => {
   const [anchorEl, setAnchorEl] = useState();
+  const [isShowRefreshTime, setIsShowRefreshTime] = useState(false);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -13,9 +15,14 @@ const Setting = () => {
     setAnchorEl(null);
   };
 
+  const showRefreshTime = () => {
+    setIsShowRefreshTime(true);
+    setAnchorEl(null);
+  };
+
   return (
     <div>
-      <EngineeringIcon onClick={handleClick} />
+      <EngineeringIcon onClick={handleClick} fontSize="large" />
 
       <Menu
         id="basic-menu"
@@ -26,10 +33,10 @@ const Setting = () => {
           'aria-labelledby': 'basic-button'
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={showRefreshTime}>Screen Refresh Time</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
+      <RefreshTime open={isShowRefreshTime} onClose={() => setIsShowRefreshTime(false)} />
     </div>
   );
 };

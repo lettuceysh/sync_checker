@@ -71,6 +71,13 @@ const theme = createTheme({
           // border: '1px solid red'
         })
       }
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: colors.black100
+        }
+      }
     }
   }
 });
