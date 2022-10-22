@@ -4,6 +4,9 @@ export const colors = {
   gray800: '#bfbfbf',
   gray900: '#333333',
   black100: 'black',
-  green100: '#3b4850',
-  white100: '#ffffff'
+  green100: '#395B64',
+  green200: '#62D2A2',
+  blue100: '#00A8CC',
+  white100: '#ffffff',
+  red100: '#EB4747'
 };

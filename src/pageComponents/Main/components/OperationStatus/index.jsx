@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import CircleChart from '@/components/PieChart';
 import { CircleChartWrapper } from '../../styled';
 import { Typography } from '@mui/material';
+import { colors } from '@/styles/colors';
 
 const data = [
   { name: 'Bubble Tea Sold', value: 10 },
@@ -23,9 +24,9 @@ const OperationStatus = () => {
     <Wrapper>
       <Typography variant="h2">Operation Status</Typography>
       <CircleChartWrapper>
-        <CircleChart data={data} color="red" label="Running" />
-        <CircleChart data={data2} color="yellow" label="Stop" />
-        <CircleChart data={data3} color="green" label="Abanded" />
+        <CircleChart data={data} color={colors.green200} label="Running" />
+        <CircleChart data={data2} color={colors.gray800} label="Stop" />
+        <CircleChart data={data3} color={colors.red100} label="Abanded" />
       </CircleChartWrapper>
     </Wrapper>
   );

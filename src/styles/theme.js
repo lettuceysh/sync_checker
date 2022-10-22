@@ -67,7 +67,6 @@ const theme = createTheme({
         root: {
           color: 'white',
           backgroundColor: colors.gray600,
-          boxShadow: `rgb(0 0 0 / 70%) 0px 4px 10px`,
           textAlign: 'center',
           '&:hover': {
             backgroundColor: colors.gray800

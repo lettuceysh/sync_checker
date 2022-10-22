@@ -92,7 +92,7 @@ const TitleCss = css`
 
 const CustomizedButton = styled(Button)(
   ({ theme }) => css`
-    background-color: ${theme.palette.colors.blue400};
+    background-color: ${theme.palette.blue400};
     margin-top: 20px;
     height: 50px;
     font-size: 14px;
@@ -104,7 +104,10 @@ const Wrapper = styled.article`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(249, 250, 252);
+  background-color: ${({ theme }) => theme.palette.background.primary};
+  background-image: url('/sync_checker/images/bg.png');
+  background-position: bottom;
+  background-size: 100%;
 `;
 
 const Container = styled.div`
