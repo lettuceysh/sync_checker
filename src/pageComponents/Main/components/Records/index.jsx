@@ -85,7 +85,11 @@ const Records = () => {
     <Wrapper>
       <Top>
         <Typography variant="h2">Out of Sync. Records</Typography>
-        <Info>JOB[DEC] TASK[Owner.table1  Owner.table2] DATE[2022-07-28 10:20:10</Info>
+        <Info>
+          <Typography variant="normal">
+            JOB[DEC] TASK[Owner.table1  Owner.table2] DATE[2022-07-28 10:20:10
+          </Typography>
+        </Info>
         <Buttons>
           <CustomButton>
             <strong>Cancel</strong>
@@ -136,7 +140,7 @@ const Top = styled.div`
 `;
 
 const Info = styled.div`
-  border: 1px solid ${({ theme }) => theme.palette.border.primary};
+  border: 1px solid ${({ theme }) => theme.palette.gray600};
   border-radius: 8px;
   margin: 0 10px;
   padding: 10px;

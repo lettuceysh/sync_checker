@@ -3,7 +3,7 @@ const { Table } = require('@mui/material');
 
 export const StyledTableContainer = styled(Table)`
   margin-top: 5px;
-  background-color: ${({ theme }) => theme.palette.background.primary};
+  background-color: ${({ theme }) => theme.palette.white100};
   box-shadow: rgb(100 116 139 / 12%) 0px 10px 15px;
 `;
 export const StyledTable = styled(Table)`

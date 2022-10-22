@@ -1,7 +1,12 @@
 import styled from '@emotion/styled';
+import { Typography } from '@mui/material';
 
 const RefreshTime = () => {
-  return <Wrapper>2022-10-10 10:10:10</Wrapper>;
+  return (
+    <Wrapper>
+      <Typography variant="normal">2022-10-10 10:10:10</Typography>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`

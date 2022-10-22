@@ -14,6 +14,7 @@ const DefaultLayout = ({ children }) => {
 
 const Wrapper = styled.div`
   padding: 20px;
+  background-color: ${({ theme }) => theme.palette.background.primary};
 `;
 
 export default DefaultLayout;

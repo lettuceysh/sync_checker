@@ -9,27 +9,37 @@ const Summarization = () => {
       <List>
         <li>
           <button>
-            JOB_Name( Source Table  Target Table )에 2022-07-02 10:10:10 10건 불일치 발생
+            <Typography variant="normalGray">
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+            </Typography>
           </button>
         </li>
         <li>
           <button>
-            JOB_Name( Source Table  Target Table )에 2022-07-02 10:10:10 10건 불일치 발생
+            <Typography variant="normalGray">
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+            </Typography>
           </button>
         </li>
         <li>
           <button>
-            JOB_Name( Source Table  Target Table )에 2022-07-02 10:10:10 10건 불일치 발생
+            <Typography variant="normalGray">
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+            </Typography>
           </button>
         </li>
         <li>
           <button>
-            JOB_Name( Source Table  Target Table )에 2022-07-02 10:10:10 10건 불일치 발생
+            <Typography variant="normalGray">
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+            </Typography>
           </button>
         </li>
         <li>
           <button>
-            JOB_Name( Source Table  Target Table )에 2022-07-02 10:10:10 10건 불일치 발생
+            <Typography variant="normalGray">
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+            </Typography>
           </button>
         </li>
         <li>
@@ -48,10 +58,12 @@ const Wrapper = styled.div`
 
 const List = styled.ul`
   border: 1px solid ${({ theme }) => theme.palette.border.primary};
-  background-color: ${({ theme }) => theme.palette.background.primary};
+  background-color: ${({ theme }) => theme.palette.white100};
+
+  border-radius: 2px;
 
   padding-left: 10px;
-  height: 100px;
+  height: 120px;
   overflow-y: auto;
   > li {
     padding: 5px 0;

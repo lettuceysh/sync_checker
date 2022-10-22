@@ -3,13 +3,11 @@ import { colors } from './colors';
 
 const theme = createTheme({
   palette: {
-    colors: {
-      blue400: '#3366FF'
-    },
+    ...colors,
     background: {
-      primary: '#fff',
-      secondary: colors.black100,
-      tHead: colors.black100
+      primary: colors.green100,
+      secondary: colors.white100,
+      tHead: colors.gray800
     },
     text: {
       primary: 'rgb(18, 24, 40)',
@@ -36,14 +34,25 @@ const theme = createTheme({
     ].join(','),
     h1: {
       fontSize: '30px',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      color: colors.white100
     },
     h2: {
       fontSize: '24px',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      color: colors.white100
     },
     normal: {
-      fontSize: '14px'
+      fontSize: '14px',
+      color: colors.white100
+    },
+    normalGray: {
+      fontSize: '14px',
+      color: colors.gray900
+    },
+    normalGreen: {
+      fontSize: '14px',
+      color: colors.green100
     }
   },
   components: {
@@ -57,7 +66,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: 'white',
-          backgroundColor: colors.gray900,
+          backgroundColor: colors.gray600,
+          boxShadow: `rgb(0 0 0 / 70%) 0px 4px 10px`,
           textAlign: 'center',
           '&:hover': {
             backgroundColor: colors.gray800
@@ -87,3 +97,5 @@ const theme = createTheme({
 // };
 
 export default theme;
+
+7;

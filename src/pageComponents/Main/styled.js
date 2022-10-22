@@ -5,8 +5,9 @@ export const CircleChartWrapper = styled.div`
 
   border: 1px solid ${({ theme }) => theme.palette.border.primary};
   background-color: ${({ theme }) => theme.palette.background.secondary};
+  border-radius: 2px;
   width: 100%;
-  height: 100px;
+  height: 120px;
   > div {
     min-width: 100px;
   }

@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import JobBoard from './JobBoard';
-import OperationStatus from './OperationStatus';
-import Records from './Records';
-import RefreshTime from './RefreshTime';
-import Summarization from './Summarization';
-import SynchronizationStatus from './SynchronizationStatus';
+import JobBoard from './components/JobBoard';
+import OperationStatus from './components/OperationStatus';
+import Records from './components/Records';
+import RefreshTime from './components/RefreshTime';
+import Summarization from './components/Summarization';
+import SynchronizationStatus from './components/SynchronizationStatus';
 
 const Main = () => {
   return (
