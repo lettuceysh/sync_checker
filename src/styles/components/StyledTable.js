@@ -1,3 +1,5 @@
+import { colors } from '../colors';
+
 const { default: styled } = require('@emotion/styled');
 const { Table } = require('@mui/material');
 
@@ -7,11 +9,22 @@ export const StyledTableContainer = styled(Table)`
   box-shadow: rgb(100 116 139 / 12%) 0px 10px 15px;
 `;
 export const StyledTable = styled(Table)`
+  border-collapse: collapse;
+
   > thead {
     > tr {
       > th {
         background-color: ${({ theme }) => theme.palette.background.tHead};
         color: ${({ theme }) => theme.palette.text.tHead};
+        padding: 5px;
+      }
+    }
+  }
+  > tbody {
+    > tr {
+      > td {
+        padding: 5px;
+        border: 1px solid ${colors.bluegray250};
       }
     }
   }

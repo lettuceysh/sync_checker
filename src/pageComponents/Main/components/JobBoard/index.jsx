@@ -9,6 +9,7 @@ import RowItem from './RowItem';
 import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
+import { ItemWrapper } from '../../styled';
 
 const columns = [
   { field: 'name', headerName: 'Name', width: 130 },
@@ -76,50 +77,131 @@ const rows = [
         Status: 'Status2'
       }
     ]
+  },
+  {
+    id: 1,
+    name: 'Snow',
+    source: 'Jon',
+    target: 'test',
+    sub: [
+      {
+        subId: '1-1',
+        subSource: 'source1',
+        subTarget: 'target1',
+        startTime: 'startTime1',
+        EndTime: 'EndTime1',
+        RunningTime: 'RunningTime1',
+        Status: 'Status1'
+      },
+      {
+        subId: '1-2',
+        subSource: 'source2',
+        subTarget: 'target2',
+        startTime: 'startTime2',
+        EndTime: 'EndTime2',
+        RunningTime: 'RunningTime2',
+        Status: 'Status2'
+      }
+    ]
+  },
+  {
+    id: 1,
+    name: 'Snow',
+    source: 'Jon',
+    target: 'test',
+    sub: [
+      {
+        subId: '1-1',
+        subSource: 'source1',
+        subTarget: 'target1',
+        startTime: 'startTime1',
+        EndTime: 'EndTime1',
+        RunningTime: 'RunningTime1',
+        Status: 'Status1'
+      },
+      {
+        subId: '1-2',
+        subSource: 'source2',
+        subTarget: 'target2',
+        startTime: 'startTime2',
+        EndTime: 'EndTime2',
+        RunningTime: 'RunningTime2',
+        Status: 'Status2'
+      }
+    ]
+  },
+  {
+    id: 1,
+    name: 'Snow',
+    source: 'Jon',
+    target: 'test',
+    sub: [
+      {
+        subId: '1-1',
+        subSource: 'source1',
+        subTarget: 'target1',
+        startTime: 'startTime1',
+        EndTime: 'EndTime1',
+        RunningTime: 'RunningTime1',
+        Status: 'Status1'
+      },
+      {
+        subId: '1-2',
+        subSource: 'source2',
+        subTarget: 'target2',
+        startTime: 'startTime2',
+        EndTime: 'EndTime2',
+        RunningTime: 'RunningTime2',
+        Status: 'Status2'
+      }
+    ]
   }
 ];
 
 const JobBoard = () => {
   return (
-    <Wrapper>
+    <ItemWrapper>
       <Typography variant="h2">Job Synchronization Board</Typography>
-      <StyledTableContainer>
-        <StyledTable stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center" colSpan={3}>
-                project
-              </TableCell>
-              <TableCell align="center"></TableCell>
-              <TableCell align="center" colSpan={7}>
-                JOB -Synchronization Result
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.field}
-                  align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth }}
-                >
-                  {column.headerName}
+      <ScrollContainer>
+        <StyledTableContainer>
+          <StyledTable>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" colSpan={3}>
+                  project
                 </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => {
-              return <RowItem row={row} columns={columns} key={row.id} />;
-            })}
-          </TableBody>
-        </StyledTable>
-      </StyledTableContainer>
-    </Wrapper>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center" colSpan={7}>
+                  JOB -Synchronization Result
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.field}
+                    align={column.align}
+                    style={{ top: 57, minWidth: column.minWidth }}
+                  >
+                    {column.headerName}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => {
+                return <RowItem row={row} columns={columns} key={row.id} />;
+              })}
+            </TableBody>
+          </StyledTable>
+        </StyledTableContainer>
+      </ScrollContainer>
+    </ItemWrapper>
   );
 };
 
-const Wrapper = styled.div`
-  margin-top: 20px;
+const ScrollContainer = styled.div`
+  height: 200px;
+  overflow-y: auto;
 `;
 
 export default JobBoard;

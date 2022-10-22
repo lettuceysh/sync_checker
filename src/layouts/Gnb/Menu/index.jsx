@@ -4,6 +4,8 @@ import MenuItem from '@mui/material/MenuItem';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import { Link } from 'react-router-dom';
 import { URL } from '@/const/router';
+import styled from '@emotion/styled';
+import { colors } from '@/styles/colors';
 
 const BasicMenu = () => {
   const [anchorEl, setAnchorEl] = useState();
@@ -16,8 +18,8 @@ const BasicMenu = () => {
   };
 
   return (
-    <div>
-      <DehazeIcon onClick={handleClick} fontSize="large" />
+    <Wrapper>
+      <DehazeIcon onClick={handleClick} style={{ fontSize: '40px' }} />
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -28,18 +30,43 @@ const BasicMenu = () => {
         }}
       >
         <MenuItem>
-          <Link to={URL.main}>Dashboard</Link>
+          <StyledLink to={URL.main}>Dashboard</StyledLink>
         </MenuItem>
         <MenuItem>
-          <Link to={URL.operation}>Operation Management</Link>
+          <StyledLink to={URL.operation}>Operation Management</StyledLink>
         </MenuItem>
         <MenuItem>
-          <Link to={URL.dataSource}>dataSouce Management</Link>
+          <StyledLink to={URL.dataSource}>DataSource Management</StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink to={URL.dataSource}>Project Management</StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink to={URL.dataSource}>Job configuration</StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink to={URL.dataSource}>Check Result</StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink to={URL.dataSource}>User Management</StyledLink>
+        </MenuItem>
+        <MenuItem>
+          <StyledLink disabled>Batch Validation Configuration</StyledLink>
         </MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>
-    </div>
+    </Wrapper>
   );
 };
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${colors.gray900};
+  :disabled {
+    color: ${colors.bluegray100};
+  }
+`;
+
+const Wrapper = styled.div``;
 
 export default BasicMenu;

@@ -10,12 +10,12 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import { Link } from 'react-router-dom';
-import LockResetIcon from '@mui/icons-material/LockReset';
+import BlurOnIcon from '@mui/icons-material/BlurOn';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { colors } from '@/styles/colors';
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -30,11 +30,10 @@ const Login = () => {
       <Container>
         <form onSubmit={handleSubmit(login)}>
           <Top>
-            <LockResetIcon color="primary" fontSize="large" />
-            <Typography variant="h1" sx={TitleCss}>
-              SyncChecker
-            </Typography>
-            <Typography variant="subtitle1">For OracleGoldenGate</Typography>
+            <H1>
+              <BlurOnIcon style={{ color: colors.logo, fontSize: '50px' }} /> Sync Checker
+            </H1>
+            <SubText>For Oracle GoldenGate</SubText>
           </Top>
           <InputWrapper>
             <TextField
@@ -60,13 +59,11 @@ const Login = () => {
             />
           </InputWrapper>
           <FormControlLabel
-            control={<Checkbox name="checkedB" color="primary" {...register('save')} />}
+            control={<Checkbox name="checkedB" {...register('save')} />}
             label="아이디 저장"
-            style={{ marginTop: '10px' }}
+            style={{ margin: '10px 0 0 -3px' }}
           />
-          <CustomizedButton variant="large" type="submit" fullWidth>
-            Login
-          </CustomizedButton>
+          <CustomizedButton type="submit">Login</CustomizedButton>
         </form>
       </Container>
       <Snackbar
@@ -86,28 +83,51 @@ const Login = () => {
   );
 };
 
-const TitleCss = css`
-  letter-spacing: 1px;
+const H1 = styled.h1`
+  letter-spacing: 1.4px;
+  font-size: 40px;
+  color: ${({ theme }) => theme.palette.logo};
+  text-shadow: 2px 2px 2px rgb(100 116 139 / 23%);
 `;
 
-const CustomizedButton = styled(Button)(
-  ({ theme }) => css`
-    background-color: ${theme.palette.blue400};
-    margin-top: 20px;
-    height: 50px;
-    font-size: 14px;
-  `
-);
+const SubText = styled.p`
+  margin-top: 8px;
+  font-size: 12px;
+  color: ${({ theme }) => theme.palette.logo};
+`;
+
+const CustomizedButton = styled.button`
+  background-color: ${({ theme }) => theme.palette.green100};
+  border-radius: 25px;
+  color: white;
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+  font-size: 18px;
+`;
 
 const Wrapper = styled.article`
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.palette.background.primary};
-  background-image: url('/sync_checker/images/bg.png');
-  background-position: bottom;
-  background-size: 100%;
+
+  ::before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${({ theme }) => theme.palette.background.primary};
+    background-image: url('/sync_checker/images/bg.png');
+    background-position: bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.9;
+  }
 `;
 
 const Container = styled.div`
@@ -124,16 +144,13 @@ const Container = styled.div`
 
 const Top = styled.div`
   text-align: center;
-  > p {
-    margin-top: 10px;
-  }
 `;
 
 const InputWrapper = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 `;
 
 export default Login;

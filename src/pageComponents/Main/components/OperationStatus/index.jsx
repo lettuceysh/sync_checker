@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import CircleChart from '@/components/PieChart';
-import { CircleChartWrapper } from '../../styled';
+import { CircleChartWrapper, ItemWrapper } from '../../styled';
 import { Typography } from '@mui/material';
 import { colors } from '@/styles/colors';
 
@@ -21,17 +21,37 @@ const data3 = [
 
 const OperationStatus = () => {
   return (
-    <Wrapper>
-      <Typography variant="h2">Operation Status</Typography>
-      <CircleChartWrapper>
-        <CircleChart data={data} color={colors.green200} label="Running" />
-        <CircleChart data={data2} color={colors.gray800} label="Stop" />
-        <CircleChart data={data3} color={colors.red100} label="Abanded" />
-      </CircleChartWrapper>
-    </Wrapper>
+    <ItemWrapper style={customStyle}>
+      <StatusWrapper>
+        <Typography variant="h2">Operation Status</Typography>
+        <CircleChartWrapper>
+          <CircleChart data={data} color={colors.green200} label="Running" />
+          <CircleChart data={data2} color={colors.gray800} label="Stop" />
+          <CircleChart data={data3} color={colors.red100} label="Abanded" />
+        </CircleChartWrapper>
+      </StatusWrapper>
+      <StatusWrapper>
+        <Typography variant="h2">Synchronization Status</Typography>
+        <CircleChartWrapper>
+          <CircleChart data={data} color={colors.blue100} label="sync" />
+          <CircleChart data={data2} color={colors.red100} label="out-of-sync" />
+        </CircleChartWrapper>
+      </StatusWrapper>
+    </ItemWrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const customStyle = {
+  width: '600px',
+  display: 'flex'
+};
 
+const StatusWrapper = styled.div`
+  flex: 1;
+  & + * {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid ${colors.gray200};
+  }
+`;
 export default OperationStatus;

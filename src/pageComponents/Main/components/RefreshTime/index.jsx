@@ -1,3 +1,4 @@
+import { colors } from '@/styles/colors';
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 
@@ -10,8 +11,11 @@ const RefreshTime = () => {
 };
 
 const Wrapper = styled.div`
-  padding: 20px 10px;
+  padding: 5px;
   text-align: right;
+  * {
+    color: ${colors.bluegray100};
+  }
 `;
 
 export default RefreshTime;

@@ -9,6 +9,7 @@ import RowItem from './RowItem';
 import { Button, Checkbox, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
+import { ItemWrapper } from '../../styled';
 
 const columns = [
   { field: 'checkbox', headerName: <Checkbox /> },
@@ -77,17 +78,125 @@ const rows = [
         col7: 'val7'
       }
     ]
+  },
+  {
+    checkbox: <Checkbox />,
+    id: 1,
+    no: '1',
+    sub: [
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      },
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      }
+    ]
+  },
+  {
+    checkbox: <Checkbox />,
+    id: 2,
+    no: '2',
+    sub: [
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      },
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      }
+    ]
+  },
+  {
+    checkbox: <Checkbox />,
+    id: 1,
+    no: '1',
+    sub: [
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      },
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      }
+    ]
+  },
+  {
+    checkbox: <Checkbox />,
+    id: 2,
+    no: '2',
+    sub: [
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      },
+      {
+        position: 'Source',
+        col1: 'val1',
+        col2: 'val2',
+        col3: 'val3',
+        col4: 'val4',
+        col5: 'val5',
+        col6: 'val6',
+        col7: 'val7'
+      }
+    ]
   }
 ];
 
 const Records = () => {
   return (
-    <Wrapper>
+    <ItemWrapper>
+      <Typography variant="h2">Out of Sync. Records</Typography>
       <Top>
-        <Typography variant="h2">Out of Sync. Records</Typography>
         <Info>
           <Typography variant="normal">
-            JOB[DEC] TASK[Owner.table1  Owner.table2] DATE[2022-07-28 10:20:10
+            JOB[DEC] TASK[Owner.table1 Owner.table2] DATE[2022-07-28 10:20:10
           </Typography>
         </Info>
         <Buttons>
@@ -109,28 +218,31 @@ const Records = () => {
         </Buttons>
       </Top>
 
-      <StyledTableContainer>
-        <StyledTable>
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell key={column.field}>{column.headerName}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => {
-              return <RowItem row={row} columns={columns} key={row.id} />;
-            })}
-          </TableBody>
-        </StyledTable>
-      </StyledTableContainer>
-    </Wrapper>
+      <ScrollContainer>
+        <StyledTableContainer>
+          <StyledTable>
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell key={column.field}>{column.headerName}</TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => {
+                return <RowItem row={row} columns={columns} key={row.id} />;
+              })}
+            </TableBody>
+          </StyledTable>
+        </StyledTableContainer>
+      </ScrollContainer>
+    </ItemWrapper>
   );
 };
 
-const Wrapper = styled.div`
-  margin-top: 20px;
+const ScrollContainer = styled.div`
+  height: 200px;
+  overflow-y: auto;
 `;
 
 const Top = styled.div`
@@ -139,12 +251,7 @@ const Top = styled.div`
   width: 100%;
 `;
 
-const Info = styled.div`
-  border: 1px solid ${({ theme }) => theme.palette.gray600};
-  border-radius: 8px;
-  margin: 0 10px;
-  padding: 10px;
-`;
+const Info = styled.div``;
 
 const Buttons = styled.div`
   margin-left: auto;
@@ -154,8 +261,9 @@ const CustomButton = styled(Button)`
   display: block;
   line-height: normal;
   font-size: 12px;
+  padding: 5px 20px;
   & + button {
-    margin-left: 5px;
+    margin-left: 10px;
   }
 `;
 

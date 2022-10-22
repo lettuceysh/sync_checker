@@ -3,7 +3,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import RefreshTime from './components/RefreshTime';
-
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 const Setting = () => {
   const [anchorEl, setAnchorEl] = useState();
   const [isShowRefreshTime, setIsShowRefreshTime] = useState(false);
@@ -22,7 +22,7 @@ const Setting = () => {
 
   return (
     <div>
-      <EngineeringIcon onClick={handleClick} fontSize="large" />
+      <ManageHistoryIcon onClick={handleClick} style={{ fontSize: '40px' }} />
 
       <Menu
         id="basic-menu"

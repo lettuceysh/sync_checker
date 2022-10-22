@@ -1,63 +1,68 @@
+import { colors } from '@/styles/colors';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
+import { ItemWrapper } from '../../styled';
 
 const Summarization = () => {
   return (
-    <Wrapper>
+    <ItemWrapper>
       <Typography variant="h2">Out-of-Sync Summarization</Typography>
       <List>
         <li>
           <button>
             <Typography variant="normalGray">
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+              <strong>불일치 발생</strong>
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
             </Typography>
           </button>
         </li>
         <li>
           <button>
             <Typography variant="normalGray">
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+              <strong>불일치 발생</strong>
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
             </Typography>
           </button>
         </li>
         <li>
           <button>
             <Typography variant="normalGray">
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+              <strong>불일치 발생</strong>
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
             </Typography>
           </button>
         </li>
         <li>
           <button>
             <Typography variant="normalGray">
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+              <strong>불일치 발생</strong>
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
             </Typography>
           </button>
         </li>
         <li>
           <button>
             <Typography variant="normalGray">
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건 불일치 발생
+              <strong>불일치 발생</strong>
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
             </Typography>
           </button>
         </li>
         <li>
           <button>
-            JOB_Name( Source Table  Target Table )에 2022-07-02 10:10:10 10건 불일치 발생
+            <Typography variant="normalGray">
+              <strong>불일치 발생</strong>
+              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
+            </Typography>
           </button>
         </li>
       </List>
-    </Wrapper>
+    </ItemWrapper>
   );
 };
 
-const Wrapper = styled.div`
-  flex: 1;
-`;
-
 const List = styled.ul`
-  border: 1px solid ${({ theme }) => theme.palette.border.primary};
   background-color: ${({ theme }) => theme.palette.white100};
 
   border-radius: 2px;
@@ -67,7 +72,14 @@ const List = styled.ul`
   overflow-y: auto;
   > li {
     padding: 5px 0;
-    border-bottom: 1px solid ${({ theme }) => theme.palette.border.primary};
+    border-bottom: 1px solid ${({ theme }) => theme.palette.gray200};
+  }
+
+  strong {
+    color: ${colors.red100};
+    margin-right: 10px;
+    font-size: 12px;
+    text-decoration: underline;
   }
 `;
 export default Summarization;

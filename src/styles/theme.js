@@ -7,10 +7,12 @@ const theme = createTheme({
     background: {
       primary: colors.green100,
       secondary: colors.white100,
-      tHead: colors.gray800
+      tHead: colors.bluegray500,
+      dashboard1: colors.dashboard1,
+      dashboard2: colors.dashboard2
     },
     text: {
-      primary: 'rgb(18, 24, 40)',
+      primary: colors.green100,
       secondary: 'white',
       tHead: 'white'
     },
@@ -33,9 +35,9 @@ const theme = createTheme({
       '"Segoe UI Symbol"'
     ].join(','),
     h1: {
-      fontSize: '30px',
+      fontSize: '28px',
       fontWeight: 'bold',
-      color: colors.white100
+      color: colors.gray900
     },
     h2: {
       fontSize: '24px',
@@ -43,8 +45,7 @@ const theme = createTheme({
       color: colors.white100
     },
     normal: {
-      fontSize: '14px',
-      color: colors.white100
+      fontSize: '14px'
     },
     normalGray: {
       fontSize: '14px',
@@ -59,17 +60,29 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {}
     },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: colors.green100,
+          width: '30px',
+          height: '30px'
+        }
+      }
+    },
     MuiButton: {
       large: {
         height: '50px'
       },
       styleOverrides: {
         root: {
-          color: 'white',
-          backgroundColor: colors.gray600,
+          color: colors.green100,
+          backgroundColor: colors.white100,
+          border: `1px solid ${colors.bluegray500}`,
+          borderRadius: '50px',
           textAlign: 'center',
+          // boxShadow: 'rgb(100 116 139 / 15%) 0px 10px 15px',
           '&:hover': {
-            backgroundColor: colors.gray800
+            backgroundColor: colors.white100
           }
         }
       }
