@@ -1,21 +1,28 @@
+import { dsManagementSearchAllDSInfo } from '@/api/dataSource';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import styled from '@emotion/styled';
 import { Radio, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 const columns = [
-  { field: 'checkbox', headerName: '' },
-  { field: 'no', headerName: 'MM_No' }
-];
-
-const rows = [
-  {
-    checkbox: <Radio />,
-    id: 1,
-    no: '1'
-  }
+  { field: 'name', headerName: 'DBNAME' },
+  { field: 'db_type', headerName: 'DBTYPE' },
+  { field: 'source_target', headerName: 'source/target' },
+  { field: 'account', headerName: 'account' },
+  { field: 'password', headerName: 'password' },
+  { field: 'connection_min', headerName: 'min' },
+  { field: 'connection_max', headerName: 'max' },
+  { field: 'jdbc_url', headerName: 'jdbc Url' }
 ];
 
 const DataSource = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    dsManagementSearchAllDSInfo().then((response) => {
+      setData(response.data.ds);
+    });
+  }, []);
   return (
     <Wrapper>
       <StyledTableContainer>
@@ -28,11 +35,13 @@ const DataSource = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) =>
-              columns.map((column, index) => (
-                <TableCell key={`${column.field}${index}`}>{row[column.field]}</TableCell>
-              ))
-            )}
+            {data.map((row, rowIndex) => (
+              <TableRow key={rowIndex}>
+                {columns.map((column, index) => (
+                  <TableCell key={`${column.field}${index}`}>{row[column.field]}</TableCell>
+                ))}
+              </TableRow>
+            ))}
           </TableBody>
         </StyledTable>
       </StyledTableContainer>

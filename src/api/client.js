@@ -9,6 +9,10 @@ const instance = axios.create({
   //   })
 });
 
+instance.interceptors.request.use((request) => {
+  return { ...request, token: 'abcd' };
+});
+
 export const get = (url, params = null, config = {}) => {
   return instance.get(url, { params, ...config });
 };
