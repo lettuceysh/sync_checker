@@ -1,5 +1,14 @@
+import { NormalButton } from '@/components/Buttons';
 import styled from '@emotion/styled';
-import { Dialog, DialogTitle, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select
+} from '@mui/material';
 
 const RefreshTime = ({ onClose, open }) => {
   return (
@@ -20,13 +29,26 @@ const RefreshTime = ({ onClose, open }) => {
             <MenuItem value={60}>60초</MenuItem>
           </Select>
         </FormControl>
+        <Buttons>
+          <NormalButton>Save</NormalButton>
+          <Button onClick={onClose}>Cancel</Button>
+        </Buttons>
       </Wrapper>
     </Dialog>
   );
 };
 
 const Wrapper = styled.div`
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 `;
 
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  > button {
+    flex: 1;
+  }
+`;
 export default RefreshTime;
