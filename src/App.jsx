@@ -13,6 +13,8 @@ import Main from './pages/Main';
 import PageNavigation from './pages/configuration/PageNavigation';
 import global from './styles/global';
 import OperationPage from './pages/Operation';
+import DataSourcePage from './pages/DataSource';
+import { URL } from './const/router';
 
 function App() {
   return (
@@ -21,10 +23,11 @@ function App() {
       <GlobalStyles styles={global} />
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
-          <Route path="/" element={<Main />} />,
-          <Route path="/login" element={<Login />} />,
-          <Route path="/configuration" element={<PageNavigation />} />,
-          <Route path="/operation" element={<OperationPage />} />,
+          <Route path={URL.main} element={<Main />} />,
+          <Route path={URL.login} element={<Login />} />,
+          <Route path={URL.operation} element={<OperationPage />} />,
+          <Route path={URL.dataSource} element={<DataSourcePage />} />,
+          <Route path={URL.configuration} element={<PageNavigation />} />,
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

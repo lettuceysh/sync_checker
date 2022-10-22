@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import DehazeIcon from '@mui/icons-material/Dehaze';
+import { Link } from 'react-router-dom';
+import { URL } from '@/const/router';
 
 const BasicMenu = () => {
   const [anchorEl, setAnchorEl] = useState();
@@ -25,9 +27,16 @@ const BasicMenu = () => {
           'aria-labelledby': 'basic-button'
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem>
+          <Link to={URL.main}>Dashboard</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to={URL.operation}>Operation Management</Link>
+        </MenuItem>
+        <MenuItem>
+          <Link to={URL.dataSource}>dataSouce Management</Link>
+        </MenuItem>
+        <MenuItem>Logout</MenuItem>
       </Menu>
     </div>
   );
