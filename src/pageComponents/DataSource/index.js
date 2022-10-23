@@ -1,8 +1,21 @@
 import { dsManagementSearchAllDSInfo } from '@/api/dataSource';
+import { NormalButton } from '@/components/Buttons';
+import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
+import { BaseWrapper } from '@/styles/common';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import styled from '@emotion/styled';
-import { Radio, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import {
+  Breadcrumbs,
+  Button,
+  Radio,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography
+} from '@mui/material';
 import { useEffect, useState } from 'react';
+import DataSourceAdd from './components/DataSourceAdd';
 
 const columns = [
   { field: 'name', headerName: 'DBNAME' },
@@ -17,6 +30,8 @@ const columns = [
 
 const DataSource = () => {
   const [data, setData] = useState([]);
+  const [isShowDataSourceAdd, setIsShowDataSourceAdd] = useState(false);
+  console.log('isShowDataSourceAdd', isShowDataSourceAdd);
 
   useEffect(() => {
     dsManagementSearchAllDSInfo().then((response) => {
@@ -25,6 +40,11 @@ const DataSource = () => {
   }, []);
   return (
     <Wrapper>
+      <CustomBreadcrumbs current="data source list" />
+
+      <Buttons>
+        <NormalButton onClick={() => setIsShowDataSourceAdd(true)}>Add</NormalButton>
+      </Buttons>
       <StyledTableContainer>
         <StyledTable>
           <TableHead>
@@ -45,10 +65,17 @@ const DataSource = () => {
           </TableBody>
         </StyledTable>
       </StyledTableContainer>
+      <DataSourceAdd open={isShowDataSourceAdd} onClose={() => setIsShowDataSourceAdd(false)} />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  ${BaseWrapper}
+`;
+
+const Buttons = styled.div`
+  text-align: right;
+`;
 
 export default DataSource;

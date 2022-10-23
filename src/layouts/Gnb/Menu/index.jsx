@@ -51,7 +51,9 @@ const BasicMenu = () => {
           <StyledLink to={URL.dataSource}>User Management</StyledLink>
         </MenuItem>
         <MenuItem>
-          <StyledLink disabled>Batch Validation Configuration</StyledLink>
+          <StyledLink disabled className="disable">
+            Batch Validation Configuration
+          </StyledLink>
         </MenuItem>
         <MenuItem>Logout</MenuItem>
       </Menu>
@@ -61,9 +63,9 @@ const BasicMenu = () => {
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: ${colors.gray900};
-  :disabled {
-    color: ${colors.bluegray100};
+  color: ${colors.green100};
+  &.disable {
+    color: ${colors.gray300};
   }
 `;
 

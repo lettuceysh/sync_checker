@@ -13,8 +13,6 @@ const DefaultLayout = ({ children }) => {
   );
 };
 
-const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.palette.background.primary};
-`;
+const Wrapper = styled.div``;
 
 export default DefaultLayout;

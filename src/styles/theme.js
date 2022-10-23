@@ -45,7 +45,8 @@ const theme = createTheme({
       color: colors.white100
     },
     normal: {
-      fontSize: '14px'
+      fontSize: '14px',
+      color: colors.gray900
     },
     normalGray: {
       fontSize: '14px',
