@@ -24,7 +24,7 @@ function App() {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path={URL.main} element={<Main />} />,
-          <Route path={URL.login} element={<Login />} />,
+          <Route path="/login" element={<Login />} />,
           <Route path={URL.operation} element={<OperationPage />} />,
           <Route path={URL.dataSource} element={<DataSourcePage />} />,
           <Route path={URL.configuration} element={<PageNavigation />} />,
