@@ -111,6 +111,7 @@ const Wrapper = styled.article`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: ${({ theme }) => theme.palette.background.primary};
 
   ::before {
     display: block;
@@ -120,13 +121,12 @@ const Wrapper = styled.article`
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme }) => theme.palette.background.primary};
     background-image: url('/sync_checker/images/bg.png');
     background-position: bottom;
     background-size: 100%;
     background-repeat: no-repeat;
-    z-index: -1;
-    opacity: 0.9;
+    z-index: 1;
+    opacity: 0.25;
   }
 `;
 
@@ -140,6 +140,7 @@ const Container = styled.div`
   background-image: none;
   overflow: hidden;
   padding: 32px;
+  z-index: 2;
 `;
 
 const Top = styled.div`
