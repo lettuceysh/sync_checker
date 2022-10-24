@@ -10,6 +10,7 @@ import { Button, Checkbox, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import { ItemWrapper } from '../../styled';
+import { NormalButton } from '@/components/Buttons';
 
 const columns = [
   { field: 'checkbox', headerName: <Checkbox /> },
@@ -200,21 +201,21 @@ const Records = () => {
           </Typography>
         </Info>
         <Buttons>
-          <CustomButton>
+          <CustomButtonType2>
             <strong>Cancel</strong>
             <br />
             Compare paris
-          </CustomButton>
+          </CustomButtonType2>
           <CustomButton>
             <strong>Repair</strong>
             <br />
             Out-of-Sync Dat
           </CustomButton>
-          <CustomButton>
+          <CustomButtonType3>
             <strong>Re-compare</strong>
             <br />
             Out-of-Sync Data
-          </CustomButton>
+          </CustomButtonType3>
         </Buttons>
       </Top>
 
@@ -243,6 +244,7 @@ const Records = () => {
 const ScrollContainer = styled.div`
   height: 200px;
   overflow-y: auto;
+  margin-top: 20px;
 `;
 
 const Top = styled.div`
@@ -260,11 +262,26 @@ const Buttons = styled.div`
 const CustomButton = styled(Button)`
   display: block;
   line-height: normal;
-  font-size: 12px;
+  &&& {
+    font-size: 8px;
+  }
   padding: 5px 20px;
   & + button {
     margin-left: 10px;
   }
+  > strong {
+    font-size: 12px;
+    text-transform: none;
+  }
 `;
 
+const CustomButtonType2 = styled(CustomButton)`
+  border: 1px solid ${({ theme }) => theme.palette.red100};
+  color: ${({ theme }) => theme.palette.red100};
+`;
+
+const CustomButtonType3 = styled(CustomButton)`
+  border: 1px solid ${({ theme }) => theme.palette.blue100};
+  color: ${({ theme }) => theme.palette.blue100};
+`;
 export default Records;
