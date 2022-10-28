@@ -26,7 +26,7 @@ const Setting = () => {
 
   return (
     <div>
-      <ManageHistoryIcon onClick={handleClick} style={{ fontSize: '40px' }} />
+      <ManageHistoryIcon onClick={handleClick} style={{ fontSize: '30px' }} />
 
       <Menu
         id="basic-menu"

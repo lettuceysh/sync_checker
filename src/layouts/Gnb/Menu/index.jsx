@@ -19,7 +19,7 @@ const BasicMenu = () => {
 
   return (
     <Wrapper>
-      <DehazeIcon onClick={handleClick} style={{ fontSize: '40px' }} />
+      <DehazeIcon onClick={handleClick} style={{ fontSize: '30px' }} />
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}

@@ -26,7 +26,7 @@ const Wrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.palette.background.secondary};
-  padding: 10px 25px;
+  padding: 5px 20px;
 `;
 
 const Title = styled.div``;

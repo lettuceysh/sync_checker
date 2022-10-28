@@ -155,6 +155,58 @@ const rows = [
         Status: 'Status2'
       }
     ]
+  },
+  {
+    id: 1,
+    name: 'Snow',
+    source: 'Jon',
+    target: 'test',
+    sub: [
+      {
+        subId: '1-1',
+        subSource: 'source1',
+        subTarget: 'target1',
+        startTime: 'startTime1',
+        EndTime: 'EndTime1',
+        RunningTime: 'RunningTime1',
+        Status: 'Status1'
+      },
+      {
+        subId: '1-2',
+        subSource: 'source2',
+        subTarget: 'target2',
+        startTime: 'startTime2',
+        EndTime: 'EndTime2',
+        RunningTime: 'RunningTime2',
+        Status: 'Status2'
+      }
+    ]
+  },
+  {
+    id: 1,
+    name: 'Snow',
+    source: 'Jon',
+    target: 'test',
+    sub: [
+      {
+        subId: '1-1',
+        subSource: 'source1',
+        subTarget: 'target1',
+        startTime: 'startTime1',
+        EndTime: 'EndTime1',
+        RunningTime: 'RunningTime1',
+        Status: 'Status1'
+      },
+      {
+        subId: '1-2',
+        subSource: 'source2',
+        subTarget: 'target2',
+        startTime: 'startTime2',
+        EndTime: 'EndTime2',
+        RunningTime: 'RunningTime2',
+        Status: 'Status2'
+      }
+    ]
   }
 ];
 
@@ -200,7 +252,7 @@ const JobBoard = () => {
 };
 
 const ScrollContainer = styled.div`
-  height: 200px;
+  max-height: 400px;
   overflow-y: auto;
 `;
 

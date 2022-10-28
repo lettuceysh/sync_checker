@@ -244,7 +244,6 @@ const Records = () => {
 const ScrollContainer = styled.div`
   height: 200px;
   overflow-y: auto;
-  margin-top: 20px;
 `;
 
 const Top = styled.div`

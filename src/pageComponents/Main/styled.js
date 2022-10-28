@@ -18,13 +18,13 @@ export const ItemWrapper = styled.div`
   border-radius: 6px;
   width: 100%;
 
-  padding: 10px;
+  padding: 5px;
 
   h2 {
     color: ${colors.gray900};
     font-weight: normal;
     text-align: center;
     font-size: 18px;
-    padding: 10px 0 15px 0;
+    padding: 0;
   }
 `;
