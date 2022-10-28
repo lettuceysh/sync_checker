@@ -1,4 +1,4 @@
-import { NormalButton } from '@/components/Buttons';
+import { ButtonNormal } from '@/components/Buttons';
 import { useAlertStore } from '@/store';
 import styled from '@emotion/styled';
 import { Button, Dialog, DialogTitle } from '@mui/material';
@@ -24,7 +24,7 @@ const Alert = () => {
       {title && <DialogTitle>{title}</DialogTitle>}
       <Content>{content}</Content>
       <Buttons>
-        {okText && <NormalButton onClick={clickOk}>{okText}</NormalButton>}
+        {okText && <ButtonNormal onClick={clickOk}>{okText}</ButtonNormal>}
         {cancelText && <Button onClick={clickCancel}>{cancelText}</Button>}
       </Buttons>
     </Dialog>

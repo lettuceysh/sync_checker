@@ -1,19 +1,11 @@
 import { dsManagementSearchAllDSInfo } from '@/api/dataSource';
-import { NormalButton } from '@/components/Buttons';
+import { ButtonNormal } from '@/components/Buttons';
 import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
-import { BaseWrapper } from '@/styles/common';
+import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
+
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
-import styled from '@emotion/styled';
-import {
-  Breadcrumbs,
-  Button,
-  Radio,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography
-} from '@mui/material';
+
+import { TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import DataSourceAdd from './components/DataSourceAdd';
 
@@ -39,12 +31,12 @@ const DataSource = () => {
     });
   }, []);
   return (
-    <Wrapper>
+    <SubPageWrapper>
       <CustomBreadcrumbs current="data source list" />
 
-      <Buttons>
-        <NormalButton onClick={() => setIsShowDataSourceAdd(true)}>Add</NormalButton>
-      </Buttons>
+      <ButtonWrapper>
+        <ButtonNormal onClick={() => setIsShowDataSourceAdd(true)}>Add</ButtonNormal>
+      </ButtonWrapper>
       <StyledTableContainer>
         <StyledTable>
           <TableHead>
@@ -66,16 +58,8 @@ const DataSource = () => {
         </StyledTable>
       </StyledTableContainer>
       <DataSourceAdd open={isShowDataSourceAdd} onClose={() => setIsShowDataSourceAdd(false)} />
-    </Wrapper>
+    </SubPageWrapper>
   );
 };
-
-const Wrapper = styled.div`
-  ${BaseWrapper}
-`;
-
-const Buttons = styled.div`
-  text-align: right;
-`;
 
 export default DataSource;

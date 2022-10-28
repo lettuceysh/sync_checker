@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { NormalButton } from '@/components/Buttons';
+import { ButtonNormal } from '@/components/Buttons';
 import styled from '@emotion/styled';
 
 import {
@@ -39,7 +39,7 @@ const DataSourceAdd = ({ onClose, open }) => {
             </Select>
           </FormControl>
           <Buttons>
-            <NormalButton type="submit">Save</NormalButton>
+            <ButtonNormal type="submit">Save</ButtonNormal>
             <Button onClick={onClose}>Cancel</Button>
           </Buttons>
         </Wrapper>

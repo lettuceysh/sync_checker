@@ -1,7 +1,7 @@
 import { colors } from '@/styles/colors';
 import { Button } from '@mui/material';
 
-export const NormalButton = ({ children, ...props }) => {
+export const ButtonNormal = ({ children, ...props }) => {
   return (
     <Button sx={style} {...props}>
       {children}
@@ -10,9 +10,13 @@ export const NormalButton = ({ children, ...props }) => {
 };
 
 const style = {
-  backgroundColor: colors.green100,
-  color: colors.white100,
-  '&:hover': {
-    backgroundColor: colors.green100
+  backgroundColor: 'white',
+  '&.red': {
+    border: `1px solid ${colors.red100}`,
+    color: colors.red100
+  },
+  '&.blue': {
+    border: `1px solid ${colors.blue100}`,
+    color: colors.blue100
   }
 };

@@ -16,7 +16,8 @@ export const StyledTable = styled(Table)`
       > th {
         background-color: ${({ theme }) => theme.palette.background.tHead};
         color: ${({ theme }) => theme.palette.text.tHead};
-        padding: 5px;
+        padding: 2px 5px;
+        text-align: center;
       }
     }
   }

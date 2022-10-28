@@ -1,4 +1,4 @@
-import { NormalButton } from '@/components/Buttons';
+import { ButtonNormal } from '@/components/Buttons';
 import styled from '@emotion/styled';
 import {
   Button,
@@ -30,7 +30,7 @@ const RefreshTime = ({ onClose, open }) => {
           </Select>
         </FormControl>
         <Buttons>
-          <NormalButton>Save</NormalButton>
+          <ButtonNormal className="blue">Save</ButtonNormal>
           <Button onClick={onClose}>Cancel</Button>
         </Buttons>
       </Wrapper>

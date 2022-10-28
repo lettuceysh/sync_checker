@@ -1,14 +1,20 @@
-import styled from '@emotion/styled';
-import OperationManageMentTable from '../OperationManagement/OperationTable';
+import { ButtonNormal } from '@/components/Buttons';
+import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
+import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
+
+import OperationManageMentTable from './OperationTable';
 
 const Operation = () => {
   return (
-    <Wrapper>
+    <SubPageWrapper>
+      <CustomBreadcrumbs current="Operation Management" />
+      <ButtonWrapper>
+        <ButtonNormal className="blue">Start</ButtonNormal>
+        <ButtonNormal className="red">Stop</ButtonNormal>
+      </ButtonWrapper>
       <OperationManageMentTable />
-    </Wrapper>
+    </SubPageWrapper>
   );
 };
-
-const Wrapper = styled.article``;
 
 export default Operation;

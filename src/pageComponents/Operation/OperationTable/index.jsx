@@ -1,12 +1,11 @@
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import RowItem from './RowItem';
 import { Checkbox } from '@mui/material';
+import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 
 const columns = [
   { field: 'name', headerName: 'Name', width: 130 },
@@ -56,8 +55,8 @@ const rows = [
 
 const OperationManageMentTable = () => {
   return (
-    <TableContainer sx={{ maxHeight: 440 }}>
-      <Table stickyHeader aria-label="sticky table">
+    <StyledTableContainer sx={{ maxHeight: 440 }}>
+      <StyledTable stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
             <TableCell rowSpan={2}>
@@ -67,7 +66,7 @@ const OperationManageMentTable = () => {
               project
             </TableCell>
             <TableCell align="center"></TableCell>
-            <TableCell align="center" colSpan={7}>
+            <TableCell align="center" colSpan={8}>
               JOB -Synchronization Result
             </TableCell>
           </TableRow>
@@ -88,8 +87,8 @@ const OperationManageMentTable = () => {
             return <RowItem row={row} columns={columns} key={row.id} />;
           })}
         </TableBody>
-      </Table>
-    </TableContainer>
+      </StyledTable>
+    </StyledTableContainer>
   );
 };
 
