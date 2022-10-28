@@ -16,6 +16,10 @@ const Setting = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const logout = () => {
+    setAnchorEl(null);
     navigate(URL.login);
   };
 
@@ -38,7 +42,7 @@ const Setting = () => {
         }}
       >
         <MenuItem onClick={showRefreshTime}>Screen Refresh Time</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
       <RefreshTime open={isShowRefreshTime} onClose={() => setIsShowRefreshTime(false)} />
     </div>

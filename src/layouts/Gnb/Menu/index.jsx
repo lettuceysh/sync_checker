@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 import { URL } from '@/const/router';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
+import { useAlertStore } from '@/store';
 
 const BasicMenu = () => {
   const [anchorEl, setAnchorEl] = useState();
   const open = Boolean(anchorEl);
+  const { alert } = useAlertStore();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -51,7 +53,22 @@ const BasicMenu = () => {
           <StyledLink to={URL.dataSource}>User Management</StyledLink>
         </MenuItem>
         <MenuItem>
-          <StyledLink disabled className="disable">
+          <StyledLink
+            disabled
+            className="disable"
+            onClick={() => {
+              alert({
+                content: (
+                  <>
+                    오픈 준비중입니다.
+                    <br />
+                    (2022년 12월 예정
+                  </>
+                ),
+                okText: 'ok'
+              });
+            }}
+          >
             Batch Validation Configuration
           </StyledLink>
         </MenuItem>
