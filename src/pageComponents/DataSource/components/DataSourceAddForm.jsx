@@ -31,7 +31,7 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
     return () => {
       reset({});
     };
-  }, []);
+  }, [modifyInfo]);
 
   const addDataSource = (value) => {
     const values = getValues();
@@ -51,6 +51,10 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
         </>
       )
     });
+  };
+
+  const clickDelete = () => {
+    alert({ content: '삭제하시겠습니까?', cancelText: 'Cancel', onOk: () => {} });
   };
 
   return (
@@ -150,7 +154,9 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
             </Grid>
           </Grid>
           <Middle>
-            <div>※ “*”은 필수 입력 항목 입니다.</div>
+            <div>
+              ※ “<strong>*</strong>”은 필수 입력 항목 입니다.
+            </div>
             <ButtonNormal
               htmlType="button"
               className="blue2"
@@ -167,6 +173,9 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
             <ButtonNormal className="blue" onClick={onClose}>
               Cancel
             </ButtonNormal>
+            <ButtonNormal className="red" onClick={clickDelete} style={{ width: '100px' }}>
+              Delete
+            </ButtonNormal>
           </Buttons>
         </AddFormArea>
       </form>
@@ -179,6 +188,10 @@ const Middle = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  strong {
+    font-weight: normal;
+    color: ${colors.red100};
+  }
 `;
 
 const Buttons = styled.div`

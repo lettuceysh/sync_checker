@@ -99,13 +99,13 @@ const StyledLink = styled(Link)`
 
 const CustomMenu = styled(Menu)`
   .MuiList-root {
-    /* box-shadow: 0 0 0 3px ${colors.bluegray500} inset; */
+    /* box-shadow: 0 0 0 3px ${colors.bluegray700} inset; */
   }
 `;
 const CustomMenuItem = styled(MenuItem)`
   &.on {
     background-color: ${colors.green100};
-    margin: 0 5px;
+    margin: 0 3px;
     padding: 8px 12px;
     a {
       color: white;

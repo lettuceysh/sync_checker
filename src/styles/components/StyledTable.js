@@ -17,7 +17,7 @@ export const StyledTable = styled(Table)`
       > th {
         background-color: ${({ theme }) => theme.palette.background.tHead};
         color: ${({ theme }) => theme.palette.text.tHead};
-        border: 1px solid ${colors.gray600};
+        border: 1px solid ${colors.bluegray250};
         padding: 2px 5px;
         text-align: center;
       }
@@ -32,7 +32,9 @@ export const StyledTable = styled(Table)`
     > tr {
       &.on {
         td {
-          background-color: ${colors.pastelblue5};
+          background-color: ${colors.blue90};
+          color: white;
+          font-weight: 600;
         }
       }
       > td {

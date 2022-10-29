@@ -25,9 +25,8 @@ const columns = [
 
 const DataSource = () => {
   const [data, setData] = useState([]);
-  const [isShowDataSourceAdd, setIsShowDataSourceAdd] = useState(false);
+
   const [selectedData, setSelectedData] = useState(null);
-  const { alert } = useAlertStore();
 
   useEffect(() => {
     dsManagementSearchAllDSInfo().then((response) => {
@@ -41,16 +40,14 @@ const DataSource = () => {
 
   const clickRow = (dataSource) => {
     setSelectedData(dataSource);
-    setIsShowDataSourceAdd(true);
   };
 
   const clickAdd = () => {
     setSelectedData(null);
-    setIsShowDataSourceAdd(true);
   };
 
-  const clickDelete = () => {
-    alert({ content: '삭제하시겠습니까?', cancelText: 'Cancel', onOk: () => {} });
+  const closeForm = () => {
+    setSelectedData(null);
   };
 
   return (
@@ -61,15 +58,11 @@ const DataSource = () => {
           <ButtonNormal className="blue" onClick={clickAdd} style={{ width: '100px' }}>
             Add
           </ButtonNormal>
-          <ButtonNormal style={{ width: '100px' }}>Modify</ButtonNormal>
-          <ButtonNormal className="red" onClick={clickDelete} style={{ width: '100px' }}>
-            Delete
-          </ButtonNormal>
         </ButtonWrapper>
       </Top>
       <ScrollContainer>
         <StyledTableContainer>
-          <StyledTable>
+          <StyledTable stickyHeader>
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
@@ -95,12 +88,7 @@ const DataSource = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
-      {isShowDataSourceAdd && (
-        <DataSourceAddForm
-          modifyInfo={selectedData}
-          onClose={() => setIsShowDataSourceAdd(false)}
-        />
-      )}
+      {selectedData && <DataSourceAddForm modifyInfo={selectedData} onClose={closeForm} />}
     </SubPageWrapper>
   );
 };
