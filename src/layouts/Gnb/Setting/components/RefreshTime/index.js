@@ -31,7 +31,7 @@ const RefreshTime = ({ onClose, open }) => {
         </FormControl>
         <Buttons>
           <ButtonNormal className="blue">Save</ButtonNormal>
-          <Button onClick={onClose}>Cancel</Button>
+          <ButtonNormal onClick={onClose}>Cancel</ButtonNormal>
         </Buttons>
       </Wrapper>
     </Dialog>

@@ -3,7 +3,7 @@ import Main from '@/pageComponents/Main';
 
 const MainPage = () => {
   return (
-    <DefaultLayout>
+    <DefaultLayout footerColor="white">
       <Main />
     </DefaultLayout>
   );

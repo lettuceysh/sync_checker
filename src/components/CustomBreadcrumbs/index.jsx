@@ -4,7 +4,7 @@ const CustomBreadcrumbs = ({ current }) => {
   return (
     <Breadcrumbs sx={customStyle}>
       <Typography variant="normal" sx={customTypo}>
-        <AcUnitIcon />
+        <AcUnitIcon style={{ fontSize: '15px' }} />
         {current}
       </Typography>
     </Breadcrumbs>

@@ -12,7 +12,7 @@ const theme = createTheme({
       dashboard2: colors.dashboard2
     },
     text: {
-      primary: colors.green100,
+      primary: colors.gray900,
       secondary: 'white',
       tHead: 'white'
     },

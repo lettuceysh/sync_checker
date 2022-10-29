@@ -30,6 +30,11 @@ export const StyledTable = styled(Table)`
   }
   > tbody {
     > tr {
+      &.on {
+        td {
+          background-color: ${colors.pastelblue5};
+        }
+      }
       > td {
         padding: 5px;
         border: 1px solid ${colors.bluegray250};

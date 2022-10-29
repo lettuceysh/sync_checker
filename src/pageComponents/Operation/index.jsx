@@ -8,12 +8,18 @@ import OperationManageMentTable from './OperationTable';
 const Operation = () => {
   return (
     <SubPageWrapper>
-      <CustomBreadcrumbs current="Operation Management" />
       <Top>
-        <ButtonWrapper>
-          <ButtonNormal className="blue">Start</ButtonNormal>
-          <ButtonNormal className="red">Stop</ButtonNormal>
-        </ButtonWrapper>
+        <CustomBreadcrumbs current="Operation Management" />
+        <div>
+          <ButtonWrapper>
+            <ButtonNormal className="blue" style={{ width: '100px' }}>
+              Start
+            </ButtonNormal>
+            <ButtonNormal className="red" style={{ width: '100px' }}>
+              Stop
+            </ButtonNormal>
+          </ButtonWrapper>
+        </div>
       </Top>
 
       <OperationManageMentTable />
@@ -24,6 +30,7 @@ const Operation = () => {
 const Top = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export default Operation;

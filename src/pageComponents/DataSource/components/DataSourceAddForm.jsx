@@ -44,8 +44,10 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
     alert({
       content: (
         <>
-          test <br />
-          server: orcle
+          Connected <br />
+          server: Oracle
+          <br />
+          Driver: Oracle JDBC driver
         </>
       )
     });
@@ -70,18 +72,17 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
               />
             </Grid>
             <Grid item xs={6}>
-              <FormControl fullWidth label="DB_Type" size="small">
+              <FormControl fullWidth size="small">
                 <InputLabel required>DB Type</InputLabel>
                 <Select
                   label="DB Type"
                   size="small"
-                  {...register('DbType', {
+                  required
+                  {...register('db_type', {
                     required: 'Connection Name 필수 입력입니다.'
                   })}
                 >
-                  <MenuItem value={'1'} selected key="1">
-                    Oracle
-                  </MenuItem>
+                  <MenuItem value={'oracle'}>oracle</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -92,13 +93,12 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
                   label="source target"
                   required
                   size="small"
-                  {...register('sourceTarget', {
+                  {...register('source_target', {
                     required: 'Connection Name 필수 입력입니다.'
                   })}
                 >
-                  <MenuItem value={'1'} selected>
-                    Oracle
-                  </MenuItem>
+                  <MenuItem value="Source">Source</MenuItem>
+                  <MenuItem value="Target">Target</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -143,7 +143,7 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
                 placeholder="url을 입력해 주세요"
                 required
                 {...baseProps}
-                {...register('JdbcUrl', {
+                {...register('jdbc_url', {
                   required: 'Connection Name 필수 입력입니다.'
                 })}
               />
@@ -151,12 +151,17 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
           </Grid>
           <Middle>
             <div>※ “*”은 필수 입력 항목 입니다.</div>
-            <ButtonNormal htmlType="button" className="blue2" onClick={testConnection}>
+            <ButtonNormal
+              htmlType="button"
+              className="blue2"
+              onClick={testConnection}
+              style={{ width: '150px' }}
+            >
               Test Connection
             </ButtonNormal>
           </Middle>
           <Buttons>
-            <ButtonNormalFill className="blue" onClick={addDataSource}>
+            <ButtonNormalFill className="blue" type="submit">
               Save
             </ButtonNormalFill>
             <ButtonNormal className="blue" onClick={onClose}>

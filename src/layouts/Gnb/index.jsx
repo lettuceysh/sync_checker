@@ -31,6 +31,7 @@ const Wrapper = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.palette.background.secondary};
   padding: 5px 20px;
+  border-bottom: 1px solid ${colors.bluegray150};
 `;
 
 const Title = styled.div``;

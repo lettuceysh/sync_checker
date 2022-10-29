@@ -3,17 +3,25 @@ import styled from '@emotion/styled';
 import Footer from './Footer';
 import Gnb from './Gnb';
 
-const DefaultLayout = ({ children }) => {
+const DefaultLayout = ({ children, footerColor }) => {
   return (
     <Wrapper>
       <Gnb />
-      {children}
-      <Footer />
+      <Content>{children}</Content>
+      <Footer footerColor={footerColor} />
       <Alert />
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div``;
+const Content = styled.div`
+  flex: 1;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+`;
 
 export default DefaultLayout;

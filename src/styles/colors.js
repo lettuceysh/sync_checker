@@ -23,5 +23,6 @@ export const colors = {
   red100: '#EB4747',
   logo: '#028090',
   dashboard1: '#6D7278',
-  dashboard2: '#e1e3e8'
+  dashboard2: '#e1e3e8',
+  pastelblue5: '#F5F7FF'
 };

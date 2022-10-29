@@ -11,6 +11,9 @@ export const ButtonNormal = ({ children, ...props }) => {
 };
 
 const style = {
+  height: '30px',
+  fontWeight: 600,
+  fontSize: 13,
   backgroundColor: 'white',
   '&.red': {
     border: `1px solid ${colors.red100}`,
@@ -38,6 +41,7 @@ const styleFill = {
   backgroundColor: colors.gray900,
   border: 'none',
   color: 'white',
+  textTransform: 'none',
   '&:hover': {
     backgroundColor: colors.gray900,
     border: 'none',

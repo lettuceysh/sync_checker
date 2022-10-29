@@ -6,6 +6,7 @@ import TableRow from '@mui/material/TableRow';
 import RowItem from './RowItem';
 import { Checkbox } from '@mui/material';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
+import styled from '@emotion/styled';
 
 const columns = [
   { field: 'name', headerName: 'Name', width: 130 },
@@ -167,41 +168,49 @@ const rows = [
 
 const OperationManageMentTable = () => {
   return (
-    <StyledTableContainer sx={{ maxHeight: 440 }}>
-      <StyledTable stickyHeader aria-label="sticky table">
-        <TableHead>
-          <TableRow>
-            <TableCell rowSpan={2}>
-              <Checkbox />
-            </TableCell>
-            <TableCell align="center" colSpan={3}>
-              project
-            </TableCell>
-            <TableCell align="center"></TableCell>
-            <TableCell align="center" colSpan={8}>
-              JOB -Synchronization Result
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            {columns.map((column) => (
-              <TableCell
-                key={column.field}
-                align={column.align}
-                style={{ top: 57, minWidth: column.minWidth }}
-              >
-                {column.headerName}
+    <ScrollContainer>
+      <StyledTableContainer sx={{ maxHeight: 440 }}>
+        <StyledTable stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              <TableCell rowSpan={2}>
+                <Checkbox />
               </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => {
-            return <RowItem row={row} columns={columns} key={row.id} />;
-          })}
-        </TableBody>
-      </StyledTable>
-    </StyledTableContainer>
+              <TableCell align="center" colSpan={3}>
+                project
+              </TableCell>
+              <TableCell align="center"></TableCell>
+              <TableCell align="center" colSpan={8}>
+                JOB -Synchronization Result
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.field}
+                  align={column.align}
+                  style={{ top: 57, minWidth: column.minWidth }}
+                >
+                  {column.headerName}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => {
+              return <RowItem row={row} columns={columns} key={row.id} />;
+            })}
+          </TableBody>
+        </StyledTable>
+      </StyledTableContainer>
+    </ScrollContainer>
   );
 };
+
+const ScrollContainer = styled.div`
+  max-height: 700px;
+  overflow-y: auto;
+  margin-top: 5px;
+`;
 
 export default OperationManageMentTable;

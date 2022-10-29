@@ -40,13 +40,12 @@ const Content = styled.div`
 
 const Buttons = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
   padding: 10px;
 
   > button {
-    flex: 1;
-    width: 80px;
+    width: 100px;
   }
 `;
 
