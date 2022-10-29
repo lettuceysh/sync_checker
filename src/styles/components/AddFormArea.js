@@ -15,6 +15,10 @@ export const AddFormArea = styled.section`
   .MuiFormLabel-asterisk {
     color: ${colors.red100};
   }
+
+  .MuiFormLabel-root {
+    color: ${colors.gray600};
+  }
 `;
 
 export const FormTitle = styled.h2`
@@ -23,4 +27,15 @@ export const FormTitle = styled.h2`
   color: white;
   padding-bottom: 5px;
   padding-left: 2px;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  > button {
+    flex: 1;
+    max-width: 150px;
+  }
 `;

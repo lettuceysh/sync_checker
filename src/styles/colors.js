@@ -16,7 +16,6 @@ export const colors = {
   black100: 'black',
   green100: '#395B64',
   green200: '#62D2A2',
-  green300: '#',
   blue90: '#00A8CC',
   blue100: '#3366FF',
   white100: '#ffffff',

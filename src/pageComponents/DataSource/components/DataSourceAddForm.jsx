@@ -13,21 +13,24 @@ import {
   Select,
   TextField
 } from '@mui/material';
-import { AddFormArea, FormTitle, FormWrapper } from '@/styles/components/AddFormArea';
+import { AddFormArea, Buttons, FormTitle, FormWrapper } from '@/styles/components/AddFormArea';
 import { useEffect } from 'react';
 import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
-import MuiTextField from '@/components/customMui/MuiTextField';
 import { baseProps } from '@/components/customMui/common';
 
 const DataSourceAddForm = ({ onClose, modifyInfo }) => {
   const { alert } = useAlertStore();
 
-  const { register, handleSubmit, reset, getValues } = useForm({ mode: 'onChange' });
+  const { register, handleSubmit, reset, getValues } = useForm({
+    defaultValues: modifyInfo,
+    mode: 'onChange'
+  });
 
   useEffect(() => {
     console.log('modifyInfo', modifyInfo);
-    if (modifyInfo) reset(modifyInfo);
+
+    if (modifyInfo) reset(modifyInfo, { keepValues: false });
     return () => {
       reset({});
     };
@@ -191,17 +194,6 @@ const Middle = styled.div`
   strong {
     font-weight: normal;
     color: ${colors.red100};
-  }
-`;
-
-const Buttons = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-  > button {
-    flex: 1;
-    max-width: 200px;
   }
 `;
 

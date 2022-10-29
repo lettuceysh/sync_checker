@@ -45,13 +45,13 @@ const BasicMenu = () => {
           <StyledLink to={URL.main}>Dashboard</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem className={getClass(URL.operation)}>
-          <StyledLink to={URL.operation}>Operation Management</StyledLink>
+          <StyledLink to={URL.operationManagement}>Operation Management</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem className={getClass(URL.dataSource)}>
-          <StyledLink to={URL.dataSource}>DataSource Management</StyledLink>
+          <StyledLink to={URL.dataSourceManagement}>DataSource Management</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem className={getClass()}>
-          <StyledLink to={URL.dataSource}>Project Management</StyledLink>
+          <StyledLink to={URL.projectManagement}>Project Management</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem className={getClass()}>
           <StyledLink to={URL.dataSource}>Job configuration</StyledLink>

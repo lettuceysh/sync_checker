@@ -1,40 +1,36 @@
-import { dsManagementSearchAllDSInfo } from '@/api/dataSource';
+import { projectManagementSearchAllProject } from '@/api/project';
 import { ButtonNormal } from '@/components/Buttons';
 import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
-import { useAlertStore } from '@/store';
+
 import { colors } from '@/styles/colors';
 import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
 
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import styled from '@emotion/styled';
 
-import { TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { useEffect, useState } from 'react';
-import DataSourceAddForm from './components/DataSourceAddForm';
+
+import ProjectAddForm from './components/ProjectAddForm';
 
 const columns = [
-  { field: 'name', headerName: 'DBNAME' },
-  { field: 'db_type', headerName: 'DBTYPE' },
-  { field: 'source_target', headerName: 'source/target' },
-  { field: 'account', headerName: 'account' },
-  { field: 'password', headerName: 'password' },
-  { field: 'connection_min', headerName: 'min', align: 'center' },
-  { field: 'connection_max', headerName: 'max', align: 'center' },
-  { field: 'jdbc_url', headerName: 'jdbc Url' }
+  { field: 'name', headerName: 'ProjectName' },
+  { field: 'source_DS_INFO_name', headerName: 'Name' },
+  { field: 'source_DS_INFO_settings', headerName: 'Settings' },
+  { field: 'target_DS_INFO_name', headerName: 'Name' },
+  { field: 'target_DS_INFO_settings', headerName: 'Setting' }
 ];
 
-const DataSource = () => {
+const ProjectManagement = () => {
   const [data, setData] = useState([]);
 
   const [selectedData, setSelectedData] = useState(null);
 
   useEffect(() => {
-    dsManagementSearchAllDSInfo().then((response) => {
-      response.data.ds = response.data.ds.map((data) => ({
-        ...data,
-        source_target: data.source_target === 0 ? 'Source' : 'Target'
-      }));
-      setData(response.data.ds);
+    projectManagementSearchAllProject().then((response) => {
+      console.log('response', response);
+
+      setData(response.data.projects);
     });
   }, []);
 
@@ -53,7 +49,7 @@ const DataSource = () => {
   return (
     <SubPageWrapper>
       <Top>
-        <CustomBreadcrumbs current="Data source management" />
+        <CustomBreadcrumbs current="Project Management" />
         <ButtonWrapper>
           <ButtonNormal className="blue" onClick={clickAdd} style={{ width: '100px' }}>
             Add
@@ -88,7 +84,7 @@ const DataSource = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
-      {selectedData && <DataSourceAddForm modifyInfo={selectedData} onClose={closeForm} />}
+      {selectedData && <ProjectAddForm modifyInfo={selectedData} onClose={closeForm} />}
     </SubPageWrapper>
   );
 };
@@ -106,4 +102,4 @@ const Top = styled.div`
   align-items: center;
 `;
 
-export default DataSource;
+export default ProjectManagement;
