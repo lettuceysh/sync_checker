@@ -218,11 +218,13 @@ const Records = () => {
 
       <ScrollContainer>
         <StyledTableContainer>
-          <StyledTable>
+          <StyledTable stickyHeader>
             <TableHead>
               <TableRow>
                 {columns.map((column) => (
-                  <TableCell key={column.field}>{column.headerName}</TableCell>
+                  <TableCell key={column.field} align="center">
+                    {column.headerName}
+                  </TableCell>
                 ))}
               </TableRow>
             </TableHead>
@@ -241,6 +243,7 @@ const Records = () => {
 const ScrollContainer = styled.div`
   height: 200px;
   overflow-y: auto;
+  margin-top: 5px;
 `;
 
 const Top = styled.div`
@@ -259,9 +262,9 @@ const CustomButton = styled(Button)`
   display: block;
   line-height: normal;
   &&& {
-    font-size: 8px;
+    font-size: 10px;
   }
-  padding: 5px 20px;
+  padding: 2px 15px;
   & + button {
     margin-left: 10px;
   }

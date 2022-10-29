@@ -8,7 +8,6 @@ import Summarization from './components/Summarization';
 const Main = () => {
   return (
     <Wrapper>
-      <RefreshTime />
       <SubWrapper>
         <Top>
           <OperationStatus />
@@ -26,13 +25,13 @@ const Main = () => {
 };
 
 const Wrapper = styled.div`
-  padding: 0 15px 15px 15px;
+  padding: 5px;
   background-color: ${({ theme }) => theme.palette.background.dashboard1};
 `;
 const SubWrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.background.dashboard2};
   border-radius: 4px;
-  padding: 15px;
+  padding: 10px;
 `;
 
 const Top = styled.div`
@@ -44,10 +43,10 @@ const Top = styled.div`
   align-items: center;
 `;
 const Middle = styled.div`
-  margin-top: 20px;
+  margin-top: 15px;
 `;
 const Bottom = styled.div`
-  margin-top: 20px;
+  margin-top: 15px;
 `;
 
 export default Main;

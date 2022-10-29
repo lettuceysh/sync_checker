@@ -66,10 +66,11 @@ const List = styled.ul`
   background-color: ${({ theme }) => theme.palette.white100};
 
   border-radius: 2px;
-
+  margin-top: 5px;
   padding-left: 10px;
   height: 120px;
   overflow-y: auto;
+
   > li {
     padding: 5px 0;
     border-bottom: 1px solid ${({ theme }) => theme.palette.gray200};

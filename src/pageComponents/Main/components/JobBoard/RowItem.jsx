@@ -13,6 +13,7 @@ const RowItem = ({ row, columns }) => {
               {value && (
                 <TableCell
                   key={column.field}
+                  align="center"
                   rowSpan={isFirstLine && row[column.field] ? row.sub.length : 1}
                 >
                   {value}

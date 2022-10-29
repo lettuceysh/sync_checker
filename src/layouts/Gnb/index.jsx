@@ -5,6 +5,7 @@ import BasicMenu from './Menu';
 import Setting from './Setting';
 import BlurOnIcon from '@mui/icons-material/BlurOn';
 import { colors } from '@/styles/colors';
+import RefreshTime from '@/pageComponents/Main/components/RefreshTime';
 
 const Gnb = () => {
   return (
@@ -16,7 +17,10 @@ const Gnb = () => {
           <strong>SyncChecker</strong> For Oracle GoldenGate
         </H1>
       </Title>
-      <Setting />
+      <Right>
+        <RefreshTime />
+        <Setting />
+      </Right>
     </Wrapper>
   );
 };
@@ -42,6 +46,11 @@ const H1 = styled.h1`
     font-size: 20px;
     margin-right: 7px;
   }
+`;
+
+const Right = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export default Gnb;

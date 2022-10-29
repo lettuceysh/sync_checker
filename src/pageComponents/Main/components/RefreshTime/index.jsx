@@ -13,9 +13,12 @@ const RefreshTime = () => {
 const Wrapper = styled.div`
   padding: 5px;
   text-align: right;
+  margin-left: auto;
+  margin-right: 10px;
   &&& {
     * {
-      color: ${colors.white100};
+      color: ${colors.gray900};
+      font-weight: 600;
     }
   }
 `;

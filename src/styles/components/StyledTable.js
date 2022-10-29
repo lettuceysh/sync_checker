@@ -12,12 +12,19 @@ export const StyledTable = styled(Table)`
   border-collapse: collapse;
 
   > thead {
+    position: relative;
     > tr {
       > th {
         background-color: ${({ theme }) => theme.palette.background.tHead};
         color: ${({ theme }) => theme.palette.text.tHead};
+        border: 1px solid ${colors.gray600};
         padding: 2px 5px;
         text-align: center;
+      }
+      &:not(:first-child) {
+        > th {
+          top: 25px !important;
+        }
       }
     }
   }

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 export const CircleChartWrapper = styled.div`
   display: flex;
+  margin-top: 5px;
   justify-content: center;
   border-radius: 2px;
   width: 100%;
@@ -24,7 +25,8 @@ export const ItemWrapper = styled.div`
     color: ${colors.gray900};
     font-weight: normal;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     padding: 0;
+    text-decoration: underline;
   }
 `;

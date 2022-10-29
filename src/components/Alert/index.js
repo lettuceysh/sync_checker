@@ -1,11 +1,11 @@
-import { ButtonNormal } from '@/components/Buttons';
+import { ButtonNormal, ButtonNormalFill } from '@/components/Buttons';
 import { useAlertStore } from '@/store';
 import styled from '@emotion/styled';
 import { Button, Dialog, DialogTitle } from '@mui/material';
 
 const Alert = () => {
   const {
-    props: { title, content, okText, cancelText, onOk, onCancel, open },
+    props: { title, content, okText = 'Confirm', cancelText, onOk, onCancel, open },
     close
   } = useAlertStore();
 
@@ -20,11 +20,11 @@ const Alert = () => {
   };
 
   return (
-    <Dialog onClose={close} open={open}>
+    <Dialog onClose={close} open={open} style={{ zIndex: 9999 }}>
       {title && <DialogTitle>{title}</DialogTitle>}
       <Content>{content}</Content>
       <Buttons>
-        {okText && <ButtonNormal onClick={clickOk}>{okText}</ButtonNormal>}
+        <ButtonNormalFill onClick={clickOk}>{okText}</ButtonNormalFill>
         {cancelText && <Button onClick={clickCancel}>{cancelText}</Button>}
       </Buttons>
     </Dialog>
@@ -35,7 +35,7 @@ const StyledDialog = styled(Dialog)``;
 
 const Content = styled.div`
   padding: 20px;
-  min-width: 200px;
+  min-width: 300px;
 `;
 
 const Buttons = styled.div`
@@ -46,6 +46,7 @@ const Buttons = styled.div`
 
   > button {
     flex: 1;
+    width: 80px;
   }
 `;
 

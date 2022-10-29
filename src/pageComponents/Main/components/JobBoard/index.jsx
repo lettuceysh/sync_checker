@@ -216,7 +216,7 @@ const JobBoard = () => {
       <Typography variant="h2">Job Synchronization Board</Typography>
       <ScrollContainer>
         <StyledTableContainer>
-          <StyledTable>
+          <StyledTable stickyHeader>
             <TableHead>
               <TableRow>
                 <TableCell align="center" colSpan={3}>
@@ -254,6 +254,7 @@ const JobBoard = () => {
 const ScrollContainer = styled.div`
   max-height: 400px;
   overflow-y: auto;
+  margin-top: 5px;
 `;
 
 export default JobBoard;

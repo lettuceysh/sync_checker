@@ -7,7 +7,7 @@ import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTab
 
 import { TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import DataSourceAdd from './components/DataSourceAdd';
+import DataSourceAddForm from './components/DataSourceAddForm';
 
 const columns = [
   { field: 'name', headerName: 'DBNAME' },
@@ -15,27 +15,40 @@ const columns = [
   { field: 'source_target', headerName: 'source/target' },
   { field: 'account', headerName: 'account' },
   { field: 'password', headerName: 'password' },
-  { field: 'connection_min', headerName: 'min' },
-  { field: 'connection_max', headerName: 'max' },
+  { field: 'connection_min', headerName: 'min', align: 'center' },
+  { field: 'connection_max', headerName: 'max', align: 'center' },
   { field: 'jdbc_url', headerName: 'jdbc Url' }
 ];
 
 const DataSource = () => {
   const [data, setData] = useState([]);
   const [isShowDataSourceAdd, setIsShowDataSourceAdd] = useState(false);
-  console.log('isShowDataSourceAdd', isShowDataSourceAdd);
+  const [selectedData, setSelectedData] = useState(null);
+
+  console.log('selectedData', selectedData);
 
   useEffect(() => {
     dsManagementSearchAllDSInfo().then((response) => {
       setData(response.data.ds);
     });
   }, []);
+
+  const clickRow = (dataSource) => {
+    setSelectedData(dataSource);
+    setIsShowDataSourceAdd(true);
+  };
+
+  const clickAdd = () => {
+    setSelectedData(null);
+    setIsShowDataSourceAdd(true);
+  };
+
   return (
     <SubPageWrapper>
       <CustomBreadcrumbs current="data source list" />
 
       <ButtonWrapper>
-        <ButtonNormal onClick={() => setIsShowDataSourceAdd(true)}>Add</ButtonNormal>
+        <ButtonNormal onClick={clickAdd}>Add</ButtonNormal>
       </ButtonWrapper>
       <StyledTableContainer>
         <StyledTable>
@@ -48,16 +61,23 @@ const DataSource = () => {
           </TableHead>
           <TableBody>
             {data.map((row, rowIndex) => (
-              <TableRow key={rowIndex}>
+              <TableRow key={rowIndex} onClick={() => clickRow(row)}>
                 {columns.map((column, index) => (
-                  <TableCell key={`${column.field}${index}`}>{row[column.field]}</TableCell>
+                  <TableCell key={`${column.field}${index}`} align={column.align}>
+                    {row[column.field]}
+                  </TableCell>
                 ))}
               </TableRow>
             ))}
           </TableBody>
         </StyledTable>
       </StyledTableContainer>
-      <DataSourceAdd open={isShowDataSourceAdd} onClose={() => setIsShowDataSourceAdd(false)} />
+      {isShowDataSourceAdd && (
+        <DataSourceAddForm
+          modifyInfo={selectedData}
+          onClose={() => setIsShowDataSourceAdd(false)}
+        />
+      )}
     </SubPageWrapper>
   );
 };

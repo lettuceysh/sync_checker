@@ -7,7 +7,7 @@ const RowItem = ({ row, columns }) => {
     return (
       <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
         {isFirstLine && (
-          <TableCell rowSpan={row.sub.length}>
+          <TableCell rowSpan={row.sub.length} align="center">
             <Checkbox />
           </TableCell>
         )}
@@ -19,6 +19,7 @@ const RowItem = ({ row, columns }) => {
               {value && (
                 <TableCell
                   key={column.field}
+                  align="center"
                   rowSpan={isFirstLine && row[column.field] ? row.sub.length : 1}
                 >
                   {value}
