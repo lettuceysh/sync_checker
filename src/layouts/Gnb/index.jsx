@@ -30,7 +30,7 @@ const Wrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${({ theme }) => theme.palette.background.secondary};
-  padding: 5px 20px;
+  padding: 5px 30px 5px 20px;
   border-bottom: 1px solid ${colors.bluegray150};
 `;
 

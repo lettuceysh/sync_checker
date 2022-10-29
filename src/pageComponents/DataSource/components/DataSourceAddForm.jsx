@@ -55,7 +55,7 @@ const DataSourceAddForm = ({ onClose, modifyInfo }) => {
 
   return (
     <FormWrapper>
-      <FormTitle>{modifyInfo ? 'MBMS Modify' : 'Data Source Add'}</FormTitle>
+      <FormTitle>{modifyInfo ? 'MDMS Modify' : 'Data Source Add'}</FormTitle>
 
       <form onSubmit={handleSubmit(addDataSource)}>
         <AddFormArea>

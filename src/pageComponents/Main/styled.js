@@ -1,18 +1,6 @@
 import { colors } from '@/styles/colors';
 import styled from '@emotion/styled';
 
-export const CircleChartWrapper = styled.div`
-  display: flex;
-  margin-top: 5px;
-  justify-content: center;
-  border-radius: 2px;
-  width: 100%;
-  height: 120px;
-  > div {
-    min-width: 100px;
-  }
-`;
-
 export const ItemWrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.background.secondary};
   box-shadow: rgb(100 116 139 / 10%) 0px 10px 15px;

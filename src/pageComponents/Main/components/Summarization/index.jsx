@@ -66,7 +66,7 @@ const List = styled.ul`
   background-color: ${({ theme }) => theme.palette.white100};
 
   border-radius: 2px;
-  margin-top: 5px;
+  margin-top: 10px;
   padding-left: 10px;
   height: 120px;
   overflow-y: auto;
@@ -83,4 +83,5 @@ const List = styled.ul`
     text-decoration: underline;
   }
 `;
+
 export default Summarization;

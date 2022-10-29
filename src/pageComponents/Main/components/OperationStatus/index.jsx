@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import CircleChart from '@/components/PieChart';
-import { CircleChartWrapper, ItemWrapper } from '../../styled';
+import { ItemWrapper } from '../../styled';
 import { Typography } from '@mui/material';
 import { colors } from '@/styles/colors';
 
@@ -54,4 +54,17 @@ const StatusWrapper = styled.div`
     border-left: 1px solid ${colors.gray200};
   }
 `;
+
+const CircleChartWrapper = styled.div`
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  border-radius: 2px;
+  width: 100%;
+  height: 120px;
+  > div {
+    min-width: 100px;
+  }
+`;
+
 export default OperationStatus;

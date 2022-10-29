@@ -1,6 +1,7 @@
 import { dsManagementSearchAllDSInfo } from '@/api/dataSource';
 import { ButtonNormal } from '@/components/Buttons';
 import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
+import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
 import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
 
@@ -26,8 +27,7 @@ const DataSource = () => {
   const [data, setData] = useState([]);
   const [isShowDataSourceAdd, setIsShowDataSourceAdd] = useState(false);
   const [selectedData, setSelectedData] = useState(null);
-
-  console.log('selectedData', selectedData);
+  const { alert } = useAlertStore();
 
   useEffect(() => {
     dsManagementSearchAllDSInfo().then((response) => {
@@ -49,6 +49,10 @@ const DataSource = () => {
     setIsShowDataSourceAdd(true);
   };
 
+  const clickDelete = () => {
+    alert({ content: '삭제하시겠습니까?', cancelText: 'Cancel', onOk: () => {} });
+  };
+
   return (
     <SubPageWrapper>
       <Top>
@@ -58,7 +62,7 @@ const DataSource = () => {
             Add
           </ButtonNormal>
           <ButtonNormal style={{ width: '100px' }}>Modify</ButtonNormal>
-          <ButtonNormal className="red" onClick={clickAdd} style={{ width: '100px' }}>
+          <ButtonNormal className="red" onClick={clickDelete} style={{ width: '100px' }}>
             Delete
           </ButtonNormal>
         </ButtonWrapper>

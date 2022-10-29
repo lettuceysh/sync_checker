@@ -1,14 +1,17 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import DehazeIcon from '@mui/icons-material/Dehaze';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { URL } from '@/const/router';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { useAlertStore } from '@/store';
 
 const BasicMenu = () => {
+  const location = useLocation();
+  console.log('location', location.pathname);
+
   const [anchorEl, setAnchorEl] = useState();
   const open = Boolean(anchorEl);
   const { alert } = useAlertStore();
@@ -19,10 +22,17 @@ const BasicMenu = () => {
     setAnchorEl(null);
   };
 
+  const getClass = useCallback(
+    (path) => {
+      return location?.pathname === path ? 'on' : '';
+    },
+    [location?.pathname]
+  );
+
   return (
     <Wrapper>
       <DehazeIcon onClick={handleClick} style={{ fontSize: '30px' }} />
-      <Menu
+      <CustomMenu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -31,28 +41,28 @@ const BasicMenu = () => {
           'aria-labelledby': 'basic-button'
         }}
       >
-        <MenuItem>
+        <CustomMenuItem className={getClass(URL.main)}>
           <StyledLink to={URL.main}>Dashboard</StyledLink>
-        </MenuItem>
-        <MenuItem>
+        </CustomMenuItem>
+        <CustomMenuItem className={getClass(URL.operation)}>
           <StyledLink to={URL.operation}>Operation Management</StyledLink>
-        </MenuItem>
-        <MenuItem>
+        </CustomMenuItem>
+        <CustomMenuItem className={getClass(URL.dataSource)}>
           <StyledLink to={URL.dataSource}>DataSource Management</StyledLink>
-        </MenuItem>
-        <MenuItem>
+        </CustomMenuItem>
+        <CustomMenuItem className={getClass()}>
           <StyledLink to={URL.dataSource}>Project Management</StyledLink>
-        </MenuItem>
-        <MenuItem>
+        </CustomMenuItem>
+        <CustomMenuItem className={getClass()}>
           <StyledLink to={URL.dataSource}>Job configuration</StyledLink>
-        </MenuItem>
-        <MenuItem>
+        </CustomMenuItem>
+        <CustomMenuItem className={getClass()}>
           <StyledLink to={URL.dataSource}>Check Result</StyledLink>
-        </MenuItem>
-        <MenuItem>
+        </CustomMenuItem>
+        <CustomMenuItem className={getClass()}>
           <StyledLink to={URL.dataSource}>User Management</StyledLink>
-        </MenuItem>
-        <MenuItem>
+        </CustomMenuItem>
+        <CustomMenuItem>
           <StyledLink
             disabled
             className="disable"
@@ -71,9 +81,9 @@ const BasicMenu = () => {
           >
             Batch Validation Configuration
           </StyledLink>
-        </MenuItem>
-        <MenuItem>Logout</MenuItem>
-      </Menu>
+        </CustomMenuItem>
+        <CustomMenuItem>Logout</CustomMenuItem>
+      </CustomMenu>
     </Wrapper>
   );
 };
@@ -81,8 +91,25 @@ const BasicMenu = () => {
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${colors.green100};
+  width: 100%;
   &.disable {
     color: ${colors.gray300};
+  }
+`;
+
+const CustomMenu = styled(Menu)`
+  .MuiList-root {
+    /* box-shadow: 0 0 0 3px ${colors.bluegray500} inset; */
+  }
+`;
+const CustomMenuItem = styled(MenuItem)`
+  &.on {
+    background-color: ${colors.green100};
+    margin: 0 5px;
+    padding: 8px 12px;
+    a {
+      color: white;
+    }
   }
 `;
 

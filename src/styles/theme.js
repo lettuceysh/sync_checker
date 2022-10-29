@@ -65,8 +65,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: colors.green100,
-          width: '30px',
-          height: '30px'
+          width: '15px',
+          height: '15px'
         }
       }
     },

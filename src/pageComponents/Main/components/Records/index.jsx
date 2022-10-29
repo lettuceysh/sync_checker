@@ -8,6 +8,7 @@ import { Button, Checkbox, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import { ItemWrapper } from '../../styled';
+import { colors } from '@/styles/colors';
 
 const columns = [
   { field: 'checkbox', headerName: <Checkbox /> },
@@ -190,12 +191,10 @@ const rows = [
 const Records = () => {
   return (
     <ItemWrapper>
-      <Typography variant="h2">Out of Sync. Records</Typography>
       <Top>
+        <Typography variant="h2">Out of Sync. Records</Typography>
         <Info>
-          <Typography variant="normal">
-            JOB[DEC] TASK[Owner.table1 Owner.table2] DATE[2022-07-28 10:20:10
-          </Typography>
+          [ <span>JOB[DEC] TASK[Owner.table1 Owner.table2] DATE[2022-07-28 10:20:10</span> ]
         </Info>
         <Buttons>
           <CustomButtonType2>
@@ -249,13 +248,21 @@ const ScrollContainer = styled.div`
 const Top = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 `;
 
-const Info = styled.div``;
+const Info = styled.div`
+  font-size: 14px;
+  color: ${colors.gray900};
+
+  > span {
+    font-size: 13px;
+    color: ${colors.green100};
+  }
+`;
 
 const Buttons = styled.div`
-  margin-left: auto;
   display: flex;
 `;
 const CustomButton = styled(Button)`

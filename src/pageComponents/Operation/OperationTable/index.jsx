@@ -173,7 +173,7 @@ const OperationManageMentTable = () => {
         <StyledTable stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell rowSpan={2}>
+              <TableCell rowSpan={2} width={30}>
                 <Checkbox />
               </TableCell>
               <TableCell align="center" colSpan={3}>

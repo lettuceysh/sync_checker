@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import RefreshTime from './components/RefreshTime';
 import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
-import { useNavigate, useRoutes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { URL } from '@/const/router';
 const Setting = () => {
   const [anchorEl, setAnchorEl] = useState();

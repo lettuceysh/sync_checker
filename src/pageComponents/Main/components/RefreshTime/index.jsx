@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   padding: 5px;
   text-align: right;
   margin-left: auto;
-  margin-right: 10px;
+  margin-right: 20px;
   &&& {
     * {
       color: ${colors.gray900};
