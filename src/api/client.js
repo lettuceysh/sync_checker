@@ -10,7 +10,6 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((request) => {
-  console.log('request', request);
   return { ...request, data: { ...request.data, token: 'abcd' } };
 });
 

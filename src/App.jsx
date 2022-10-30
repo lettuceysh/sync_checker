@@ -16,6 +16,7 @@ import OperationPage from './pages/OperationManagement';
 import DataSourcePage from './pages/DataSourceManagement';
 import { URL } from './const/router';
 import ProjectManagementPage from './pages/ProjectManagement';
+import UserManagementPage from './pages/UserManagement';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path={URL.dataSourceManagement} element={<DataSourcePage />} />,
           <Route path={URL.projectManagement} element={<ProjectManagementPage />} />,
           <Route path={URL.configuration} element={<PageNavigation />} />,
+          <Route path={'user'} element={<UserManagementPage />} />,
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
