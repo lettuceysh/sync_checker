@@ -14,23 +14,22 @@ import {
   TextField
 } from '@mui/material';
 import { AddFormArea, Buttons, FormTitle, FormWrapper } from '@/styles/components/AddFormArea';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
+import { initAllValueInObject } from '@/libs/utils/array';
 
-const DataSourceAddForm = ({ onClose, modifyInfo }) => {
+const DataSourceAddForm = ({ onClose, modifyInfo, defaultValues }) => {
   const { alert } = useAlertStore();
 
   const { register, handleSubmit, reset, getValues } = useForm({
-    defaultValues: modifyInfo,
-    mode: 'onChange'
+    mode: 'onChange',
+    defaultValues
   });
 
   useEffect(() => {
-    console.log('modifyInfo', modifyInfo);
-
-    if (modifyInfo) reset(modifyInfo, { keepValues: false });
+    if (modifyInfo) reset(modifyInfo);
     return () => {
       reset({});
     };

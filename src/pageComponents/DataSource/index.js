@@ -1,6 +1,7 @@
 import { dsManagementSearchAllDSInfo } from '@/api/dataSource';
 import { ButtonNormal } from '@/components/Buttons';
 import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
+import { makeDefaultValues } from '@/libs/utils/array';
 import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
 import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
@@ -23,6 +24,8 @@ const columns = [
   { field: 'jdbc_url', headerName: 'jdbc Url' }
 ];
 
+const defaultValues = makeDefaultValues(columns);
+
 const DataSource = () => {
   const [data, setData] = useState([]);
 
@@ -43,7 +46,7 @@ const DataSource = () => {
   };
 
   const clickAdd = () => {
-    setSelectedData({});
+    setSelectedData(defaultValues);
   };
 
   const closeForm = () => {
@@ -88,7 +91,13 @@ const DataSource = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
-      {selectedData && <DataSourceAddForm modifyInfo={selectedData} onClose={closeForm} />}
+      {selectedData && (
+        <DataSourceAddForm
+          modifyInfo={selectedData}
+          onClose={closeForm}
+          defaultValues={defaultValues}
+        />
+      )}
     </SubPageWrapper>
   );
 };

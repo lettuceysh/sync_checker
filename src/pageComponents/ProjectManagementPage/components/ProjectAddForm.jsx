@@ -7,39 +7,32 @@ import { AddFormArea, Buttons, FormTitle, FormWrapper } from '@/styles/component
 import { useEffect } from 'react';
 import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
-import MuiTextField from '@/components/customMui/MuiTextField';
 import { baseProps } from '@/components/customMui/common';
+import { defaultValue } from '..';
 
-const ProjectAddForm = ({ onClose, modifyInfo }) => {
+const ProjectAddForm = ({ onClose, modifyInfo, defaultValues }) => {
   const { alert } = useAlertStore();
 
-  const { register, handleSubmit, reset, getValues } = useForm({ mode: 'onChange' });
+  const { register, handleSubmit, reset, getValues, setFocus } = useForm({
+    mode: 'onChange',
+    defaultValues
+  });
 
   useEffect(() => {
-    if (modifyInfo) reset(modifyInfo);
+    reset(modifyInfo);
+
     return () => {
       reset({});
     };
   }, [modifyInfo]);
 
+  useEffect(() => {
+    setFocus('name');
+  }, [setFocus]);
+
   const addDataSource = (value) => {
     const values = getValues();
     alert({ content: '저장 하시겠습니까?', cancelText: 'Cancel' });
-  };
-
-  const testConnection = () => {
-    const values = getValues();
-    console.log('getValues', values);
-    alert({
-      content: (
-        <>
-          Connected <br />
-          server: Oracle
-          <br />
-          Driver: Oracle JDBC driver
-        </>
-      )
-    });
   };
 
   const clickDelete = () => {
@@ -48,7 +41,7 @@ const ProjectAddForm = ({ onClose, modifyInfo }) => {
 
   return (
     <FormWrapper>
-      <FormTitle>{modifyInfo ? 'Add a new Project' : 'Modify the project'}</FormTitle>
+      <FormTitle>{modifyInfo.name ? 'Add a new Project' : 'Modify the project'}</FormTitle>
 
       <form onSubmit={handleSubmit(addDataSource)}>
         <AddFormArea>
@@ -56,7 +49,7 @@ const ProjectAddForm = ({ onClose, modifyInfo }) => {
             <Grid item xs={12}>
               <TextField
                 label="Project Name"
-                placeholder=""
+                placeholder="프로젝트 이름을 입력해주세요."
                 required
                 {...baseProps}
                 {...register('name', {
@@ -71,11 +64,11 @@ const ProjectAddForm = ({ onClose, modifyInfo }) => {
                   label="Target Connection"
                   size="small"
                   required
-                  {...register('server_name1', {
+                  {...register('source_DS_INFO_name', {
                     required: 'Connection Name 필수 입력입니다.'
                   })}
                 >
-                  <MenuItem value={'oracle'}>Dev_Server1_ORCL</MenuItem>
+                  <MenuItem value={'dev_src_oggtest'}>Dev_Server1_ORCL</MenuItem>
                 </Select>
               </FormControl>
               <Box>
@@ -91,11 +84,11 @@ const ProjectAddForm = ({ onClose, modifyInfo }) => {
                   label="Source Connection"
                   size="small"
                   required
-                  {...register('server_name2', {
+                  {...register('target_DS_INFO_name', {
                     required: 'Connection Name 필수 입력입니다.'
                   })}
                 >
-                  <MenuItem value={'oracle'}>Dev_Server2_ORCL</MenuItem>
+                  <MenuItem value={'dev_src_oggtest'}>Dev_Server2_ORCL</MenuItem>
                 </Select>
               </FormControl>
               <Box>

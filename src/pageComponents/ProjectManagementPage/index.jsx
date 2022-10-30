@@ -1,6 +1,7 @@
 import { projectManagementSearchAllProject } from '@/api/project';
 import { ButtonNormal } from '@/components/Buttons';
 import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
+import { makeDefaultValues } from '@/libs/utils/array';
 
 import { colors } from '@/styles/colors';
 import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
@@ -21,6 +22,8 @@ const columns = [
   { field: 'target_DS_INFO_settings', headerName: 'Setting' }
 ];
 
+const defaultValues = makeDefaultValues(columns);
+
 const ProjectManagement = () => {
   const [data, setData] = useState([]);
 
@@ -28,8 +31,6 @@ const ProjectManagement = () => {
 
   useEffect(() => {
     projectManagementSearchAllProject().then((response) => {
-      console.log('response', response);
-
       setData(response.data.projects);
     });
   }, []);
@@ -39,7 +40,7 @@ const ProjectManagement = () => {
   };
 
   const clickAdd = () => {
-    setSelectedData({});
+    setSelectedData(defaultValues);
   };
 
   const closeForm = () => {
@@ -84,7 +85,13 @@ const ProjectManagement = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
-      {selectedData && <ProjectAddForm modifyInfo={selectedData} onClose={closeForm} />}
+      {selectedData && (
+        <ProjectAddForm
+          modifyInfo={selectedData}
+          onClose={closeForm}
+          defaultValues={defaultValues}
+        />
+      )}
     </SubPageWrapper>
   );
 };
