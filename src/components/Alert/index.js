@@ -50,6 +50,7 @@ const Top = styled.div`
 const Content = styled.div`
   padding: 20px;
   min-width: 300px;
+  line-height: 1.7;
 `;
 
 const Buttons = styled.div`

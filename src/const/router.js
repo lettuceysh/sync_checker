@@ -4,5 +4,6 @@ export const URL = {
   configuration: '/configuration',
   operationManagement: '/operation_management',
   dataSourceManagement: '/data_source_management',
-  projectManagement: '/project_management'
+  projectManagement: '/project_management',
+  userManagement: '/user_management'
 };

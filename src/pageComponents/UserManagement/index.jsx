@@ -1,59 +1,85 @@
 import { userSearchAllUsersInfo } from '@/api/user';
+import { ButtonNormal } from '@/components/Buttons';
+import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
+import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
-import { SubPageWrapper } from '@/styles/common';
+import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
+import { FormTop } from '@/styles/components/AddFormArea';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import styled from '@emotion/styled';
-import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Checkbox, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import UserAddForm from './components/UserAddForm';
-
-const columns = [
-  {
-    field: 'id',
-    headerName: 'User ID'
-  },
-  {
-    headerName: 'User Name'
-  },
-  {
-    headerName: 'Phone'
-  },
-  {
-    headerName: 'E-Mail'
-  },
-  {
-    headerName: 'User Role'
-  },
-  {
-    headerName: 'Locked'
-  },
-  {
-    headerName: 'Description'
-  }
-];
 
 const UserManagement = () => {
   const [users, setUsers] = useState();
   const [selectedData, setSelectedData] = useState(null);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const { alert } = useAlertStore();
 
   useEffect(() => {
     userSearchAllUsersInfo().then((response) => {
-      console.log('respose', response);
       setUsers(response.data.users);
     });
   }, []);
 
-  const clickRow = (dataSource) => {
-    setSelectedData(dataSource);
+  const clickAdd = () => {
+    setSelectedData(null);
+    setShowAddForm(true);
+  };
+
+  const clickModify = () => {
+    setShowAddForm(true);
+  };
+
+  const closeForm = () => {
+    setSelectedData(null);
+    setShowAddForm(false);
+  };
+
+  const clickRadio = (value) => {
+    setSelectedData(value);
+  };
+
+  const clickDelete = () => {
+    alert({
+      content: `[${selectedData.name}] 사용자를 삭제 하시겠습니까?`,
+      cancelText: 'Cancel',
+      onOk: () => {}
+    });
   };
 
   return (
     <SubPageWrapper>
+      <FormTop>
+        <CustomBreadcrumbs current="User Management" />
+        <ButtonWrapper>
+          <ButtonNormal className="blue" onClick={clickAdd} style={{ width: '100px' }}>
+            Add
+          </ButtonNormal>
+          <ButtonNormal
+            onClick={clickModify}
+            style={{ width: '100px' }}
+            disabled={!selectedData?.name}
+          >
+            Modify
+          </ButtonNormal>
+          <ButtonNormal
+            className="red"
+            onClick={clickDelete}
+            style={{ width: '100px' }}
+            disabled={!selectedData?.name}
+          >
+            Delete
+          </ButtonNormal>
+        </ButtonWrapper>
+      </FormTop>
       <ScrollContainer>
         <StyledTableContainer>
           <StyledTable stickyHeader>
             <TableHead>
               <TableRow>
+                <TableCell></TableCell>
                 <TableCell>User ID</TableCell>
                 <TableCell>User Name</TableCell>
                 <TableCell>User Phone</TableCell>
@@ -65,18 +91,24 @@ const UserManagement = () => {
             </TableHead>
 
             <TableBody>
-              {users?.map((user, index) => (
-                <TableRow
-                  key={index}
-                  onClick={() => clickRow({ ...user, rowIndex: index })}
-                  className={selectedData?.rowIndex === index && 'on'}
-                >
+              {users?.map((user, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  <TableCell align="center">
+                    <input
+                      type="radio"
+                      name="table"
+                      checked={selectedData?.rowIndex === rowIndex}
+                      onClick={() => clickRadio({ ...user, rowIndex })}
+                    />
+                  </TableCell>
                   <TableCell>{user.id}</TableCell>
                   <TableCell>{user.name}</TableCell>
                   <TableCell>{user.phone}</TableCell>
                   <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.role}</TableCell>
-                  <TableCell>{user.locked}</TableCell>
+                  <TableCell align="center">{user.role === 1 ? 'Admin' : 'Normal'}</TableCell>
+                  <TableCell align="center">
+                    {<Checkbox checked={user.locked} disabled />}
+                  </TableCell>
                   <TableCell>{user.description}</TableCell>
                 </TableRow>
               ))}
@@ -84,7 +116,7 @@ const UserManagement = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
-      <UserAddForm modifyInfo={selectedData} />
+      <UserAddForm modifyInfo={selectedData} open={showAddForm} onClose={closeForm} />
     </SubPageWrapper>
   );
 };

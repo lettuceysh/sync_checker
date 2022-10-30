@@ -70,6 +70,15 @@ const theme = createTheme({
         }
       }
     },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          color: colors.green100,
+          width: '15px',
+          height: '15px'
+        }
+      }
+    },
     MuiButton: {
       large: {
         height: '50px'

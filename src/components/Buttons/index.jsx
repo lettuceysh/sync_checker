@@ -15,6 +15,11 @@ const style = {
   fontWeight: 600,
   fontSize: 13,
   backgroundColor: 'white',
+  '&&&:disabled': {
+    backgroundColor: 'white',
+    border: `1px solid ${colors.gray300}`,
+    color: colors.gray300
+  },
   '&.red': {
     border: `1px solid ${colors.red100}`,
     color: colors.red100

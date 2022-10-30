@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { ButtonNormal, ButtonNormalFill } from '@/components/Buttons';
 import styled from '@emotion/styled';
 
-import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { Dialog, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { AddFormArea, Buttons, FormTitle, FormWrapper } from '@/styles/components/AddFormArea';
 import { useEffect } from 'react';
 import { useAlertStore } from '@/store';
@@ -10,7 +10,7 @@ import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
 import { defaultValue } from '..';
 
-const ProjectAddForm = ({ onClose, modifyInfo, defaultValues }) => {
+const ProjectAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
   const { alert } = useAlertStore();
 
   const { register, handleSubmit, reset, getValues, setFocus } = useForm({
@@ -40,78 +40,77 @@ const ProjectAddForm = ({ onClose, modifyInfo, defaultValues }) => {
   };
 
   return (
-    <FormWrapper>
-      <FormTitle>{modifyInfo.name ? 'Add a new Project' : 'Modify the project'}</FormTitle>
+    <Dialog open={open}>
+      <FormWrapper>
+        <FormTitle>{modifyInfo?.name ? 'Add a new Project' : 'Modify the project'}</FormTitle>
 
-      <form onSubmit={handleSubmit(addDataSource)}>
-        <AddFormArea>
-          <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
-            <Grid item xs={12}>
-              <TextField
-                label="Project Name"
-                placeholder="프로젝트 이름을 입력해주세요."
-                required
-                {...baseProps}
-                {...register('name', {
-                  required: '프로젝트 이름은 필수 입력입니다.'
-                })}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth size="small">
-                <InputLabel required>DB Type</InputLabel>
-                <Select
-                  label="Target Connection"
-                  size="small"
+        <form onSubmit={handleSubmit(addDataSource)}>
+          <AddFormArea>
+            <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
+              <Grid item xs={12}>
+                <TextField
+                  label="Project Name"
+                  placeholder="프로젝트 이름을 입력해주세요."
                   required
-                  {...register('source_DS_INFO_name', {
-                    required: 'Connection Name 필수 입력입니다.'
+                  {...baseProps}
+                  {...register('name', {
+                    required: '프로젝트 이름은 필수 입력입니다.'
                   })}
-                >
-                  <MenuItem value={'dev_src_oggtest'}>Dev_Server1_ORCL</MenuItem>
-                </Select>
-              </FormControl>
-              <Box>
-                Oracle11G
-                <br /> developer1
-                <br /> jdbc:oracle:thin:@192.168.20.102:1522/ORCL
-              </Box>
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <InputLabel required>DB Type</InputLabel>
+                  <Select
+                    label="Target Connection"
+                    size="small"
+                    required
+                    {...register('source_DS_INFO_name', {
+                      required: 'Connection Name 필수 입력입니다.'
+                    })}
+                  >
+                    <MenuItem value={'dev_src_oggtest'}>Dev_Server1_ORCL</MenuItem>
+                  </Select>
+                </FormControl>
+                <Box>
+                  Oracle11G
+                  <br /> developer1
+                  <br /> jdbc:oracle:thin:@192.168.20.102:1522/ORCL
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <InputLabel required>DB Type</InputLabel>
+                  <Select
+                    label="Source Connection"
+                    size="small"
+                    required
+                    {...register('target_DS_INFO_name', {
+                      required: 'Connection Name 필수 입력입니다.'
+                    })}
+                  >
+                    <MenuItem value={'dev_src_oggtest'}>Dev_Server2_ORCL</MenuItem>
+                  </Select>
+                </FormControl>
+                <Box>
+                  Oracle11G
+                  <br /> developer1
+                  <br /> jdbc:oracle:thin:@192.168.20.102:1522/ORCL
+                </Box>
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth size="small">
-                <InputLabel required>DB Type</InputLabel>
-                <Select
-                  label="Source Connection"
-                  size="small"
-                  required
-                  {...register('target_DS_INFO_name', {
-                    required: 'Connection Name 필수 입력입니다.'
-                  })}
-                >
-                  <MenuItem value={'dev_src_oggtest'}>Dev_Server2_ORCL</MenuItem>
-                </Select>
-              </FormControl>
-              <Box>
-                Oracle11G
-                <br /> developer1
-                <br /> jdbc:oracle:thin:@192.168.20.102:1522/ORCL
-              </Box>
-            </Grid>
-          </Grid>
-          <Buttons>
-            <ButtonNormalFill className="blue" type="submit">
-              Save
-            </ButtonNormalFill>
-            <ButtonNormal className="blue" onClick={onClose}>
-              Cancel
-            </ButtonNormal>
-            <ButtonNormal className="red" onClick={clickDelete} style={{ width: '100px' }}>
-              Delete
-            </ButtonNormal>
-          </Buttons>
-        </AddFormArea>
-      </form>
-    </FormWrapper>
+            <Buttons>
+              <ButtonNormalFill className="blue" type="submit">
+                Save
+              </ButtonNormalFill>
+              <ButtonNormal className="blue" onClick={onClose}>
+                Cancel
+              </ButtonNormal>
+            </Buttons>
+          </AddFormArea>
+        </form>
+      </FormWrapper>
+    </Dialog>
   );
 };
 

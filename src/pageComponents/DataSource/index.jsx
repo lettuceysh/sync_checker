@@ -9,7 +9,7 @@ import { ButtonWrapper, SubPageWrapper } from '@/styles/common';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import styled from '@emotion/styled';
 
-import { TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Radio, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import DataSourceAddForm from './components/DataSourceAddForm';
 
@@ -30,6 +30,7 @@ const DataSource = () => {
   const [data, setData] = useState([]);
 
   const [selectedData, setSelectedData] = useState(null);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   useEffect(() => {
     dsManagementSearchAllDSInfo().then((response) => {
@@ -41,16 +42,26 @@ const DataSource = () => {
     });
   }, []);
 
-  const clickRow = (dataSource) => {
-    setSelectedData(dataSource);
-  };
-
   const clickAdd = () => {
     setSelectedData(defaultValues);
+    setShowAddForm(true);
+  };
+
+  const clickModify = () => {
+    setShowAddForm(true);
   };
 
   const closeForm = () => {
     setSelectedData(null);
+    setShowAddForm(false);
+  };
+
+  const clickRadio = (value) => {
+    setSelectedData(value);
+  };
+
+  const clickDelete = (value) => {
+    setSelectedData(value);
   };
 
   return (
@@ -61,6 +72,21 @@ const DataSource = () => {
           <ButtonNormal className="blue" onClick={clickAdd} style={{ width: '100px' }}>
             Add
           </ButtonNormal>
+          <ButtonNormal
+            onClick={clickModify}
+            style={{ width: '100px' }}
+            disabled={!selectedData?.name}
+          >
+            Modify
+          </ButtonNormal>
+          <ButtonNormal
+            className="red"
+            onClick={clickDelete}
+            style={{ width: '100px' }}
+            disabled={!selectedData?.name}
+          >
+            Delete
+          </ButtonNormal>
         </ButtonWrapper>
       </Top>
       <ScrollContainer>
@@ -68,6 +94,7 @@ const DataSource = () => {
           <StyledTable stickyHeader>
             <TableHead>
               <TableRow>
+                <TableCell align="center"></TableCell>
                 {columns.map((column) => (
                   <TableCell key={column.field}>{column.headerName}</TableCell>
                 ))}
@@ -75,11 +102,15 @@ const DataSource = () => {
             </TableHead>
             <TableBody>
               {data.map((row, rowIndex) => (
-                <TableRow
-                  key={rowIndex}
-                  onClick={() => clickRow({ ...row, rowIndex })}
-                  className={selectedData?.rowIndex === rowIndex && 'on'}
-                >
+                <TableRow key={rowIndex}>
+                  <TableCell align="center">
+                    <input
+                      type="radio"
+                      name="table"
+                      checked={selectedData?.rowIndex === rowIndex}
+                      onClick={() => clickRadio({ ...row, rowIndex })}
+                    />
+                  </TableCell>
                   {columns.map((column, index) => (
                     <TableCell key={`${column.field}${index}`} align={column.align}>
                       {row[column.field]}
@@ -91,13 +122,13 @@ const DataSource = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
-      {selectedData && (
-        <DataSourceAddForm
-          modifyInfo={selectedData}
-          onClose={closeForm}
-          defaultValues={defaultValues}
-        />
-      )}
+
+      <DataSourceAddForm
+        modifyInfo={selectedData}
+        onClose={closeForm}
+        defaultValues={defaultValues}
+        open={showAddForm}
+      />
     </SubPageWrapper>
   );
 };

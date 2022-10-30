@@ -60,7 +60,7 @@ const BasicMenu = () => {
           <StyledLink to={URL.dataSource}>Check Result</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem className={getClass()}>
-          <StyledLink to={URL.dataSource}>User Management</StyledLink>
+          <StyledLink to={URL.userManagement}>User Management</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem>
           <StyledLink

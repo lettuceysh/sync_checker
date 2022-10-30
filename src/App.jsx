@@ -31,7 +31,7 @@ function App() {
           <Route path={URL.dataSourceManagement} element={<DataSourcePage />} />,
           <Route path={URL.projectManagement} element={<ProjectManagementPage />} />,
           <Route path={URL.configuration} element={<PageNavigation />} />,
-          <Route path={'user'} element={<UserManagementPage />} />,
+          <Route path={URL.userManagement} element={<UserManagementPage />} />,
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
