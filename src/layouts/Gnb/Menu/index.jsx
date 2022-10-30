@@ -44,13 +44,13 @@ const BasicMenu = () => {
         <CustomMenuItem className={getClass(URL.main)}>
           <StyledLink to={URL.main}>Dashboard</StyledLink>
         </CustomMenuItem>
-        <CustomMenuItem className={getClass(URL.operation)}>
+        <CustomMenuItem className={getClass(URL.operationManagement)}>
           <StyledLink to={URL.operationManagement}>Operation Management</StyledLink>
         </CustomMenuItem>
-        <CustomMenuItem className={getClass(URL.dataSource)}>
+        <CustomMenuItem className={getClass(URL.dataSourceManagement)}>
           <StyledLink to={URL.dataSourceManagement}>DataSource Management</StyledLink>
         </CustomMenuItem>
-        <CustomMenuItem className={getClass()}>
+        <CustomMenuItem className={getClass(URL.projectManagement)}>
           <StyledLink to={URL.projectManagement}>Project Management</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem className={getClass()}>
@@ -59,7 +59,7 @@ const BasicMenu = () => {
         <CustomMenuItem className={getClass()}>
           <StyledLink to={URL.dataSource}>Check Result</StyledLink>
         </CustomMenuItem>
-        <CustomMenuItem className={getClass()}>
+        <CustomMenuItem className={getClass(URL.userManagement)}>
           <StyledLink to={URL.userManagement}>User Management</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem>

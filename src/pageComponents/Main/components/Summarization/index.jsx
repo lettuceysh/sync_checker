@@ -20,7 +20,7 @@ const Summarization = ({ jobStatus }) => {
     <ItemWrapper>
       <Typography variant="h2">Out-of-Sync Summarization</Typography>
       <List>
-        {!list.length ? (
+        {!list?.length ? (
           <NoData>불일치 데이타가 없습니다.</NoData>
         ) : (
           list?.map((item, index) => (

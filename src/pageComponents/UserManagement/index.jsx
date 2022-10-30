@@ -24,7 +24,7 @@ const UserManagement = () => {
   }, []);
 
   const clickAdd = () => {
-    setSelectedData(null);
+    setSelectedData({});
     setShowAddForm(true);
   };
 
