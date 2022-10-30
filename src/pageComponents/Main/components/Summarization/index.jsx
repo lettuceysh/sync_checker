@@ -5,6 +5,7 @@ import { Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { ItemWrapper } from '../../styled';
 import dayjs from 'dayjs';
+import NoData from '@/components/Nodata';
 
 const Summarization = ({ jobStatus }) => {
   const [list, setList] = useState();
@@ -19,18 +20,24 @@ const Summarization = ({ jobStatus }) => {
     <ItemWrapper>
       <Typography variant="h2">Out-of-Sync Summarization</Typography>
       <List>
-        {list?.map((item, index) => (
-          <li key={index}>
-            <button>
-              <Typography variant="normalGray">
-                <strong>불일치 발생</strong>
-                {`${item.job_id} [${item.source_table_name} -> ${item.target_table_name}]에 ${dayjs(
-                  item.start_time
-                ).format('YYYY-MM-DD HH-MM-ss')} ${item.outofsync_count}건 불일치 발생`}
-              </Typography>
-            </button>
-          </li>
-        ))}
+        {!list.length ? (
+          <NoData>불일치 데이타가 없습니다.</NoData>
+        ) : (
+          list?.map((item, index) => (
+            <li key={index}>
+              <button>
+                <Typography variant="normalGray">
+                  <strong>불일치 발생</strong>
+                  {`${item.job_id} [${item.source_table_name} -> ${
+                    item.target_table_name
+                  }]에 ${dayjs(item.start_time).format('YYYY-MM-DD HH-MM-ss')} ${
+                    item.outofsync_count
+                  }건 불일치 발생`}
+                </Typography>
+              </button>
+            </li>
+          ))
+        )}
       </List>
     </ItemWrapper>
   );
