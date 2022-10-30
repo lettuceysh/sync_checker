@@ -1,17 +1,27 @@
+import { searchAllJobStatusWithProject } from '@/api/jobManagement';
 import styled from '@emotion/styled';
+import { useEffect, useState } from 'react';
 import JobBoard from './components/JobBoard';
 import OperationStatus from './components/OperationStatus';
 import Records from './components/Records';
-import RefreshTime from './components/RefreshTime';
 import Summarization from './components/Summarization';
 
 const Main = () => {
+  const [jobStatus, setJobStatus] = useState();
+
+  useEffect(() => {
+    searchAllJobStatusWithProject().then((response) => {
+      console.log('response', response);
+      setJobStatus(response.data.jobStatusaWithProject);
+    });
+  }, []);
+
   return (
     <Wrapper>
       <SubWrapper>
         <Top>
-          <OperationStatus />
-          <Summarization />
+          <OperationStatus jobStatus={jobStatus} />
+          <Summarization jobStatus={jobStatus} />
         </Top>
         <Middle>
           <JobBoard />

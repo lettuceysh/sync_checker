@@ -2,61 +2,35 @@ import { colors } from '@/styles/colors';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { ItemWrapper } from '../../styled';
+import dayjs from 'dayjs';
 
-const Summarization = () => {
+const Summarization = ({ jobStatus }) => {
+  const [list, setList] = useState();
+
+  useEffect(() => {
+    if (jobStatus) {
+      setList(jobStatus.filter((status) => status.outofsync_count && status.outofsync_count !== 0));
+    }
+  }, [jobStatus]);
+
   return (
     <ItemWrapper>
       <Typography variant="h2">Out-of-Sync Summarization</Typography>
       <List>
-        <li>
-          <button>
-            <Typography variant="normalGray">
-              <strong>불일치 발생</strong>
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
-            </Typography>
-          </button>
-        </li>
-        <li>
-          <button>
-            <Typography variant="normalGray">
-              <strong>불일치 발생</strong>
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
-            </Typography>
-          </button>
-        </li>
-        <li>
-          <button>
-            <Typography variant="normalGray">
-              <strong>불일치 발생</strong>
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
-            </Typography>
-          </button>
-        </li>
-        <li>
-          <button>
-            <Typography variant="normalGray">
-              <strong>불일치 발생</strong>
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
-            </Typography>
-          </button>
-        </li>
-        <li>
-          <button>
-            <Typography variant="normalGray">
-              <strong>불일치 발생</strong>
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
-            </Typography>
-          </button>
-        </li>
-        <li>
-          <button>
-            <Typography variant="normalGray">
-              <strong>불일치 발생</strong>
-              JOB_Name (Source Table Target Table) 에 2022-07-02 10:10:10 10건
-            </Typography>
-          </button>
-        </li>
+        {list?.map((item, index) => (
+          <li key={index}>
+            <button>
+              <Typography variant="normalGray">
+                <strong>불일치 발생</strong>
+                {`${item.job_id} [${item.source_table_name} -> ${item.target_table_name}]에 ${dayjs(
+                  item.start_time
+                ).format('YYYY-MM-DD HH-MM-ss')} ${item.outofsync_count}건 불일치 발생`}
+              </Typography>
+            </button>
+          </li>
+        ))}
       </List>
     </ItemWrapper>
   );

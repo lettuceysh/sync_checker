@@ -19,7 +19,7 @@ const CircleChart = ({ data, color, label }) => {
               position="center"
               fill="grey"
               style={{
-                fontSize: '32px',
+                fontSize: '28px',
                 fontWeight: 'bold',
                 fontFamily: 'Roboto'
               }}

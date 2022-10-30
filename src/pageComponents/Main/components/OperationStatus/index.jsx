@@ -3,6 +3,7 @@ import CircleChart from '@/components/PieChart';
 import { ItemWrapper } from '../../styled';
 import { Typography } from '@mui/material';
 import { colors } from '@/styles/colors';
+import { useEffect, useState } from 'react';
 
 const data = [
   { name: 'Bubble Tea Sold', value: 10 },
@@ -19,22 +20,88 @@ const data3 = [
   { name: 'Bubble Tea Left', value: 10 }
 ];
 
-const OperationStatus = () => {
+const OperationStatus = ({ jobStatus }) => {
+  const [state, setState] = useState({
+    stopNum: 0,
+    runningNum: 0,
+    abandedNum: 0,
+    totalNum: 0,
+    syncNum: 0,
+    outOfSyncNum: 0,
+    totalSyncNum: 0
+  });
+  console.log('state', state);
+
+  useEffect(() => {
+    if (!jobStatus) {
+      return;
+    }
+    let stopNum = 0;
+    let runningNum = 0;
+    let abandedNum = 0;
+    let syncNum = 0;
+    let outOfSyncNum = 0;
+    jobStatus.forEach((item) => {
+      if (item.status === 1) {
+        stopNum++;
+      } else if (item.status === 2) {
+        runningNum++;
+      } else if (item.status === 3) {
+        abandedNum++;
+      }
+
+      if (item.outofsync_count === 0) {
+        syncNum++;
+      } else {
+        outOfSyncNum++;
+      }
+    });
+
+    setState({
+      stopNum,
+      runningNum,
+      abandedNum,
+      syncNum,
+      outOfSyncNum,
+      totalNum: stopNum + runningNum + abandedNum,
+      totalSyncNum: syncNum + outOfSyncNum
+    });
+  }, [jobStatus]);
   return (
     <ItemWrapper style={customStyle}>
       <StatusWrapper>
         <Typography variant="h2">Operation Status</Typography>
         <CircleChartWrapper>
-          <CircleChart data={data} color={colors.green200} label="Running" />
-          <CircleChart data={data2} color={colors.gray800} label="Stop" />
-          <CircleChart data={data3} color={colors.red100} label="Abanded" />
+          <CircleChart
+            data={[{ value: state?.runningNum }, { value: state?.totalNum - state?.runningNum }]}
+            color={colors.green200}
+            label="Running"
+          />
+          <CircleChart
+            data={[{ value: state?.stopNum }, { value: state?.totalNum - state?.stopNum }]}
+            color={colors.gray800}
+            label="Stop"
+          />
+          <CircleChart
+            data={[{ value: state?.abandedNum }, { value: state?.totalNum - state?.abandedNum }]}
+            color={colors.red100}
+            label="Abanded"
+          />
         </CircleChartWrapper>
       </StatusWrapper>
       <StatusWrapper>
         <Typography variant="h2">Synchronization Status</Typography>
         <CircleChartWrapper>
-          <CircleChart data={data} color={colors.blue100} label="sync" />
-          <CircleChart data={data2} color={colors.red100} label="out-of-sync" />
+          <CircleChart
+            data={[{ value: state?.syncNum }, { value: state?.outOfSyncNum }]}
+            color={colors.blue100}
+            label="sync"
+          />
+          <CircleChart
+            data={[{ value: state?.outOfSyncNum }, { value: state?.syncNum }]}
+            color={colors.red100}
+            label="out-of-sync"
+          />
         </CircleChartWrapper>
       </StatusWrapper>
     </ItemWrapper>
