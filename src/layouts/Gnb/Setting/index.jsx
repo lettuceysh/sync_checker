@@ -44,7 +44,7 @@ const Setting = () => {
         <MenuItem onClick={showRefreshTime}>Screen Refresh Time</MenuItem>
         <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
-      <RefreshTime open={isShowRefreshTime} onClose={() => setIsShowRefreshTime(false)} />
+      {isShowRefreshTime && <RefreshTime onClose={() => setIsShowRefreshTime(false)} />}
     </div>
   );
 };

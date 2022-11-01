@@ -17,23 +17,44 @@ import DataSourcePage from './pages/DataSourceManagement';
 import { URL } from './const/router';
 import ProjectManagementPage from './pages/ProjectManagement';
 import UserManagementPage from './pages/UserManagement';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { useMemo } from 'react';
+import { getStorage } from './libs/utils/storage';
+import { STORAGE_INTERVAL_KEY } from './layouts/Gnb/Setting/components/RefreshTime';
 
 function App() {
+  const interval = getStorage(STORAGE_INTERVAL_KEY);
+  console.log('interval', interval);
+  const queryClient = useMemo(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchInterval: interval
+            // refetchIntervalInBackground: true
+          }
+        }
+      }),
+    []
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <GlobalStyles styles={global} />
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Routes>
-          <Route path={URL.main} element={<Main />} />,
-          <Route path={URL.login} element={<Login />} />,
-          <Route path={URL.operationManagement} element={<OperationPage />} />,
-          <Route path={URL.dataSourceManagement} element={<DataSourcePage />} />,
-          <Route path={URL.projectManagement} element={<ProjectManagementPage />} />,
-          <Route path={URL.configuration} element={<PageNavigation />} />,
-          <Route path={URL.userManagement} element={<UserManagementPage />} />,
-        </Routes>
-      </BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <Routes>
+            <Route path={URL.main} element={<Main />} />,
+            <Route path={URL.login} element={<Login />} />,
+            <Route path={URL.operationManagement} element={<OperationPage />} />,
+            <Route path={URL.dataSourceManagement} element={<DataSourcePage />} />,
+            <Route path={URL.projectManagement} element={<ProjectManagementPage />} />,
+            <Route path={URL.configuration} element={<PageNavigation />} />,
+            <Route path={URL.userManagement} element={<UserManagementPage />} />,
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }

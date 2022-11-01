@@ -19,11 +19,12 @@ import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
 import { initAllValueInObject } from '@/libs/utils/array';
+import MuiSelect from '@/components/customMui/MuiSelect';
 
 const DataSourceAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
   const { alert } = useAlertStore();
 
-  const { register, handleSubmit, reset, getValues } = useForm({
+  const { register, handleSubmit, reset, getValues, control } = useForm({
     mode: 'onChange',
     defaultValues
   });
@@ -35,8 +36,9 @@ const DataSourceAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
     };
   }, [modifyInfo]);
 
-  const addDataSource = (value) => {
+  const addDataSource = () => {
     const values = getValues();
+    console.log('values', values);
     alert({ content: '저장 하시겠습니까?', cancelText: 'Cancel' });
   };
 
@@ -79,35 +81,31 @@ const DataSourceAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
                 />
               </Grid>
               <Grid item xs={6}>
-                <FormControl fullWidth size="small">
-                  <InputLabel required>DB Type</InputLabel>
-                  <Select
-                    label="DB Type"
-                    size="small"
-                    required
-                    {...register('db_type', {
-                      required: 'Connection Name 필수 입력입니다.'
-                    })}
-                  >
-                    <MenuItem value={'oracle'}>oracle</MenuItem>
-                  </Select>
-                </FormControl>
+                <MuiSelect
+                  label="DB Type"
+                  name="db_type"
+                  control={control}
+                  options={[{ value: 'oracle', label: 'oracle' }]}
+                  required
+                  rules={{
+                    required: 'Connection Name 필수 입력입니다.'
+                  }}
+                />
               </Grid>
               <Grid item xs={6}>
-                <FormControl fullWidth size="small">
-                  <InputLabel required>Source/Target</InputLabel>
-                  <Select
-                    label="source target"
-                    required
-                    size="small"
-                    {...register('source_target', {
-                      required: 'Connection Name 필수 입력입니다.'
-                    })}
-                  >
-                    <MenuItem value="Source">Source</MenuItem>
-                    <MenuItem value="Target">Target</MenuItem>
-                  </Select>
-                </FormControl>
+                <MuiSelect
+                  label="source target"
+                  name="source_target"
+                  control={control}
+                  options={[
+                    { value: 'Source', label: 'Source' },
+                    { value: 'Target', label: 'Target' }
+                  ]}
+                  required
+                  rules={{
+                    required: 'source_target 필수 입력입니다.'
+                  }}
+                />
               </Grid>
               <Grid item xs={6}>
                 <TextField

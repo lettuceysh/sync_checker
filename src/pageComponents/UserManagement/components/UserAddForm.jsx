@@ -28,11 +28,12 @@ import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
 import { CheckBox } from '@mui/icons-material';
+import MuiSelect from '@/components/customMui/MuiSelect';
 
 const UserAddForm = ({ onClose, modifyInfo, open }) => {
   const { alert } = useAlertStore();
 
-  const { register, handleSubmit, reset, getValues } = useForm({
+  const { register, handleSubmit, reset, getValues, control } = useForm({
     defaultValues: modifyInfo,
     mode: 'onChange'
   });
@@ -147,20 +148,19 @@ const UserAddForm = ({ onClose, modifyInfo, open }) => {
                 />
               </Grid>
               <Grid item xs={6}>
-                <FormControl fullWidth size="small">
-                  <InputLabel required>User Role</InputLabel>
-                  <Select
-                    label="User Role"
-                    required
-                    size="small"
-                    {...register('role', {
-                      required: 'User Role 필수 입력입니다.'
-                    })}
-                  >
-                    <MenuItem value="1">Admin</MenuItem>
-                    <MenuItem value="0">Normal</MenuItem>
-                  </Select>
-                </FormControl>
+                <MuiSelect
+                  label="User Role"
+                  name="role"
+                  control={control}
+                  options={[
+                    { value: 1, label: 'Admin' },
+                    { value: 0, label: 'Normal' }
+                  ]}
+                  required
+                  rules={{
+                    required: 'User Role'
+                  }}
+                />
               </Grid>
               <Grid item xs={6}>
                 <ItemWithLabel>

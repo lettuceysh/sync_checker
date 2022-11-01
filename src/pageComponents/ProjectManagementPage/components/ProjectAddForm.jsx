@@ -9,11 +9,12 @@ import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
 import { defaultValue } from '..';
+import MuiSelect from '@/components/customMui/MuiSelect';
 
 const ProjectAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
   const { alert } = useAlertStore();
 
-  const { register, handleSubmit, reset, getValues, setFocus } = useForm({
+  const { register, handleSubmit, reset, getValues, setFocus, control } = useForm({
     mode: 'onChange',
     defaultValues
   });
@@ -32,6 +33,7 @@ const ProjectAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
 
   const addDataSource = (value) => {
     const values = getValues();
+    console.log('value', values);
     alert({ content: '저장 하시겠습니까?', cancelText: 'Cancel' });
   };
 
@@ -59,19 +61,16 @@ const ProjectAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
                 />
               </Grid>
               <Grid item xs={6}>
-                <FormControl fullWidth size="small">
-                  <InputLabel required>DB Type</InputLabel>
-                  <Select
-                    label="Target Connection"
-                    size="small"
-                    required
-                    {...register('source_DS_INFO_name', {
-                      required: 'Connection Name 필수 입력입니다.'
-                    })}
-                  >
-                    <MenuItem value={'dev_src_oggtest'}>Dev_Server1_ORCL</MenuItem>
-                  </Select>
-                </FormControl>
+                <MuiSelect
+                  label="Source Connection"
+                  name="source_DS_INFO_name"
+                  control={control}
+                  options={[{ value: 'dev_src_oggtest', label: 'Dev_Server1_ORCL' }]}
+                  required
+                  rules={{
+                    required: 'Source Connection 필수 입력입니다.'
+                  }}
+                />
                 <Box>
                   Oracle11G
                   <br /> developer1
@@ -79,19 +78,16 @@ const ProjectAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
                 </Box>
               </Grid>
               <Grid item xs={6}>
-                <FormControl fullWidth size="small">
-                  <InputLabel required>DB Type</InputLabel>
-                  <Select
-                    label="Source Connection"
-                    size="small"
-                    required
-                    {...register('target_DS_INFO_name', {
-                      required: 'Connection Name 필수 입력입니다.'
-                    })}
-                  >
-                    <MenuItem value={'dev_src_oggtest'}>Dev_Server2_ORCL</MenuItem>
-                  </Select>
-                </FormControl>
+                <MuiSelect
+                  label="Target Connection"
+                  name="target_DS_INFO_name"
+                  control={control}
+                  options={[{ value: 'dev_src_oggtest', label: 'Dev_Server2_ORCL' }]}
+                  required
+                  rules={{
+                    required: 'Target Connection 필수 입력입니다.'
+                  }}
+                />
                 <Box>
                   Oracle11G
                   <br /> developer1

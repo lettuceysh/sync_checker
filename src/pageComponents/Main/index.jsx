@@ -1,4 +1,5 @@
 import { searchAllJobStatusWithProject } from '@/api/jobManagement';
+import { useSearchAllJobStatusWithProject } from '@/api/querys/jobManagementQuery';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import JobBoard from './components/JobBoard';
@@ -7,21 +8,15 @@ import Records from './components/Records';
 import Summarization from './components/Summarization';
 
 const Main = () => {
-  const [jobStatus, setJobStatus] = useState();
-
-  useEffect(() => {
-    searchAllJobStatusWithProject().then((response) => {
-      console.log('response', response);
-      setJobStatus(response.data.jobStatusaWithProject);
-    });
-  }, []);
+  const { data: { data: { jobStatusaWithProject } = {} } = {} } =
+    useSearchAllJobStatusWithProject();
 
   return (
     <Wrapper>
       <SubWrapper>
         <Top>
-          <OperationStatus jobStatus={jobStatus} />
-          <Summarization jobStatus={jobStatus} />
+          <OperationStatus jobStatus={jobStatusaWithProject} />
+          <Summarization jobStatus={jobStatusaWithProject} />
         </Top>
         <Middle>
           <JobBoard />

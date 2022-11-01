@@ -10,7 +10,6 @@ import { useAlertStore } from '@/store';
 
 const BasicMenu = () => {
   const location = useLocation();
-  console.log('location', location.pathname);
 
   const [anchorEl, setAnchorEl] = useState();
   const open = Boolean(anchorEl);
