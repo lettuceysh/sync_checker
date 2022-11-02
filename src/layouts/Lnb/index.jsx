@@ -104,6 +104,7 @@ const StyledLink = styled(Link)`
   color: ${colors.white100};
   width: 100%;
   font-size: 16px;
+  padding: 8px 12px;
   &.disable {
     color: ${colors.gray300};
   }
@@ -116,10 +117,11 @@ const StyledLink = styled(Link)`
 // `;
 const CustomMenuItem = styled(MenuItem)`
   margin: 7px 0;
+  padding: 0;
   &.on {
     background-color: ${colors.white100};
     margin: 0 3px;
-    padding: 8px 12px;
+
     a {
       color: ${colors.gray900};
     }

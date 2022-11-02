@@ -1,12 +1,12 @@
 import SubLayout from '@/layouts/SubLayout';
-import Configuration from '@/pageComponents/configuration';
+import CheckResult from '@/pageComponents/CheckResult';
 
-const CheckResult = () => {
+const CheckResultPage = () => {
   return (
     <SubLayout>
-      <Configuration />
+      <CheckResult />
     </SubLayout>
   );
 };
 
-export default CheckResult;
+export default CheckResultPage;

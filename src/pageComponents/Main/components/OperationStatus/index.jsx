@@ -70,7 +70,9 @@ const OperationStatus = ({ jobStatus }) => {
   return (
     <ItemWrapper style={customStyle}>
       <StatusWrapper>
-        <Typography variant="h2">Operation Status</Typography>
+        <Typography variant="h2" sx={{ textAlign: 'center' }}>
+          Operation Status
+        </Typography>
         <CircleChartWrapper>
           <CircleChart
             data={[{ value: state?.runningNum }, { value: state?.totalNum - state?.runningNum }]}
@@ -90,7 +92,9 @@ const OperationStatus = ({ jobStatus }) => {
         </CircleChartWrapper>
       </StatusWrapper>
       <StatusWrapper>
-        <Typography variant="h2">Synchronization Status</Typography>
+        <Typography variant="h2" sx={{ textAlign: 'center' }}>
+          Synchronization Status
+        </Typography>
         <CircleChartWrapper>
           <CircleChart
             data={[{ value: state?.syncNum }, { value: state?.outOfSyncNum }]}
