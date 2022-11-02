@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import DraggableRow from './DraggableRow';
 import { TextField } from '@mui/material';
+import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
+import styled from '@emotion/styled';
 
 const tableData = [
   { uuid: '1', description: 'Item #1', unitPrice: 11.11, quantity: 1 },
@@ -60,39 +62,53 @@ const DraggableTable = () => {
   };
 
   return (
-    <TableContainer>
-      <Table>
-        <colgroup>
-          <col style={{ width: '5%' }} />
-          <col style={{ width: '35%' }} />
-          <col style={{ width: '20%' }} />
-          <col style={{ width: '20%' }} />
-          <col style={{ width: '20%' }} />
-        </colgroup>
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">&nbsp;</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell align="right">Unit Cost</TableCell>
-            <TableCell align="right">Qty/Rate</TableCell>
-            <TableCell align="right">Amount</TableCell>
-          </TableRow>
-        </TableHead>
-        <DragDropContext onDragEnd={handleDragEnd}>
-          <Droppable droppableId="droppable" direction="vertical">
-            {(droppableProvided) => (
-              <TableBody ref={droppableProvided.innerRef} {...droppableProvided.droppableProps}>
-                {tableData.map((item, index) => (
-                  <DraggableRow key={item.uuid} item={item} index={index} />
-                ))}
-                {droppableProvided.placeholder}
-              </TableBody>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </Table>
-    </TableContainer>
+    <Wrapper>
+      <StyledTableContainer>
+        <StyledTable>
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">&nbsp;</TableCell>
+              <TableCell>index</TableCell>
+              <TableCell>PK/UK</TableCell>
+              <TableCell>
+                Column
+                <br />
+                Name
+              </TableCell>
+              <TableCell>
+                Column
+                <br />
+                Type
+              </TableCell>
+              <TableCell>Nullable</TableCell>
+              <TableCell>function</TableCell>
+              <TableCell>
+                적용
+                <br />
+                여부
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <Droppable droppableId="droppable" direction="vertical">
+              {(droppableProvided) => (
+                <TableBody ref={droppableProvided.innerRef} {...droppableProvided.droppableProps}>
+                  {tableData.map((item, index) => (
+                    <DraggableRow key={item.uuid} item={item} index={index} />
+                  ))}
+                  {droppableProvided.placeholder}
+                </TableBody>
+              )}
+            </Droppable>
+          </DragDropContext>
+        </StyledTable>
+      </StyledTableContainer>
+    </Wrapper>
   );
 };
 
+const Wrapper = styled.div`
+  flex: 1;
+  padding-left: 20px;
+`;
 export default DraggableTable;

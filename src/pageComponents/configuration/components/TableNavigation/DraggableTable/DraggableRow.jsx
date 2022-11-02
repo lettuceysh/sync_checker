@@ -2,8 +2,9 @@ import { Draggable } from 'react-beautiful-dnd';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import DragHandleIcon from '@mui/icons-material/DragHandle';
+import { Checkbox } from '@mui/material';
 
-const DragableRow = ({ item, index }) => {
+const DraggableRow = ({ item, index }) => {
   return (
     <Draggable draggableId={item.uuid} index={index} type="TAST">
       {(draggableProvided, snapshot) => {
@@ -21,10 +22,15 @@ const DragableRow = ({ item, index }) => {
                 <DragHandleIcon />
               </div>
             </TableCell>
-            <TableCell>{item.description}</TableCell>
-            <TableCell align="right">{item.unitPrice}</TableCell>
-            <TableCell align="right">{item.quantity}</TableCell>
-            <TableCell align="right">{(item.unitPrice * item.quantity).toFixed(2)}</TableCell>
+            <TableCell align="center">Y</TableCell>
+            <TableCell align="center">Col1</TableCell>
+            <TableCell align="center">Char(10)</TableCell>
+            <TableCell align="center">Char2(10)</TableCell>
+            <TableCell align="center">N</TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center">
+              <Checkbox />
+            </TableCell>
           </TableRow>
         );
       }}
@@ -32,4 +38,4 @@ const DragableRow = ({ item, index }) => {
   );
 };
 
-export default DragableRow;
+export default DraggableRow;

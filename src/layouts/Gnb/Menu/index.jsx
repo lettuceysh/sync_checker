@@ -52,11 +52,11 @@ const BasicMenu = () => {
         <CustomMenuItem className={getClass(URL.projectManagement)}>
           <StyledLink to={URL.projectManagement}>Project Management</StyledLink>
         </CustomMenuItem>
-        <CustomMenuItem className={getClass()}>
-          <StyledLink to={URL.dataSource}>Job configuration</StyledLink>
+        <CustomMenuItem className={getClass(URL.configuration)}>
+          <StyledLink to={URL.configuration}>Job configuration</StyledLink>
         </CustomMenuItem>
-        <CustomMenuItem className={getClass()}>
-          <StyledLink to={URL.dataSource}>Check Result</StyledLink>
+        <CustomMenuItem className={getClass(URL.checkResult)}>
+          <StyledLink to={URL.checkResult}>Check Result</StyledLink>
         </CustomMenuItem>
         <CustomMenuItem className={getClass(URL.userManagement)}>
           <StyledLink to={URL.userManagement}>User Management</StyledLink>

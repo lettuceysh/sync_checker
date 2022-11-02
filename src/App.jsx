@@ -10,7 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './styles/theme';
 import Login from './pages/Login';
 import Main from './pages/Main';
-import PageNavigation from './pages/configuration/PageNavigation';
+import PageNavigation from './pages/Configuration';
 import global from './styles/global';
 import OperationPage from './pages/OperationManagement';
 import DataSourcePage from './pages/DataSourceManagement';
@@ -21,6 +21,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { useMemo } from 'react';
 import { getStorage } from './libs/utils/storage';
 import { STORAGE_INTERVAL_KEY } from './layouts/Gnb/Setting/components/RefreshTime';
+import ConfigurationPage from './pages/Configuration';
+import CheckResult from './pages/CheckResult';
 
 function App() {
   const interval = getStorage(STORAGE_INTERVAL_KEY);
@@ -50,7 +52,8 @@ function App() {
             <Route path={URL.operationManagement} element={<OperationPage />} />,
             <Route path={URL.dataSourceManagement} element={<DataSourcePage />} />,
             <Route path={URL.projectManagement} element={<ProjectManagementPage />} />,
-            <Route path={URL.configuration} element={<PageNavigation />} />,
+            <Route path={URL.configuration} element={<ConfigurationPage />} />,
+            <Route path={URL.checkResult} element={<CheckResult />} />,
             <Route path={URL.userManagement} element={<UserManagementPage />} />,
           </Routes>
         </BrowserRouter>

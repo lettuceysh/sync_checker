@@ -12,10 +12,9 @@ const SubLayout = ({ children, footerColor }) => {
         <MiddleWrapper>
           <Gnb isMain={false} />
           <Content>{children}</Content>
+          <Footer footerColor={footerColor} />
         </MiddleWrapper>
       </SubWrapper>
-
-      <Footer footerColor={footerColor} />
       <Alert />
     </Wrapper>
   );
@@ -38,6 +37,9 @@ const SubWrapper = styled.div`
 
 const MiddleWrapper = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 `;
 
 export default SubLayout;

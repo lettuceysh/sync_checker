@@ -20,6 +20,7 @@ export const StyledTable = styled(Table)`
         border: 1px solid ${colors.bluegray250};
         padding: 2px 5px;
         text-align: center;
+        line-height: normal;
       }
       &:not(:first-child) {
         > th {
