@@ -7,10 +7,10 @@ import BlurOnIcon from '@mui/icons-material/BlurOn';
 import { colors } from '@/styles/colors';
 import RefreshTime from '@/pageComponents/Main/components/RefreshTime';
 
-const Gnb = () => {
+const Gnb = ({ isMain = true }) => {
   return (
     <Wrapper>
-      <BasicMenu />
+      {isMain ? <BasicMenu /> : <div></div>}
       <Title>
         <H1>
           <BlurOnIcon style={{ color: colors.logo, fontSize: '30px', marginRight: '10px' }} />

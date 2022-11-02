@@ -1,11 +1,12 @@
 import DefaultLayout from '@/layouts/DefaultLayout';
+import SubLayout from '@/layouts/SubLayout';
 import Operation from '@/pageComponents/Operation';
 
 const OperationPage = () => {
   return (
-    <DefaultLayout>
+    <SubLayout>
       <Operation />
-    </DefaultLayout>
+    </SubLayout>
   );
 };
 
