@@ -116,7 +116,7 @@ const UserManagement = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
-      <UserAddForm modifyInfo={selectedData} open={showAddForm} onClose={closeForm} />
+      {showAddForm && <UserAddForm modifyInfo={selectedData} onClose={closeForm} />}
     </SubPageWrapper>
   );
 };
