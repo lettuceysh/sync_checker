@@ -29,8 +29,9 @@ import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
 import { CheckBox } from '@mui/icons-material';
 import MuiSelect from '@/components/customMui/MuiSelect';
+import { userAddUser } from '@/api/user';
 
-const UserAddForm = ({ onClose, modifyInfo, open }) => {
+const UserAddForm = ({ onClose, modifyInfo }) => {
   const { alert } = useAlertStore();
 
   const { register, handleSubmit, reset, getValues, control } = useForm({
@@ -47,11 +48,17 @@ const UserAddForm = ({ onClose, modifyInfo, open }) => {
 
   const addDataSource = (value) => {
     const values = getValues();
+    console.log('values', values);
+
+    userAddUser(values).then((responst) => {
+      console.log('responst', responst);
+    });
+
     alert({ content: '저장 하시겠습니까?', cancelText: 'Cancel' });
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={true}>
       <FormWrapper>
         <FormTitle>{modifyInfo ? 'MDMS Modify' : 'User ADD'}</FormTitle>
 
