@@ -14,6 +14,7 @@ export const ItemWrapper = styled.div`
     font-weight: normal;
     font-size: 16px;
     padding: 0;
+    text-align: center;
     padding-left: 5px;
     text-decoration: underline;
   }

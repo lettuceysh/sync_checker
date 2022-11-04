@@ -9,6 +9,8 @@ import styled from '@emotion/styled';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import { ItemWrapper } from '../../styled';
 import { colors } from '@/styles/colors';
+import Reaire from './components/Repaire';
+import { useState } from 'react';
 
 const columns = [
   { field: 'checkbox', headerName: <Checkbox sx={{ color: 'white' }} /> },
@@ -189,20 +191,23 @@ const rows = [
 ];
 
 const Records = () => {
+  const [isRepare, setIsRepare] = useState(false);
+
   return (
     <ItemWrapper>
       <Top>
-        <Typography variant="h2">Out of Sync. Records</Typography>
         <Info>
           [ <span>JOB[DEC] TASK[Owner.table1 Owner.table2] DATE[2022-07-28 10:20:10</span> ]
         </Info>
+        <Typography variant="h2">Out of Sync. Records</Typography>
+
         <Buttons>
           <CustomButtonType2>
             <strong>Cancel</strong>
             <br />
             Compare paris
           </CustomButtonType2>
-          <CustomButton>
+          <CustomButton onClick={() => setIsRepare(true)}>
             <strong>Repair</strong>
             <br />
             Out-of-Sync Dat
@@ -239,6 +244,7 @@ const Records = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
+      {isRepare && <Reaire onClose={() => setIsRepare(false)} />}
     </ItemWrapper>
   );
 };

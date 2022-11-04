@@ -1,5 +1,5 @@
 import SubLayout from '@/layouts/SubLayout';
-import Configuration from '@/pageComponents/Configuration';
+import Configuration from '@/pageComponents/configuration';
 
 const ConfigurationPage = () => {
   return (

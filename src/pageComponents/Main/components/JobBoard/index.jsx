@@ -10,207 +10,10 @@ import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import { ItemWrapper } from '../../styled';
+import dayjs from 'dayjs';
+import { formatDate } from '@/libs/utils/date';
 
-const columns = [
-  { field: 'name', headerName: 'Name', width: 130 },
-  { field: 'source', headerName: 'C.N.Source', width: 130 },
-  { field: 'target', headerName: 'C.N.Target' },
-  { field: 'subId', headerName: 'Id' },
-  { field: 'subSource', headerName: 'Source' },
-  { field: 'subTarget', headerName: 'Target' },
-  { field: 'subTarget', headerName: 'StartTime' },
-  { field: 'startTime', headerName: 'EndTime' },
-  { field: 'EndTime', headerName: 'RunningTime' },
-  { field: 'RunningTime', headerName: 'Status' },
-  { field: 'Status', headerName: 'Status' }
-];
-
-const rows = [
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  }
-];
-
-const JobBoard = () => {
+const JobBoard = ({ jobs }) => {
   return (
     <ItemWrapper>
       <Typography variant="h2">Job Synchronization Board</Typography>
@@ -223,26 +26,54 @@ const JobBoard = () => {
                   project
                 </TableCell>
                 <TableCell align="center"></TableCell>
-                <TableCell align="center" colSpan={7}>
+                <TableCell align="center" colSpan={8}>
                   JOB -Synchronization Result
                 </TableCell>
               </TableRow>
               <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.field}
-                    align={column.align}
-                    style={{ top: 57, minWidth: column.minWidth }}
-                  >
-                    {column.headerName}
-                  </TableCell>
-                ))}
+                <TableCell align="center">Name</TableCell>
+                <TableCell align="center">C.N.Source</TableCell>
+                <TableCell align="center">C.N.Source</TableCell>
+                <TableCell align="center">ID</TableCell>
+                <TableCell align="center">Source</TableCell>
+                <TableCell align="center">Target</TableCell>
+                <TableCell align="center">StartTime</TableCell>
+                <TableCell align="center">EndTime</TableCell>
+                <TableCell align="center">RunningTime</TableCell>
+                <TableCell align="center">
+                  Out-of-Sync
+                  <br />
+                  Status
+                </TableCell>
+                <TableCell align="center">
+                  Out-of-Sync
+                  <br />
+                  Count
+                </TableCell>
+                <TableCell align="center">
+                  Operation
+                  <br />
+                  Status
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => {
-                return <RowItem row={row} columns={columns} key={row.id} />;
-              })}
+              {jobs?.map((job, index) => (
+                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                  <TableCell align="center">{job.project_name}</TableCell>
+                  <TableCell align="center">{job.source_ds_name}</TableCell>
+                  <TableCell align="center">{job.target_ds_name}</TableCell>
+                  <TableCell align="center">{job.job_id}</TableCell>
+                  <TableCell align="center">{job.source_table_name}</TableCell>
+                  <TableCell align="center">{job.target_table_name}</TableCell>
+                  <TableCell align="center">{formatDate(job.start_time)}</TableCell>
+                  <TableCell align="center">{formatDate(job.end_time)}</TableCell>
+                  <TableCell align="center">{job.running_time}</TableCell>
+                  <TableCell align="center"></TableCell>
+                  <TableCell align="center"></TableCell>
+                  <TableCell align="center"></TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </StyledTable>
         </StyledTableContainer>

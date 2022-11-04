@@ -24,7 +24,7 @@ export const StyledTable = styled(Table)`
       }
       &:not(:first-child) {
         > th {
-          top: 25px !important;
+          top: 19px !important;
         }
       }
     }

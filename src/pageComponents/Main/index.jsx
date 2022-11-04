@@ -11,6 +11,8 @@ const Main = () => {
   const { data: { data: { jobStatusaWithProject } = {} } = {} } =
     useSearchAllJobStatusWithProject();
 
+  console.log('jobStatusaWithProject', jobStatusaWithProject);
+
   return (
     <Wrapper>
       <SubWrapper>
@@ -19,7 +21,7 @@ const Main = () => {
           <Summarization jobStatus={jobStatusaWithProject} />
         </Top>
         <Middle>
-          <JobBoard />
+          <JobBoard jobs={jobStatusaWithProject} />
         </Middle>
         <Bottom>
           <Records />
