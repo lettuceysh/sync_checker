@@ -30,7 +30,6 @@ const OperationStatus = ({ jobStatus }) => {
     outOfSyncNum: 0,
     totalSyncNum: 0
   });
-  console.log('state', state);
 
   useEffect(() => {
     if (!jobStatus) {
@@ -134,7 +133,7 @@ const CircleChartWrapper = styled.div`
   width: 100%;
   height: 120px;
   > div {
-    min-width: 100px;
+    min-width: 110px;
   }
 `;
 

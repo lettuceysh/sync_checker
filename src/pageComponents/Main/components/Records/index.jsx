@@ -11,7 +11,7 @@ import { ItemWrapper } from '../../styled';
 import { colors } from '@/styles/colors';
 
 const columns = [
-  { field: 'checkbox', headerName: <Checkbox /> },
+  { field: 'checkbox', headerName: <Checkbox sx={{ color: 'white' }} /> },
   { field: 'no', headerName: 'MM_No' },
   { field: 'position', headerName: 'Position' },
   { field: 'col1', headerName: 'Col1' },
@@ -218,6 +218,10 @@ const Records = () => {
       <ScrollContainer>
         <StyledTableContainer>
           <StyledTable stickyHeader>
+            <colgroup>
+              <col width="30px" />
+              <col width="30px" />
+            </colgroup>
             <TableHead>
               <TableRow>
                 {columns.map((column) => (

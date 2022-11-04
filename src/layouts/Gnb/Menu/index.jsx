@@ -91,6 +91,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${colors.green100};
   width: 100%;
+  padding: 5px 10px;
   &.disable {
     color: ${colors.gray300};
   }
@@ -105,7 +106,7 @@ const CustomMenuItem = styled(MenuItem)`
   &.on {
     background-color: ${colors.green100};
     margin: 0 3px;
-    padding: 8px 12px;
+
     a {
       color: white;
     }

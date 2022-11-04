@@ -18,6 +18,7 @@ const customStyle = {
 const customTypo = {
   display: 'flex',
   alignItems: 'center',
+  fontSize: '18px',
   svg: {
     marginRight: '3px'
   }

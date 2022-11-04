@@ -64,7 +64,7 @@ const theme = createTheme({
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          color: colors.green100,
+          color: colors.gray900,
           width: '15px',
           height: '15px'
         }
