@@ -1,0 +1,21 @@
+export const Times = [
+  { label: '10초', value: 10 },
+  { label: '20초', value: 20 },
+  { label: '30초', value: 30 },
+  { label: '40초', value: 40 },
+  { label: '50초', value: 50 },
+  { label: '60초', value: 60 },
+  { label: '2분', value: 120 },
+  { label: '3분', value: 180 },
+  { label: '4분', value: 240 },
+  { label: '5분', value: 300 },
+  { label: '6분', value: 360 },
+  { label: '7분', value: 420 },
+  { label: '9분', value: 540 },
+  { label: '10분', value: 600 },
+  { label: '20분', value: 1200 },
+  { label: '30분', value: 1800 },
+  { label: '40분', value: 2400 },
+  { label: '50분', value: 3000 },
+  { label: '60분', value: 3600 }
+];

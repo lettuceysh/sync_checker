@@ -10,9 +10,18 @@ import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
 import { defaultValue } from '..';
 import MuiSelect from '@/components/customMui/MuiSelect';
+import {
+  dsManagementAddDS,
+  dsManagementModifyDS,
+  dsManagementSearchAllDSInfoByDirection
+} from '@/api/dsManagement';
+import { useSearchAllDSInfoByDirection } from '@/api/querys/dsManagement';
+import usePostProcess, { TYPE_TEXT } from '@/hooks/usePostProcess';
 
-const ProjectAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
+const ProjectAddForm = ({ onClose, modifyInfo, defaultValues }) => {
   const { alert } = useAlertStore();
+  const { data } = useSearchAllDSInfoByDirection({ ds_name: 'dev_src_oggtest' });
+  const { goProcess } = usePostProcess();
 
   const { register, handleSubmit, reset, getValues, setFocus, control } = useForm({
     mode: 'onChange',
@@ -33,18 +42,19 @@ const ProjectAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
 
   const addDataSource = (value) => {
     const values = getValues();
-    console.log('value', values);
-    alert({ content: '저장 하시겠습니까?', cancelText: 'Cancel' });
-  };
 
-  const clickDelete = () => {
-    alert({ content: '삭제하시겠습니까?', cancelText: 'Cancel', onOk: () => {} });
+    goProcess({
+      api: modifyInfo ? dsManagementModifyDS : dsManagementAddDS,
+      requestData: values,
+      title: modifyInfo ? TYPE_TEXT.modify : TYPE_TEXT.save,
+      onClose
+    });
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={true}>
       <FormWrapper>
-        <FormTitle>{modifyInfo?.name ? 'Add a new Project' : 'Modify the project'}</FormTitle>
+        <FormTitle>{modifyInfo ? 'Modify a new Project' : 'Add the project'}</FormTitle>
 
         <form onSubmit={handleSubmit(addDataSource)}>
           <AddFormArea>

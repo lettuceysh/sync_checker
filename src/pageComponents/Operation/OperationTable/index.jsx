@@ -7,173 +7,18 @@ import RowItem from './RowItem';
 import { Checkbox } from '@mui/material';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import styled from '@emotion/styled';
+import { formatDate } from '@/libs/utils/date';
+import { useOperationStore } from '../store/useOperationStore';
 
-const columns = [
-  { field: 'name', headerName: 'Name', width: 130 },
-  { field: 'source', headerName: 'C.N.Source', width: 130 },
-  { field: 'target', headerName: 'C.N.Target' },
-  { field: 'subCheck', headerName: '' },
-  { field: 'subId', headerName: 'Id' },
-  { field: 'subSource', headerName: 'Source' },
-  { field: 'subTarget', headerName: 'Target' },
-  { field: 'subTarget', headerName: 'StartTime' },
-  { field: 'startTime', headerName: 'EndTime' },
-  { field: 'EndTime', headerName: 'RunningTime' },
-  { field: 'RunningTime', headerName: 'Status' },
-  { field: 'Status', headerName: 'Status' }
-];
-
-const rows = [
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subCheck: <Checkbox />,
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subCheck: <Checkbox />,
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subCheck: <Checkbox />,
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subCheck: <Checkbox />,
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subCheck: <Checkbox />,
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subCheck: <Checkbox />,
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subCheck: <Checkbox />,
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subCheck: <Checkbox />,
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subCheck: <Checkbox />,
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subCheck: <Checkbox />,
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  }
-];
-
-const OperationManageMentTable = () => {
+const OperationManageMentTable = ({ jobs }) => {
+  const { addId, deleteId } = useOperationStore();
   return (
     <ScrollContainer>
-      <StyledTableContainer sx={{ maxHeight: 440 }}>
-        <StyledTable stickyHeader aria-label="sticky table">
+      <StyledTableContainer>
+        <StyledTable stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell rowSpan={2} width={30}>
+              <TableCell align="center" rowSpan={3}>
                 <Checkbox />
               </TableCell>
               <TableCell align="center" colSpan={3}>
@@ -183,23 +28,66 @@ const OperationManageMentTable = () => {
               <TableCell align="center" colSpan={8}>
                 JOB -Synchronization Result
               </TableCell>
+              <TableCell align="center" rowSpan={3}></TableCell>
             </TableRow>
             <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.field}
-                  align={column.align}
-                  style={{ top: 57, minWidth: column.minWidth }}
-                >
-                  {column.headerName}
-                </TableCell>
-              ))}
+              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">C.N.Source</TableCell>
+              <TableCell align="center">C.N.Source</TableCell>
+              <TableCell align="center">ID</TableCell>
+              <TableCell align="center">Source</TableCell>
+              <TableCell align="center">Target</TableCell>
+              <TableCell align="center">StartTime</TableCell>
+              <TableCell align="center">EndTime</TableCell>
+              <TableCell align="center">RunningTime</TableCell>
+              <TableCell align="center">
+                Out-of-Sync
+                <br />
+                Status
+              </TableCell>
+              <TableCell align="center">
+                Out-of-Sync
+                <br />
+                Count
+              </TableCell>
+              <TableCell align="center">
+                Operation
+                <br />
+                Status
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => {
-              return <RowItem row={row} columns={columns} key={row.id} />;
-            })}
+            {jobs?.map((job, index) => (
+              <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                <TableCell align="center">
+                  <Checkbox />
+                </TableCell>
+                <TableCell align="center">{job.project_name}</TableCell>
+                <TableCell align="center">{job.source_ds_name}</TableCell>
+                <TableCell align="center">{job.target_ds_name}</TableCell>
+                <TableCell align="center">{job.job_id}</TableCell>
+                <TableCell align="center">
+                  <Checkbox
+                    onChange={(value) => {
+                      if (value.target.checked) {
+                        addId(job.session_id);
+                      } else {
+                        deleteId(job.session_id);
+                      }
+                    }}
+                  />
+                </TableCell>
+                <TableCell align="center">{job.source_table_name}</TableCell>
+                <TableCell align="center">{job.target_table_name}</TableCell>
+                <TableCell align="center">{formatDate(job.start_time)}</TableCell>
+                <TableCell align="center">{formatDate(job.end_time)}</TableCell>
+                <TableCell align="center">{job.running_time}</TableCell>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center"></TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </StyledTable>
       </StyledTableContainer>

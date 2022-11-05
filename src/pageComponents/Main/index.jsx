@@ -8,10 +8,7 @@ import Records from './components/Records';
 import Summarization from './components/Summarization';
 
 const Main = () => {
-  const { data: { data: { jobStatusaWithProject } = {} } = {} } =
-    useSearchAllJobStatusWithProject();
-
-  console.log('jobStatusaWithProject', jobStatusaWithProject);
+  const { data: jobStatusaWithProject } = useSearchAllJobStatusWithProject();
 
   return (
     <Wrapper>

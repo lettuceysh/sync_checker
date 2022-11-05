@@ -21,6 +21,11 @@ export const StyledTable = styled(Table)`
         padding: 2px 5px;
         text-align: center;
         line-height: normal;
+
+        //checkbox border
+        .MuiSvgIcon-root {
+          fill: white;
+        }
       }
       &:not(:first-child) {
         > th {

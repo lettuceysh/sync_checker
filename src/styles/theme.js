@@ -99,9 +99,11 @@ const theme = createTheme({
     },
     MuiTextField: {
       styleOverrides: {
-        root: ({ ownerState }) => ({
-          // border: '1px solid red'
-        })
+        root: {
+          '.Mui-disabled': {
+            background: colors.bluegray150
+          }
+        }
       }
     },
     MuiInputLabel: {

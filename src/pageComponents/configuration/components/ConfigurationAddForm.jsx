@@ -14,11 +14,14 @@ import { useEffect, useState } from 'react';
 import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
-import { CheckBox } from '@mui/icons-material';
 import MuiSelect from '@/components/customMui/MuiSelect';
 import TableNavigation from './TableNavigation';
+import usePostProcess, { TYPE_TEXT } from '@/hooks/usePostProcess';
+import { jobManagementAddJob, jobManagementModify } from '@/api/jobManagement';
+import { Times } from './helper';
 
 const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
+  const { goProcess } = usePostProcess();
   const { alert } = useAlertStore();
   const [isTableNavigation, setIsTableNavigation] = useState(false);
 
@@ -36,7 +39,12 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
 
   const addDataSource = () => {
     const values = getValues();
-    alert({ content: '저장 하시겠습니까?', cancelText: 'Cancel' });
+    goProcess({
+      api: modifyInfo ? jobManagementModify : jobManagementAddJob,
+      requestData: values,
+      title: modifyInfo ? TYPE_TEXT.modify : TYPE_TEXT.save,
+      onClose
+    });
   };
 
   const clickSelect = () => {
@@ -76,7 +84,13 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
                 </Grid>
                 <Grid item xs={6}>
                   <SetArea>
-                    <TextField label="Source Table" name="" placeholder="" {...baseProps} />
+                    <TextField
+                      disabled
+                      label="Source Table"
+                      name=""
+                      placeholder=""
+                      {...baseProps}
+                    />
                     <ButtonNormal onClick={clickSelect}>select</ButtonNormal>
                   </SetArea>
                 </Grid>
@@ -91,7 +105,13 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
                 </Grid>
                 <Grid item xs={6}>
                   <SetArea>
-                    <TextField label="Target Table" name="" placeholder="" {...baseProps} />
+                    <TextField
+                      disabled
+                      label="Target Table"
+                      name=""
+                      placeholder=""
+                      {...baseProps}
+                    />
                     <ButtonNormal onClick={clickSelect}>select</ButtonNormal>
                   </SetArea>
                 </Grid>
@@ -100,7 +120,7 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
                     label="Period (Seconds)"
                     name="role"
                     control={control}
-                    options={[{ value: 'dev', label: 'Dev' }]}
+                    options={Times}
                     required
                     rules={{
                       required: 'Period (Seconds)'
@@ -112,7 +132,7 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
                     label="Delay Time (Seconds)"
                     name="role"
                     control={control}
-                    options={[{ value: 'dev', label: 'Dev' }]}
+                    options={Times}
                     required
                     rules={{
                       required: 'Period (Seconds)'
@@ -126,7 +146,7 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
 
               <Buttons>
                 <ButtonNormalFill className="blue" type="submit">
-                  Apply
+                  Save
                 </ButtonNormalFill>
                 <ButtonNormal className="blue" onClick={onClose}>
                   Cancel

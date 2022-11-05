@@ -22,7 +22,7 @@ const CheckResult = () => {
 
   return (
     <SubPageWrapper>
-      <CustomBreadcrumbs current="CheckResult" />
+      <CustomBreadcrumbs current="Job History" />
       <FormWrapper>
         <form onSubmit={handleSubmit(search)}>
           <AddFormArea>

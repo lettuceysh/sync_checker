@@ -20,9 +20,12 @@ import { colors } from '@/styles/colors';
 import { baseProps } from '@/components/customMui/common';
 import { initAllValueInObject } from '@/libs/utils/array';
 import MuiSelect from '@/components/customMui/MuiSelect';
+import { dsManagementAddDS, dsManagementModifyDS } from '@/api/dsManagement';
+import usePostProcess, { TYPE_TEXT } from '@/hooks/usePostProcess';
 
 const DataSourceAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
   const { alert } = useAlertStore();
+  const { goProcess } = usePostProcess();
 
   const { register, handleSubmit, reset, getValues, control } = useForm({
     mode: 'onChange',
@@ -38,8 +41,12 @@ const DataSourceAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
 
   const addDataSource = () => {
     const values = getValues();
-    console.log('values', values);
-    alert({ content: '저장 하시겠습니까?', cancelText: 'Cancel' });
+    goProcess({
+      api: modifyInfo ? dsManagementModifyDS : dsManagementAddDS,
+      requestData: values,
+      title: modifyInfo ? TYPE_TEXT.modify : TYPE_TEXT.save,
+      onClose
+    });
   };
 
   const testConnection = () => {
@@ -57,12 +64,8 @@ const DataSourceAddForm = ({ onClose, modifyInfo, defaultValues, open }) => {
     });
   };
 
-  const clickDelete = () => {
-    alert({ content: '삭제하시겠습니까?', cancelText: 'Cancel', onOk: () => {} });
-  };
-
   return (
-    <Dialog open={open}>
+    <Dialog open={true}>
       <FormWrapper>
         <FormTitle>{modifyInfo ? 'MDMS Modify' : 'Data Source Add'}</FormTitle>
 

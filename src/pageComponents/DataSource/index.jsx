@@ -1,6 +1,7 @@
-import { dsManagementSearchAllDSInfo } from '@/api/dataSource';
+import { dsManagementDeleteDS, dsManagementSearchAllDSInfo } from '@/api/dsManagement';
 import { ButtonNormal } from '@/components/Buttons';
 import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
+import usePostProcess, { TYPE_TEXT } from '@/hooks/usePostProcess';
 import { makeDefaultValues } from '@/libs/utils/array';
 import { useAlertStore } from '@/store';
 import { colors } from '@/styles/colors';
@@ -27,6 +28,7 @@ const columns = [
 const defaultValues = makeDefaultValues(columns);
 
 const DataSource = () => {
+  const { goProcess } = usePostProcess();
   const [data, setData] = useState([]);
 
   const [selectedData, setSelectedData] = useState(null);
@@ -43,7 +45,7 @@ const DataSource = () => {
   }, []);
 
   const clickAdd = () => {
-    setSelectedData(defaultValues);
+    setSelectedData(null);
     setShowAddForm(true);
   };
 
@@ -60,14 +62,20 @@ const DataSource = () => {
     setSelectedData(value);
   };
 
-  const clickDelete = (value) => {
-    setSelectedData(value);
+  const clickDelete = () => {
+    goProcess({
+      api: dsManagementDeleteDS,
+      requestData: { name: selectedData.name },
+      title: TYPE_TEXT.remove
+    });
+
+    setSelectedData(null);
   };
 
   return (
     <SubPageWrapper>
       <Top>
-        <CustomBreadcrumbs current="Data source management" />
+        <CustomBreadcrumbs current="Data source list" />
         <ButtonWrapper>
           <ButtonNormal className="blue" onClick={clickAdd} style={{ width: '100px' }}>
             Add
@@ -89,46 +97,47 @@ const DataSource = () => {
           </ButtonNormal>
         </ButtonWrapper>
       </Top>
-      <ScrollContainer>
-        <StyledTableContainer>
-          <StyledTable stickyHeader>
-            <TableHead>
-              <TableRow>
-                <TableCell align="center"></TableCell>
-                {columns.map((column) => (
-                  <TableCell key={column.field}>{column.headerName}</TableCell>
+      {/* <ScrollContainer> */}
+      <StyledTableContainer>
+        <StyledTable stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell align="center"></TableCell>
+              {columns.map((column) => (
+                <TableCell key={column.field}>{column.headerName}</TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((row, rowIndex) => (
+              <TableRow key={rowIndex}>
+                <TableCell align="center">
+                  <input
+                    type="radio"
+                    name="table"
+                    checked={selectedData?.rowIndex === rowIndex}
+                    onClick={() => clickRadio({ ...row, rowIndex })}
+                  />
+                </TableCell>
+                {columns.map((column, index) => (
+                  <TableCell key={`${column.field}${index}`} align={column.align}>
+                    {row[column.field]}
+                  </TableCell>
                 ))}
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((row, rowIndex) => (
-                <TableRow key={rowIndex}>
-                  <TableCell align="center">
-                    <input
-                      type="radio"
-                      name="table"
-                      checked={selectedData?.rowIndex === rowIndex}
-                      onClick={() => clickRadio({ ...row, rowIndex })}
-                    />
-                  </TableCell>
-                  {columns.map((column, index) => (
-                    <TableCell key={`${column.field}${index}`} align={column.align}>
-                      {row[column.field]}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </StyledTable>
-        </StyledTableContainer>
-      </ScrollContainer>
+            ))}
+          </TableBody>
+        </StyledTable>
+      </StyledTableContainer>
+      {/* </ScrollContainer> */}
 
-      <DataSourceAddForm
-        modifyInfo={selectedData}
-        onClose={closeForm}
-        defaultValues={defaultValues}
-        open={showAddForm}
-      />
+      {showAddForm && (
+        <DataSourceAddForm
+          modifyInfo={selectedData}
+          onClose={closeForm}
+          defaultValues={defaultValues}
+        />
+      )}
     </SubPageWrapper>
   );
 };

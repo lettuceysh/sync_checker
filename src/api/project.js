@@ -8,17 +8,17 @@ export const projectManagementSearchAllProject = async () => {
   return data;
 };
 
-export const projectManagementAdd = async () => {
-  const { data } = await post(`${baseUrl}/addProject`);
+export const projectManagementAdd = async (request) => {
+  const { data } = await post(`${baseUrl}/addProject`, request);
   return data;
 };
 
-export const projectManagementModify = async () => {
-  const { data } = await post(`${baseUrl}/modifyProject`);
+export const projectManagementModify = async (request) => {
+  const { data } = await post(`${baseUrl}/modifyProject`, request);
   return data;
 };
 
-export const projectManagementDelete = async () => {
-  const { data } = await post(`${baseUrl}/deleteProject`);
+export const projectManagementDelete = async (request) => {
+  const { data } = await post(`${baseUrl}/deleteProject`, request);
   return data;
 };

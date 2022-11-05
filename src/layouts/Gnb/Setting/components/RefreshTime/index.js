@@ -26,7 +26,6 @@ const RefreshTime = ({ onClose }) => {
 
     if (interval) {
       changeInterval(interval);
-      console.log('interval', interval);
       reset({ interval });
     }
   }, []);

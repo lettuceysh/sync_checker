@@ -26,13 +26,13 @@ import CheckResult from './pages/CheckResult';
 
 function App() {
   const interval = getStorage(STORAGE_INTERVAL_KEY);
-  console.log('interval', interval);
   const queryClient = useMemo(
     () =>
       new QueryClient({
         defaultOptions: {
           queries: {
-            refetchInterval: interval
+            retry: 0
+            // refetchInterval: interval
             // refetchIntervalInBackground: true
           }
         }

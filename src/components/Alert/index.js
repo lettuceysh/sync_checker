@@ -20,7 +20,7 @@ const Alert = () => {
   };
 
   return (
-    <Dialog onClose={close} open={open} style={{ zIndex: 9999 }}>
+    <Dialog open={open} style={{ zIndex: 9999 }}>
       <Top>
         <button type="button" onClick={close}>
           <ClearIcon />

@@ -30,8 +30,6 @@ const Lnb = () => {
 
   const getClass = React.useCallback(
     (path) => {
-      console.log('location?.pathname', location?.pathname);
-      console.log('path', path);
       return location?.pathname === path ? 'on' : '';
     },
     [location?.pathname]

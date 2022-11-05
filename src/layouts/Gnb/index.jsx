@@ -13,8 +13,9 @@ const Gnb = ({ isMain = true }) => {
       {isMain ? <BasicMenu /> : <div></div>}
       <Title>
         <H1>
-          <BlurOnIcon style={{ color: colors.logo, fontSize: '30px', marginRight: '10px' }} />
-          <strong>SyncChecker</strong> For Oracle GoldenGate
+          {/* <BlurOnIcon style={{ color: colors.logo, fontSize: '30px', marginRight: '10px' }} /> */}
+          {/* <strong>SyncChecker</strong> For Oracle GoldenGate */}
+          <img src="/sync_checker/images/logo.png" width={155} />
         </H1>
       </Title>
       <Right>

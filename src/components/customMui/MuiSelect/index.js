@@ -1,9 +1,9 @@
 const { FormControl, InputLabel, Select, MenuItem } = require('@mui/material');
 const { Controller } = require('react-hook-form');
 
-const MuiSelect = ({ options, label, ...props }) => {
+const MuiSelect = ({ options, label, required, ...props }) => {
   return (
-    <FormControl fullWidth size="small">
+    <FormControl fullWidth size="small" required>
       <InputLabel>{label}</InputLabel>
       <Controller
         {...props}
