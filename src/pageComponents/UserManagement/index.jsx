@@ -52,7 +52,7 @@ const UserManagement = () => {
   return (
     <SubPageWrapper>
       <FormTop>
-        <CustomBreadcrumbs current="User Management" />
+        <CustomBreadcrumbs current="User List" />
         <ButtonWrapper>
           <ButtonNormal className="blue" onClick={clickAdd} style={{ width: '100px' }}>
             Add
@@ -74,48 +74,45 @@ const UserManagement = () => {
           </ButtonNormal>
         </ButtonWrapper>
       </FormTop>
-      <ScrollContainer>
-        <StyledTableContainer>
-          <StyledTable stickyHeader>
-            <TableHead>
-              <TableRow>
-                <TableCell></TableCell>
-                <TableCell>User ID</TableCell>
-                <TableCell>User Name</TableCell>
-                <TableCell>User Phone</TableCell>
-                <TableCell>User E-Mail</TableCell>
-                <TableCell>User Role</TableCell>
-                <TableCell>User Locked</TableCell>
-                <TableCell>User Description</TableCell>
-              </TableRow>
-            </TableHead>
 
-            <TableBody>
-              {users?.map((user, rowIndex) => (
-                <TableRow key={rowIndex}>
-                  <TableCell align="center">
-                    <input
-                      type="radio"
-                      name="table"
-                      checked={selectedData?.rowIndex === rowIndex}
-                      onClick={() => clickRadio({ ...user, rowIndex })}
-                    />
-                  </TableCell>
-                  <TableCell>{user.id}</TableCell>
-                  <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.phone}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell align="center">{user.role === 1 ? 'Admin' : 'Normal'}</TableCell>
-                  <TableCell align="center">
-                    {<Checkbox checked={user.locked} disabled />}
-                  </TableCell>
-                  <TableCell>{user.description}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </StyledTable>
-        </StyledTableContainer>
-      </ScrollContainer>
+      <StyledTableContainer>
+        <StyledTable stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell>User ID</TableCell>
+              <TableCell>User Name</TableCell>
+              <TableCell>User Phone</TableCell>
+              <TableCell>User E-Mail</TableCell>
+              <TableCell>User Role</TableCell>
+              <TableCell>User Locked</TableCell>
+              <TableCell>User Description</TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {users?.map((user, rowIndex) => (
+              <TableRow key={rowIndex}>
+                <TableCell align="center">
+                  <input
+                    type="radio"
+                    name="table"
+                    checked={selectedData?.rowIndex === rowIndex}
+                    onClick={() => clickRadio({ ...user, rowIndex })}
+                  />
+                </TableCell>
+                <TableCell>{user.id}</TableCell>
+                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.phone}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell align="center">{user.role === 1 ? 'Admin' : 'Normal'}</TableCell>
+                <TableCell align="center">{<Checkbox checked={user.locked} disabled />}</TableCell>
+                <TableCell>{user.description}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </StyledTable>
+      </StyledTableContainer>
       {showAddForm && <UserAddForm modifyInfo={selectedData} onClose={closeForm} />}
     </SubPageWrapper>
   );
