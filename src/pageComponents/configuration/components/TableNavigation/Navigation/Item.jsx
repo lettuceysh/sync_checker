@@ -3,9 +3,19 @@ import styled from '@emotion/styled';
 import { MenuItem, MenuList } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from 'react';
+import { useTable } from '../store/useTableStore';
 
-const NavigationItem = ({ depth1, depth2 }) => {
+const NavigationItem = ({ depth1, depth2, type }) => {
   const [showSub, setShowSub] = useState(false);
+  const { setSourceList, setTargetList } = useTable();
+
+  const selectTable = () => {
+    if (type === 'source') {
+      setSourceList([{ test: 1 }]);
+    } else {
+      setTargetList([{ test: 1 }]);
+    }
+  };
 
   return (
     <Wrapper>
@@ -15,8 +25,8 @@ const NavigationItem = ({ depth1, depth2 }) => {
       {showSub && (
         <TwoDepth>
           <MenuList>
-            <StyledMenuItem>Table1</StyledMenuItem>
-            <StyledMenuItem>Table2</StyledMenuItem>
+            <StyledMenuItem onClick={() => selectTable()}>Table1</StyledMenuItem>
+            <StyledMenuItem onClick={() => selectTable()}>Table2</StyledMenuItem>
           </MenuList>
         </TwoDepth>
       )}

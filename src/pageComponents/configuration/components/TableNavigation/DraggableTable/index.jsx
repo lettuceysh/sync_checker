@@ -10,6 +10,8 @@ import DraggableRow from './DraggableRow';
 import { TextField } from '@mui/material';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import styled from '@emotion/styled';
+import { useTable } from '../store/useTableStore';
+import { colors } from '@/styles/colors';
 
 const tableData = [
   { uuid: '1', description: 'Item #1', unitPrice: 11.11, quantity: 1 },
@@ -38,7 +40,8 @@ const getListStyle = (isDraggingOver) => ({
   width: 250
 });
 
-const DraggableTable = () => {
+const DraggableTable = ({ list }) => {
+  console.log('list', list);
   const [localItems, setLocalItems] = useState(tableData);
 
   // normally one would commit/save any order changes via an api call here...
@@ -50,6 +53,9 @@ const DraggableTable = () => {
     if (result.destination.index === result.source.index) {
       return;
     }
+
+    console.log('handleDragEnd result : ', result);
+    console.log('handleDragEnd provided : ', provided);
 
     setLocalItems((prev) => {
       const temp = [...prev];
@@ -63,6 +69,7 @@ const DraggableTable = () => {
 
   return (
     <Wrapper>
+      <Title>Please Select a Table !</Title>
       <StyledTableContainer>
         <StyledTable>
           <TableHead>
@@ -89,26 +96,42 @@ const DraggableTable = () => {
               </TableCell>
             </TableRow>
           </TableHead>
-          <DragDropContext onDragEnd={handleDragEnd}>
-            <Droppable droppableId="droppable" direction="vertical">
-              {(droppableProvided) => (
-                <TableBody ref={droppableProvided.innerRef} {...droppableProvided.droppableProps}>
-                  {tableData.map((item, index) => (
-                    <DraggableRow key={item.uuid} item={item} index={index} />
-                  ))}
-                  {droppableProvided.placeholder}
-                </TableBody>
-              )}
-            </Droppable>
-          </DragDropContext>
+
+          {list && (
+            <DragDropContext onDragEnd={handleDragEnd}>
+              <Droppable droppableId="droppable" direction="vertical">
+                {(droppableProvided) => (
+                  <TableBody ref={droppableProvided.innerRef} {...droppableProvided.droppableProps}>
+                    {tableData.map((item, index) => (
+                      <DraggableRow key={item.uuid} item={item} index={index} />
+                    ))}
+                    {droppableProvided.placeholder}
+                  </TableBody>
+                )}
+              </Droppable>
+            </DragDropContext>
+          )}
         </StyledTable>
+        {!list && <Nodata>No Data</Nodata>}
       </StyledTableContainer>
     </Wrapper>
   );
 };
 
+const Nodata = styled.div`
+  padding: 20px;
+
+  text-align: center;
+`;
+
 const Wrapper = styled.div`
   flex: 1;
   padding-left: 20px;
+`;
+
+const Title = styled.div`
+  padding: 5px;
+  font-weight: 600;
+  color: ${colors.gray800};
 `;
 export default DraggableTable;

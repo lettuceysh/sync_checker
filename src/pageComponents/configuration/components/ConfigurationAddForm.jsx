@@ -76,7 +76,7 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
                 </Grid>
                 <Grid item xs={6}>
                   <SetArea>
-                    <TextField label="Target Connection" name="" placeholder="" {...baseProps} />
+                    <TextField label="Source Table" name="" placeholder="" {...baseProps} />
                     <ButtonNormal onClick={clickSelect}>select</ButtonNormal>
                   </SetArea>
                 </Grid>
@@ -91,7 +91,7 @@ const ConfigurationAddForm = ({ onClose, modifyInfo }) => {
                 </Grid>
                 <Grid item xs={6}>
                   <SetArea>
-                    <TextField label="Target Connection" name="" placeholder="" {...baseProps} />
+                    <TextField label="Target Table" name="" placeholder="" {...baseProps} />
                     <ButtonNormal onClick={clickSelect}>select</ButtonNormal>
                   </SetArea>
                 </Grid>

@@ -17,18 +17,30 @@ const DraggableRow = ({ item, index }) => {
               background: snapshot.isDragging ? 'rgba(245,245,245, 0.75)' : 'none'
             }}
           >
-            <TableCell align="center">
+            <TableCell align="center" width="50px">
               <div {...draggableProvided.dragHandleProps}>
                 <DragHandleIcon />
               </div>
             </TableCell>
-            <TableCell align="center">{index + 1}</TableCell>
-            <TableCell align="center">Y</TableCell>
-            <TableCell align="center">Col1</TableCell>
-            <TableCell align="center">Char(10)</TableCell>
-            <TableCell align="center">Char2(10)</TableCell>
-            <TableCell align="center">N</TableCell>
-            <TableCell align="center">
+            <TableCell width="100px" align="center">
+              {index + 1}
+            </TableCell>
+            <TableCell width="100px" align="center">
+              Y
+            </TableCell>
+            <TableCell width="100px" align="center">
+              Col1
+            </TableCell>
+            <TableCell width="100px" align="center">
+              Char(10)
+            </TableCell>
+            <TableCell width="100px" align="center">
+              Char2(10)
+            </TableCell>
+            <TableCell width="100px" align="center">
+              N
+            </TableCell>
+            <TableCell width="100px" align="center">
               <Checkbox />
             </TableCell>
           </TableRow>

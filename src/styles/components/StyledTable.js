@@ -1,9 +1,9 @@
 import { colors } from '../colors';
 
 const { default: styled } = require('@emotion/styled');
-const { Table } = require('@mui/material');
+const { Table, TableContainer } = require('@mui/material');
 
-export const StyledTableContainer = styled(Table)`
+export const StyledTableContainer = styled(TableContainer)`
   margin-top: 5px;
   background-color: ${({ theme }) => theme.palette.white100};
   box-shadow: rgb(100 116 139 / 12%) 0px 10px 15px;

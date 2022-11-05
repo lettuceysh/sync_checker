@@ -95,7 +95,7 @@ const Reaire = ({ onClose }) => {
             </StyledTable>
           </StyledTableContainer>
         </ScrollContainer>
-        <Buttons>
+        <Buttons style={{ marginTop: '30px' }}>
           <ButtonNormalFill className="blue" type="submit" onClick={confirm}>
             Confirm
           </ButtonNormalFill>
@@ -109,12 +109,12 @@ const Reaire = ({ onClose }) => {
 };
 
 const ScrollContainer = styled.div`
-  height: 100px;
+  /* height: 100px; */
   overflow-y: auto;
 `;
 
 const Wrapper = styled.div`
-  padding: 10px;
+  padding: 20px;
 `;
 
 export default Reaire;

@@ -111,6 +111,7 @@ const Configuration = () => {
                     {<Checkbox checked={user.locked} disabled />}
                   </TableCell>
                   <TableCell>{user.description}</TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               ))}
             </TableBody>

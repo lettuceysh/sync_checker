@@ -3,18 +3,18 @@ import styled from '@emotion/styled';
 import DraggableTable from './DraggableTable';
 import Navigation from './Navigation';
 
-const TableNavigationItem = () => {
+const TableNavigationItem = ({ list, type }) => {
   return (
     <Wrapper>
-      <Navigation />
-      <DraggableTable />
+      <Navigation type={type} />
+      <DraggableTable list={list} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
+  /* align-items; */
   height: auto;
   margin-top: 10px;
   border: 1px solid ${colors.bluegray150};

@@ -48,8 +48,9 @@ const Top = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 20px;
+  padding: 25px 30px 20px 20px;
   min-width: 300px;
+  max-width: 500px;
   line-height: 1.7;
 `;
 
@@ -57,7 +58,7 @@ const Buttons = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-  padding: 10px;
+  padding: 10px 10px 17px 10px;
 
   > button {
     width: 100px;
