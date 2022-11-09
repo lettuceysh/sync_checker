@@ -1,4 +1,3 @@
-import { searchAllJobStatusWithProject } from '@/api/jobManagement';
 import { useSearchAllJobStatusWithProject } from '@/api/querys/jobManagementQuery';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';

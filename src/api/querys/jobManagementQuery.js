@@ -70,11 +70,28 @@ export const useSearchOOSRecordsBySessionID = (request) => {
     {
       enabled: !!request?.session_id,
       select: (data) => {
-        return data.data?.oos_records.map((record) => ({
-          ...record,
-          source: JSON.parse(record.source_record_vals_json) || {},
-          target: JSON.parse(record.target_record_vals_json) || {}
-        }));
+        const oosRecords = data.data?.oos_records.map((record) => {
+          const source = JSON.parse(record.source_record_vals_json) || {};
+          const target = JSON.parse(record.target_record_vals_json) || {};
+
+          const keys = [...Object.keys(source), ...Object.keys(target)];
+          const equal = {};
+          keys.forEach((key) => {
+            equal[key] = source[key] === target[key];
+          });
+
+          return {
+            ...record,
+            keys,
+            equal,
+            source,
+            target
+          };
+        });
+
+        const heads = oosRecords.find((record) => record.keys.length > 0)?.keys;
+
+        return { oosRecords, heads };
       }
     }
   );

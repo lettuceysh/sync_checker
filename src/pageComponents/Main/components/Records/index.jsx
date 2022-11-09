@@ -22,11 +22,10 @@ const Records = () => {
   const [isRepare, setIsRepare] = useState(false);
   const { selectedJob = {} } = useMainStore();
   const { alert } = useAlertStore();
-  const { data: oosRecords } = useSearchOOSRecordsBySessionID({
+  const { data: { oosRecords, heads } = {} } = useSearchOOSRecordsBySessionID({
     session_id: selectedJob?.session_id
   });
 
-  const heads = getHeaderList(oosRecords);
   const { ids, addId, removeId } = useChecked();
 
   const clickCancel = async () => {
@@ -59,7 +58,7 @@ const Records = () => {
         <Typography variant="h2">Out of Sync. Records</Typography>
 
         <Buttons>
-          <CustomButtonType2 onClick={clickCancel}>
+          <CustomButtonType2 onClick={clickCancel} disabled={ids.length === 0}>
             <strong>Cancel</strong>
             <br />
             Compare paris
@@ -115,7 +114,11 @@ const Records = () => {
                     </TableCell>
                     <TableCell align="center">Source</TableCell>
                     {heads?.map((head, index) => (
-                      <TableCell align="center" key={index}>
+                      <TableCell
+                        align="center"
+                        key={`source_cols${index}`}
+                        className={record.equal[head] && 'red'}
+                      >
                         {record.source[head]}
                       </TableCell>
                     ))}
@@ -123,7 +126,7 @@ const Records = () => {
                   <TableRow hover role="checkbox" key={`target${index}`}>
                     <TableCell align="center">Target</TableCell>
                     {heads?.map((head, index) => (
-                      <TableCell align="center" key={index}>
+                      <TableCell align="center" key={`target_col${index}`}>
                         {record.target[head]}
                       </TableCell>
                     ))}
@@ -143,6 +146,11 @@ const ScrollContainer = styled.div`
   height: 200px;
   overflow-y: auto;
   margin-top: 5px;
+
+  .red {
+    background-color: ${colors.red100};
+    color: white;
+  }
 `;
 
 const Top = styled.div`
@@ -168,6 +176,9 @@ const Buttons = styled.div`
 const CustomButton = styled(Button)`
   display: block;
   line-height: normal;
+  &:disabled {
+    border: 1px solid ${colors.bluegray250};
+  }
   &&& {
     font-size: 10px;
   }
