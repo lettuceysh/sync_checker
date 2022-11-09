@@ -12,8 +12,16 @@ import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTab
 import { ItemWrapper } from '../../styled';
 import dayjs from 'dayjs';
 import { formatDate } from '@/libs/utils/date';
+import { colors } from '@/styles/colors';
+import { useMainStore } from '../../store/useMainStore';
+
+import classnames from 'classnames';
+
+const operationStatus = ['', 'stop', 'Running', 'Abended'];
 
 const JobBoard = ({ jobs }) => {
+  const { selectedJob, setSelectedJob } = useMainStore();
+
   return (
     <ItemWrapper>
       <Typography variant="h2">Job Synchronization Board</Typography>
@@ -59,7 +67,19 @@ const JobBoard = ({ jobs }) => {
             </TableHead>
             <TableBody>
               {jobs?.map((job, index) => (
-                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                <TableRow
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                  key={index}
+                  className={classnames({
+                    red: job.outofsync_count > 0,
+                    selected: job.session_id === selectedJob?.session_id
+                  })}
+                  onClick={() => {
+                    job.outofsync_count > 0 && setSelectedJob(job);
+                  }}
+                >
                   <TableCell align="center">{job.project_name}</TableCell>
                   <TableCell align="center">{job.source_ds_name}</TableCell>
                   <TableCell align="center">{job.target_ds_name}</TableCell>
@@ -69,9 +89,11 @@ const JobBoard = ({ jobs }) => {
                   <TableCell align="center">{formatDate(job.start_time)}</TableCell>
                   <TableCell align="center">{formatDate(job.end_time)}</TableCell>
                   <TableCell align="center">{job.running_time}</TableCell>
-                  <TableCell align="center"></TableCell>
-                  <TableCell align="center"></TableCell>
-                  <TableCell align="center"></TableCell>
+                  <TableCell align="center">
+                    {job.outofsync_count > 0 ? 'Out of Sync' : 'Sync'}
+                  </TableCell>
+                  <TableCell align="center">{job.outofsync_count}</TableCell>
+                  <TableCell align="center">{operationStatus[job.operation_status]}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -86,6 +108,24 @@ const ScrollContainer = styled.div`
   max-height: 400px;
   overflow-y: auto;
   margin-top: 5px;
+
+  table {
+    .red {
+      cursor: pointer;
+      td {
+        color: ${colors.red100};
+      }
+    }
+    .selected {
+      &,
+      &:hover {
+        background-color: ${colors.red100};
+        td {
+          color: ${colors.white100};
+        }
+      }
+    }
+  }
 `;
 
 export default JobBoard;

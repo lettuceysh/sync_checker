@@ -149,7 +149,10 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   &.disable {
-    color: ${colors.gray300};
+    color: ${colors.gray500};
+    svg {
+      fill: ${colors.gray500};
+    }
   }
 `;
 

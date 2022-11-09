@@ -10,6 +10,8 @@ import { Typography } from '@mui/material';
 import styled from '@emotion/styled';
 import { StyledTable, StyledTableContainer } from '@/styles/components/StyledTable';
 import { ItemWrapper } from '../../styled';
+import { useSearchAllSessionResultByOptions } from '@/api/querys/jobManagementQuery';
+import { useSearchStore } from '../../store/useSearchStore';
 
 const columns = [
   { field: 'name', headerName: 'Name', width: 130 },
@@ -25,192 +27,14 @@ const columns = [
   { field: 'Status', headerName: 'Status' }
 ];
 
-const rows = [
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  },
-  {
-    id: 1,
-    name: 'Snow',
-    source: 'Jon',
-    target: 'test',
-    sub: [
-      {
-        subId: '1-1',
-        subSource: 'source1',
-        subTarget: 'target1',
-        startTime: 'startTime1',
-        EndTime: 'EndTime1',
-        RunningTime: 'RunningTime1',
-        Status: 'Status1'
-      },
-      {
-        subId: '1-2',
-        subSource: 'source2',
-        subTarget: 'target2',
-        startTime: 'startTime2',
-        EndTime: 'EndTime2',
-        RunningTime: 'RunningTime2',
-        Status: 'Status2'
-      }
-    ]
-  }
-];
+const rows = [];
 
 const SynchronizationStatus = () => {
+  const { requestData } = useSearchStore();
+
+  const { data } = useSearchAllSessionResultByOptions(requestData);
+
+  console.log('data', data);
   return (
     <ItemWrapper>
       <Typography variant="h2">Job Synchronization Board</Typography>

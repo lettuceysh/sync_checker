@@ -1,5 +1,6 @@
 import { dsManagementDeleteDS } from '@/api/dsManagement';
 import { projectManagementSearchAllProject } from '@/api/project';
+import { useSearchAllProject } from '@/api/querys/projectManagament';
 import { ButtonNormal } from '@/components/Buttons';
 import CustomBreadcrumbs from '@/components/CustomBreadcrumbs';
 import usePostProcess, { TYPE_TEXT } from '@/hooks/usePostProcess';
@@ -29,18 +30,12 @@ const columns = [
 const defaultValues = makeDefaultValues(columns);
 
 const ProjectManagement = () => {
-  const [data, setData] = useState([]);
   const { goProcess } = usePostProcess();
+  const { data } = useSearchAllProject();
 
   const [selectedData, setSelectedData] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const { alert } = useAlertStore();
-
-  useEffect(() => {
-    projectManagementSearchAllProject().then((response) => {
-      setData(response.data.projects);
-    });
-  }, []);
 
   const clickAdd = () => {
     setSelectedData(null);
@@ -126,7 +121,7 @@ const ProjectManagement = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row, rowIndex) => (
+            {data?.map((row, rowIndex) => (
               <TableRow key={rowIndex}>
                 <TableCell align="center">
                   <input

@@ -13,6 +13,29 @@ export const searchAllJobWithProject = async () => {
   return data;
 };
 
+export const searchJobByProject = async (request) => {
+  const { data } = await post(`${baseUrl}/searchJobByProject`, request);
+  return data;
+};
+
+export const jobManagementSearchAllSessionResultByOptions = async (request) => {
+  const { data } = await post(`${baseUrl}/searchAllSessionResultByOptions`, request);
+  return data;
+};
+
+export const jobManagementSearchOOSRecordsBySessionID = async (request) => {
+  const { data } = await post(`${baseUrl}/searchOOSRecordsBySessionID`, request);
+  return data;
+};
+
+export const cancelOOSPairs = (request) => {
+  return post(`${baseUrl}/cancelOOSPairs`, request);
+};
+
+export const reCompareOOSPairs = (request) => {
+  return post(`${baseUrl}/reCompareOOSPairs`, request);
+};
+
 export const jobManagementStartJob = (request) => {
   return post(`${baseUrl}/startJob`, request);
 };

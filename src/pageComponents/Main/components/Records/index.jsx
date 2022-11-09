@@ -2,7 +2,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-
+import { formatDate } from '@/libs/utils/date';
 import RowItem from './RowItem';
 import { Button, Checkbox, Typography } from '@mui/material';
 import styled from '@emotion/styled';
@@ -11,198 +11,55 @@ import { ItemWrapper } from '../../styled';
 import { colors } from '@/styles/colors';
 import Reaire from './components/Repaire';
 import { useState } from 'react';
-
-const columns = [
-  { field: 'checkbox', headerName: <Checkbox sx={{ color: 'white' }} /> },
-  { field: 'no', headerName: 'MM_No' },
-  { field: 'position', headerName: 'Position' },
-  { field: 'col1', headerName: 'Col1' },
-  { field: 'col2', headerName: 'Col2' },
-  { field: 'col3', headerName: 'Col3' },
-  { field: 'col4', headerName: 'Col4' },
-  { field: 'col5', headerName: 'Col5' },
-  { field: 'col6', headerName: 'Col6' },
-  { field: 'col7', headerName: 'Col7' }
-];
-
-const rows = [
-  {
-    checkbox: <Checkbox />,
-    id: 1,
-    no: '1',
-    sub: [
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      },
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      }
-    ]
-  },
-  {
-    checkbox: <Checkbox />,
-    id: 2,
-    no: '2',
-    sub: [
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      },
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      }
-    ]
-  },
-  {
-    checkbox: <Checkbox />,
-    id: 1,
-    no: '1',
-    sub: [
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      },
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      }
-    ]
-  },
-  {
-    checkbox: <Checkbox />,
-    id: 2,
-    no: '2',
-    sub: [
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      },
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      }
-    ]
-  },
-  {
-    checkbox: <Checkbox />,
-    id: 1,
-    no: '1',
-    sub: [
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      },
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      }
-    ]
-  },
-  {
-    checkbox: <Checkbox />,
-    id: 2,
-    no: '2',
-    sub: [
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      },
-      {
-        position: 'Source',
-        col1: 'val1',
-        col2: 'val2',
-        col3: 'val3',
-        col4: 'val4',
-        col5: 'val5',
-        col6: 'val6',
-        col7: 'val7'
-      }
-    ]
-  }
-];
+import { useMainStore } from '../../store/useMainStore';
+import { useSearchOOSRecordsBySessionID } from '@/api/querys/jobManagementQuery';
+import { getHeaderList } from './helper';
+import { useChecked } from '@/hooks/useChecked';
+import { cancelOOSPairs, reCompareOOSPairs } from '@/api/jobManagement';
+import { useAlertStore } from '@/store';
 
 const Records = () => {
   const [isRepare, setIsRepare] = useState(false);
+  const { selectedJob = {} } = useMainStore();
+  const { alert } = useAlertStore();
+  const { data: oosRecords } = useSearchOOSRecordsBySessionID({
+    session_id: selectedJob?.session_id
+  });
 
+  const heads = getHeaderList(oosRecords);
+  const { ids, addId, removeId } = useChecked();
+
+  const clickCancel = async () => {
+    try {
+      await cancelOOSPairs({ recordIds: ids });
+      alert({ content: '성공' });
+    } catch (e) {
+      alert({ content: '실패' });
+    }
+  };
+
+  const clickReCompare = async () => {
+    try {
+      await reCompareOOSPairs({ session_id: selectedJob?.session_id });
+      alert({ content: '성공' });
+    } catch (e) {
+      alert({ content: '실패' });
+    }
+  };
   return (
     <ItemWrapper>
       <Top>
         <Info>
-          [ <span>JOB[DEC] TASK[Owner.table1 Owner.table2] DATE[2022-07-28 10:20:10</span> ]
+          [{' '}
+          <span>{`${selectedJob?.project_name} TASK[${selectedJob?.source_table_name} ${
+            selectedJob?.target_table_name
+          }] DATE[${formatDate(selectedJob?.start_time)}`}</span>{' '}
+          ]
         </Info>
         <Typography variant="h2">Out of Sync. Records</Typography>
 
         <Buttons>
-          <CustomButtonType2>
+          <CustomButtonType2 onClick={clickCancel}>
             <strong>Cancel</strong>
             <br />
             Compare paris
@@ -212,7 +69,7 @@ const Records = () => {
             <br />
             Out-of-Sync Dat
           </CustomButton>
-          <CustomButtonType3>
+          <CustomButtonType3 onClick={clickReCompare}>
             <strong>Re-compare</strong>
             <br />
             Out-of-Sync Data
@@ -229,17 +86,50 @@ const Records = () => {
             </colgroup>
             <TableHead>
               <TableRow>
-                {columns.map((column) => (
-                  <TableCell key={column.field} align="center">
-                    {column.headerName}
+                <TableCell align="center">Out-of-Sync ID</TableCell>
+                <TableCell align="center">Position</TableCell>
+                {heads?.map((head, index) => (
+                  <TableCell align="center" key={index}>
+                    {head}
                   </TableCell>
                 ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => {
-                return <RowItem row={row} columns={columns} key={row.id} />;
-              })}
+              {oosRecords?.map((record, index) => (
+                <>
+                  <TableRow hover role="checkbox" key={`source${index}`}>
+                    <TableCell align="center" rowSpan={2}>
+                      <Checkbox
+                        onChange={(value) => {
+                          if (value.target.checked) {
+                            addId(record.id);
+                          } else {
+                            removeId(record.id);
+                          }
+                        }}
+                      />
+                    </TableCell>
+                    <TableCell align="center" rowSpan={2}>
+                      {record.id}
+                    </TableCell>
+                    <TableCell align="center">Source</TableCell>
+                    {heads?.map((head, index) => (
+                      <TableCell align="center" key={index}>
+                        {record.source[head]}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                  <TableRow hover role="checkbox" key={`target${index}`}>
+                    <TableCell align="center">Target</TableCell>
+                    {heads?.map((head, index) => (
+                      <TableCell align="center" key={index}>
+                        {record.target[head]}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </>
+              ))}
             </TableBody>
           </StyledTable>
         </StyledTableContainer>

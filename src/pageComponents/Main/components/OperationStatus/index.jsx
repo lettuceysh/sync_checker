@@ -41,11 +41,11 @@ const OperationStatus = ({ jobStatus }) => {
     let syncNum = 0;
     let outOfSyncNum = 0;
     jobStatus.forEach((item) => {
-      if (item.status === 1) {
+      if (item.operation_status === 1) {
         stopNum++;
-      } else if (item.status === 2) {
+      } else if (item.operation_status === 2) {
         runningNum++;
-      } else if (item.status === 3) {
+      } else if (item.operation_status === 3) {
         abandedNum++;
       }
 

@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "fcde8fee-43e7-480a-8405-bab78118a1c4",
-		"name": "OGG_SyncChecker",
+		"name": "OGG_SyncChecker_remote",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21399804"
 	},
@@ -25,14 +25,43 @@
 							"raw": "{ \"token\":\"abcd\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/searchAllJobWithProject",
+							"raw": "49.236.178.37:8080/jobManagement/searchAllJobWithProject",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
 								"jobManagement",
 								"searchAllJobWithProject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchAllJobStausWithProject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/searchAllJobStatusWithProject",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"searchAllJobStatusWithProject"
 							]
 						}
 					},
@@ -54,9 +83,9 @@
 							"raw": "{ \"token\":\"abcd\", \"project_name\":\"dev_project\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/searchJobByProject",
+							"raw": "49.236.178.37:8080/jobManagement/searchJobByProject",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -83,9 +112,9 @@
 							"raw": "{ \"token\":\"abcd\", \"project_name\":\"dev_project\", \"job_id\":0, \"result\":0, \"start_time\":\"2022-01-01 10:00:00\", \"end_time\":\"2023-01-01 12:10:00\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/searchAllSessionResultByOptions",
+							"raw": "49.236.178.37:8080/jobManagement/searchAllSessionResultByOptions",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -109,12 +138,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"project_name\":\"dev_project\", \"source_table_name\":\"this_is_source_table1\", \"target_table_name\":\"this_is_target_table1\", \"period_sec\":30, \"delay_sec\":10, \"descriptions\":\"job in development environment\" }"
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"dev_project\", \"source_table_name\":\"OGGTEST.TESTH10\", \"target_table_name\":\"OGGTEST2.TESTH10\", \"period_sec\":10, \"delay_sec\":5, \"descriptions\":\"job in development environment\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addJob",
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -138,12 +167,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"project_name\":\"poc_project\", \"source_table_name\":\"this_is_source_table2\", \"target_table_name\":\"this_is_target_table2\", \"period_sec\":31, \"delay_sec\":11, \"descriptions\":\"job in poc environment\" }"
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"dev_project\", \"source_table_name\":\"this_is_source_table2\", \"target_table_name\":\"this_is_target_table2\", \"period_sec\":20, \"delay_sec\":5, \"descriptions\":\"Dev environment\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addJob",
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -167,12 +196,157 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"project_name\":\"real_project\", \"source_table_name\":\"this_is_source_table3\", \"target_table_name\":\"this_is_target_table3\", \"period_sec\":32, \"delay_sec\":12, \"descriptions\":\"job in real environment\" }"
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"dev_project\", \"source_table_name\":\"this_is_source_table3\", \"target_table_name\":\"this_is_target_table3\", \"period_sec\":30, \"delay_sec\":5, \"descriptions\":\"dev environment\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addJob",
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"addJob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addJob_#4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"poc_project\", \"source_table_name\":\"this_is_source_table1\", \"target_table_name\":\"this_is_target_table1\", \"period_sec\":5, \"delay_sec\":1, \"descriptions\":\"poc environment\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"addJob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addJob_#5",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"poc_project\", \"source_table_name\":\"this_is_source_table2\", \"target_table_name\":\"this_is_target_table2\", \"period_sec\":10, \"delay_sec\":1, \"descriptions\":\"poc environment\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"addJob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addJob_#6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"real_project\", \"source_table_name\":\"this_is_source_table1\", \"target_table_name\":\"this_is_target_table1\", \"period_sec\":5, \"delay_sec\":2, \"descriptions\":\"real environment\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"addJob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addJob_#7",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"real_project\", \"source_table_name\":\"this_is_source_table2\", \"target_table_name\":\"this_is_target_table2\", \"period_sec\":10, \"delay_sec\":2, \"descriptions\":\"real environment\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"addJob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addJob_#8",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"project_name\":\"pjm_test1\", \"source_table_name\":\"source.customer_info\", \"target_table_name\":\"target.customer_info\", \"period_sec\":10, \"delay_sec\":2, \"descriptions\":\"real environment\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/addJob",
+							"host": [
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -199,9 +373,9 @@
 							"raw": "{ \"token\":\"abcd\", \"id\":5, \"project_name\":\"dev_project\", \"source_table_name\":\"this_is_source_table1\", \"target_table_name\":\"this_is_target_table1\", \"period_sec\":30, \"delay_sec\":10, \"descriptions\":\"job in development environment modified\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/modifyJob",
+							"raw": "49.236.178.37:8080/jobManagement/modifyJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -228,9 +402,9 @@
 							"raw": "{ \"token\":\"abcd\", \"id\":1 }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/deleteJob",
+							"raw": "49.236.178.37:8080/jobManagement/deleteJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -257,9 +431,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:8080/searchAllProjectsInfo",
+							"raw": "49.236.178.37:8080/searchAllProjectsInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -270,7 +444,7 @@
 					"response": []
 				},
 				{
-					"name": "searchMismatchedRecords",
+					"name": "searchOOSRecordsBySessionID",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -282,23 +456,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"job_id\":\"1\" }"
+							"raw": "{ \"token\":\"abcd\", \"session_id\":1410 }"
 						},
 						"url": {
-							"raw": "localhost:8080/searchMismatchedRecords",
+							"raw": "49.236.178.37:8080/jobManagement/searchOOSRecordsBySessionID",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
-								"searchMismatchedRecords"
+								"jobManagement",
+								"searchOOSRecordsBySessionID"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "searchMismatchedHistories",
+					"name": "reCompareOOSPairs",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -310,23 +485,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"job_id\":\"0\", \"all_cleared\":\"0\", \"start_io_time\":\"2022-01-01 10:00:00\", \"end_io_time\":\"2022-01-01 12:00:00\" }"
+							"raw": "{ \"token\":\"abcd\", \"session_id\":1415 }"
 						},
 						"url": {
-							"raw": "localhost:8080/searchMismatchedHistories",
+							"raw": "49.236.178.37:8080/jobManagement/reCompareOOSPairs",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
-								"searchMismatchedHistories"
+								"jobManagement",
+								"reCompareOOSPairs"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "clearMismatchedRecord",
+					"name": "cancelOOSPairs",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -338,16 +514,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"mm_id\":\"1\" }"
+							"raw": "{ \"token\":\"abcd\", \"recordIds\":[ 34,35,36 ] }"
 						},
 						"url": {
-							"raw": "localhost:8080/clearMismatchedRecord",
+							"raw": "49.236.178.37:8080/jobManagement/cancelOOSPairs",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
-								"clearMismatchedRecord"
+								"jobManagement",
+								"cancelOOSPairs"
 							]
 						}
 					},
@@ -369,9 +546,9 @@
 							"raw": "{ \"job_id\":\"1\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/recheckJob",
+							"raw": "49.236.178.37:8080/recheckJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -394,16 +571,46 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"job_id\":\"1\" }"
+							"raw": "{ \"token\": \"abcd\", \"jobIds\": [ 1 ] }\r\n"
 						},
 						"url": {
-							"raw": "localhost:8080/startJob",
+							"raw": "49.236.178.37:8080/jobManagement/startJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
+								"jobManagement",
 								"startJob"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\": \"abcd\", \"jobIds\": [ 1 ] }\r\n"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/testJob",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"testJob"
 							]
 						}
 					},
@@ -422,16 +629,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"job_id\":\"1\" }"
+							"raw": "{ \"token\": \"abcd\", \"jobIds\": [  1 ] }"
 						},
 						"url": {
-							"raw": "localhost:8080/startJob",
+							"raw": "49.236.178.37:8080/jobManagement/stopJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
-								"startJob"
+								"jobManagement",
+								"stopJob"
 							]
 						}
 					},
@@ -453,9 +661,9 @@
 							"raw": "{ \"job_id\":\"1\", \"alter_scn\":\"1000\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/startJob",
+							"raw": "49.236.178.37:8080/startJob",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -481,9 +689,67 @@
 							"raw": "{ \"token\":\"abcd\", \"job_id\":1, \"start_time\":\"2022-01-01 10:00:00\", \"end_time\":\"2022-01-01 10:00:05\", \"start_scn\":100, \"end_scn\":199, \"sync_count\":99, \"outofsync_count\":0, \"operation_result\":1 }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addSessionResultForTest",
+							"raw": "49.236.178.37:8080/jobManagement/addSessionResultForTest",
 							"host": [
-								"localhost"
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"addSessionResultForTest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSessionResultForTest_#6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"job_id\":1, \"start_time\":\"2022-02-01 10:00:00\", \"end_time\":\"2022-02-01 10:00:05\", \"start_scn\":1000, \"end_scn\":1199, \"sync_count\":199, \"outofsync_count\":0, \"operation_result\":1 }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/addSessionResultForTest",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"jobManagement",
+								"addSessionResultForTest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSessionResultForTest_#7",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"job_id\":1, \"start_time\":\"2022-02-02 10:00:00\", \"end_time\":\"2022-02-02 10:00:05\", \"start_scn\":2000, \"end_scn\":2199, \"sync_count\":190, \"outofsync_count\":9, \"operation_result\":1 }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/jobManagement/addSessionResultForTest",
+							"host": [
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -510,9 +776,9 @@
 							"raw": "{ \"token\":\"abcd\", \"job_id\":1, \"start_time\":\"2022-01-01 11:00:00\", \"end_time\":\"2022-01-01 11:00:05\", \"start_scn\":200, \"end_scn\":299, \"sync_count\":98, \"outofsync_count\":1, \"operation_result\":1 }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addSessionResultForTest",
+							"raw": "49.236.178.37:8080/jobManagement/addSessionResultForTest",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -539,9 +805,9 @@
 							"raw": "{ \"token\":\"abcd\", \"job_id\":2, \"start_time\":\"2022-02-01 10:00:00\", \"end_time\":\"2022-02-01 11:00:05\", \"start_scn\":1200, \"end_scn\":1500, \"sync_count\":250, \"outofsync_count\":50, \"operation_result\":2 }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addSessionResultForTest",
+							"raw": "49.236.178.37:8080/jobManagement/addSessionResultForTest",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -568,9 +834,9 @@
 							"raw": "{ \"token\":\"abcd\", \"job_id\":3, \"start_time\":\"2022-02-01 10:00:00\", \"end_time\":\"2022-02-01 11:00:05\", \"start_scn\":100, \"end_scn\":999, \"sync_count\":898, \"outofsync_count\":1, \"operation_result\":1 }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addSessionResultForTest",
+							"raw": "49.236.178.37:8080/jobManagement/addSessionResultForTest",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -597,9 +863,9 @@
 							"raw": "{ \"token\":\"abcd\", \"job_id\":3, \"start_time\":\"2022-02-01 12:00:00\", \"end_time\":\"2022-02-01 12:00:05\", \"start_scn\":1000, \"end_scn\":1999, \"sync_count\":999, \"outofsync_count\":0, \"operation_result\":1 }"
 						},
 						"url": {
-							"raw": "localhost:8080/jobManagement/addSessionResultForTest",
+							"raw": "49.236.178.37:8080/jobManagement/addSessionResultForTest",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -631,9 +897,9 @@
 							"raw": "{ \"token\":\"abcd\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/userManagement/searchAllUsersInfo",
+							"raw": "49.236.178.37:8080/userManagement/searchAllUsersInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -660,9 +926,9 @@
 							"raw": "{ \"token\":\"abcd\", \"id\":\"normal1\", \"name\":\"dongwon\", \"password\":\"abcdefg\", \"phone\":\"01011112222\",\"email\":\"dwpark@godenus.co.kr\", \"user_role\":0, \"locked\":0, \"description\":\"Super User\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/userManagement/addUser",
+							"raw": "49.236.178.37:8080/userManagement/addUser",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -689,9 +955,9 @@
 							"raw": "{ \"token\":\"abcd\", \"id\":\"admin\", \"name\":\"dongwon\", \"password\":\"abcdefg\", \"new_password\":\"newpassword\",\"phone\":\"01011112222\",\"email\":\"dwpark@godenus.co.kr\", \"user_role\":1, \"locked\":0, \"description\":\"Normal User\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/userManagement/modifyUser",
+							"raw": "49.236.178.37:8080/userManagement/modifyUser",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -718,9 +984,9 @@
 							"raw": "{ \"token\":\"abcd\", \"id\":\"admin\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/userManagement/deleteUser",
+							"raw": "49.236.178.37:8080/userManagement/deleteUser",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -752,9 +1018,9 @@
 							"raw": "{ \"token\":\"abcd\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/searchAllDSInfo",
+							"raw": "49.236.178.37:8080/searchAllDSInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -780,9 +1046,9 @@
 							"raw": "{ \"token\":\"abcd\", \"ds_name\":\"dev_src_oggtest\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/searchDSInfo",
+							"raw": "49.236.178.37:8080/dsManagement/searchDSInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -809,9 +1075,9 @@
 							"raw": "{ \"token\":\"abcd\", \"ds_name\":\"dev_src_oggtest\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/searchDSInfo",
+							"raw": "49.236.178.37:8080/dsManagement/searchDSInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -835,12 +1101,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"name\":\"dev_src_oggtest\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.20.102:1522/ORCL\" }"
+							"raw": "{ \"token\":\"abcd\", \"name\":\"dev_src_oggtest\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"oggtest\",\"password\":\"oggtest\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.1.3:1521/ORCL\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/addDS",
+							"raw": "49.236.178.37:8080/dsManagement/addDS",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -864,12 +1130,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"name\":\"poc_src_oggtest\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.20.102:1522/ORCL\" }"
+							"raw": "{ \"token\":\"abcd\", \"name\":\"poc_src_oggtest\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\"jdbc:oracle:thin:@192.168.1.3:1521/ORCL\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/addDS",
+							"raw": "49.236.178.37:8080/dsManagement/addDS",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -896,9 +1162,9 @@
 							"raw": "{ \"token\":\"abcd\", \"name\":\"real_src_oggtest\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.20.102:1522/ORCL\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/addDS",
+							"raw": "49.236.178.37:8080/dsManagement/addDS",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -922,12 +1188,70 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"name\":\"dev_target_oggtest\", \"db_type\":\"oracle\", \"source_target\":1, \"account\":\"oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.20.102:1522/ORCL\" }"
+							"raw": "{ \"token\":\"abcd\", \"name\":\"target_oggtest\", \"db_type\":\"oracle\", \"source_target\":1, \"account\":\"oggtest2\",\"password\":\"oggtest2\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\"jdbc:oracle:thin:@192.168.1.3:1521/ORCL\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/addDS",
+							"raw": "49.236.178.37:8080/dsManagement/addDS",
 							"host": [
-								"localhost"
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"dsManagement",
+								"addDS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addDS_#5",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"name\":\"source_source\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"source\",\"password\":\"source\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\"jdbc:oracle:thin:@192.168.1.3:1521/ORCL\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/dsManagement/addDS",
+							"host": [
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"dsManagement",
+								"addDS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addDS_#6",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"name\":\"target_target\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"target\",\"password\":\"target\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\"jdbc:oracle:thin:@192.168.1.3:1521/ORCL\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/dsManagement/addDS",
+							"host": [
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -951,15 +1275,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"name\":\"dev\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.20.102:1522/ORCL\" }"
+							"raw": "{ \"token\":\"abcd\", \"name\":\"dev\", \"db_type\":\"oracle\", \"source_target\":0, \"account\":\"oggtest\",\"password\":\"oggtest\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.1.3:1521/ORCL\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/testDS",
+							"raw": "49.236.178.37:8080/dsManagement/testDS",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
+								"dsManagement",
 								"testDS"
 							]
 						}
@@ -979,12 +1304,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"name\":\"target_oggtest\", \"new_name\":\"target_oggtest\", \"db_type\":\"oracle\", \"source_target\":1, \"account\":\"target_oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.20.102:1522/ORCL\" }"
+							"raw": "{ \"token\":\"abcd\", \"name\":\"target_oggtest\", \"new_name\":\"target_oggtest\", \"db_type\":\"oracle\", \"source_target\":1, \"account\":\"target_oggtest\",\"password\":\"xxxx\", \"connection_min\":2, \"connection_max\":10, \"jdbc_url\":\" jdbc:oracle:thin:@192.168.1.3:1521/ORCL\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/modifyDS",
+							"raw": "49.236.178.37:8080/dsManagement/modifyDS",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1008,12 +1333,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"token\":\"abcd\", \"name\":\"poc\" }"
+							"raw": "{ \"token\":\"abcd\", \"name\":\"dev_src_oggtest\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/dsManagement/deleteDS",
+							"raw": "49.236.178.37:8080/dsManagement/deleteDS",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1045,9 +1370,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:8080/searchAllJobConfigsInfo",
+							"raw": "49.236.178.37:8080/searchAllJobConfigsInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1073,9 +1398,9 @@
 							"raw": "{ \"ds_name\":\"seoul_orcl\", \"source_target\":\"0\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/searchAllSchemasInfo",
+							"raw": "49.236.178.37:8080/searchAllSchemasInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1101,9 +1426,9 @@
 							"raw": "{\r\n    \"id\": 0,\r\n    \"project_name\": \"Dev\",\r\n    \"source_ds_name\": \"seoul_orcl\",\r\n    \"target_ds_name\": \"hub_orcl\",\r\n    \"source_table_name\": \"Table1\",\r\n    \"target_table_name\": \"Table2\",\r\n    \"period_ms\": 100,\r\n    \"comments\":\"비고\",\r\n    \"col_map\": {\r\n        \"source_columns\": [\r\n            {\r\n                \"index\": 0,\r\n                \"name\": \"col1\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 1,\r\n                \"name\": \"col2\",\r\n                \"type\": \"number\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 2,\r\n                \"name\": \"col3\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 3,\r\n                \"name\": \"col4\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 4,\r\n                \"name\": \"col5\",\r\n                \"type\": \"date\",\r\n                \"nullable\": \"N\",\r\n                \"function\": \"To_char(col3,'yyyy-mm-dd')\"\r\n            }\r\n        ],\r\n        \"target_columns\": [\r\n            {\r\n                \"index\": 0,\r\n                \"name\": \"col1\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 1,\r\n                \"name\": \"col2\",\r\n                \"type\": \"number\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 2,\r\n                \"name\": \"col3\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 3,\r\n                \"name\": \"col6\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 4,\r\n                \"name\": \"col7\",\r\n                \"type\": \"date\",\r\n                \"nullable\": \"N\",\r\n                \"function\": \"To_char(col3,'yyyy-mm-dd')\"\r\n            },\r\n            {\r\n                \"index\": 5,\r\n                \"name\": \"col4\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 6,\r\n                \"name\": \"col5\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            }\r\n        ]\r\n    }\r\n}\r\n"
 						},
 						"url": {
-							"raw": "localhost:8080/addJobConfig",
+							"raw": "49.236.178.37:8080/addJobConfig",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1129,9 +1454,9 @@
 							"raw": "{\r\n    \"id\": 0,\r\n    \"project_name\": \"Dev\",\r\n    \"source_ds_name\": \"seoul_orcl\",\r\n    \"target_ds_name\": \"hub_orcl\",\r\n    \"source_table_name\": \"Table1\",\r\n    \"target_table_name\": \"Table2\",\r\n    \"period_ms\": 100,\r\n    \"comments\":\"비고\",\r\n    \"col_map\": {\r\n        \"source_columns\": [\r\n            {\r\n                \"index\": 0,\r\n                \"name\": \"col1\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 1,\r\n                \"name\": \"col2\",\r\n                \"type\": \"number\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 2,\r\n                \"name\": \"col3\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 3,\r\n                \"name\": \"col4\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 4,\r\n                \"name\": \"col5\",\r\n                \"type\": \"date\",\r\n                \"nullable\": \"N\",\r\n                \"function\": \"To_char(col3,'yyyy-mm-dd')\"\r\n            }\r\n        ],\r\n        \"target_columns\": [\r\n            {\r\n                \"index\": 0,\r\n                \"name\": \"col1\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 1,\r\n                \"name\": \"col2\",\r\n                \"type\": \"number\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 2,\r\n                \"name\": \"col3\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"N\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 3,\r\n                \"name\": \"col6\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 4,\r\n                \"name\": \"col7\",\r\n                \"type\": \"date\",\r\n                \"nullable\": \"N\",\r\n                \"function\": \"To_char(col3,'yyyy-mm-dd')\"\r\n            },\r\n            {\r\n                \"index\": 5,\r\n                \"name\": \"col4\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            },\r\n            {\r\n                \"index\": 6,\r\n                \"name\": \"col5\",\r\n                \"type\": \"char\",\r\n                \"nullable\": \"Y\",\r\n                \"function\": null\r\n            }\r\n        ]\r\n    }\r\n}\r\n"
 						},
 						"url": {
-							"raw": "localhost:8080/modifyJobConfig",
+							"raw": "49.236.178.37:8080/modifyJobConfig",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1157,9 +1482,9 @@
 							"raw": "{ \"job_id\":\"0\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/deleteJobConfig",
+							"raw": "49.236.178.37:8080/deleteJobConfig",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1190,9 +1515,9 @@
 							"raw": "{ \"token\":\"abcd\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/projectManagement/searchAllProject",
+							"raw": "49.236.178.37:8080/projectManagement/searchAllProject",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1219,9 +1544,9 @@
 							"raw": "{ \"token\":\"abcd\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/projectManagement/searchAllProjectWithDSInfo",
+							"raw": "49.236.178.37:8080/projectManagement/searchAllProjectWithDSInfo",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1248,9 +1573,9 @@
 							"raw": "{ \"token\":\"abcd\", \"name\":\"dev_project\", \"source_ds_name\":\"dev_src_oggtest\", \"target_ds_name\":\"target_oggtest\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/projectManagement/addProject",
+							"raw": "49.236.178.37:8080/projectManagement/addProject",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1277,9 +1602,9 @@
 							"raw": "{ \"token\":\"abcd\", \"name\":\"poc_project\", \"source_ds_name\":\"poc_src_oggtest\", \"target_ds_name\":\"target_oggtest\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/projectManagement/addProject",
+							"raw": "49.236.178.37:8080/projectManagement/addProject",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1306,9 +1631,38 @@
 							"raw": "{ \"token\":\"abcd\", \"name\":\"real_project\", \"source_ds_name\":\"real_src_oggtest\", \"target_ds_name\":\"target_oggtest\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/projectManagement/addProject",
+							"raw": "49.236.178.37:8080/projectManagement/addProject",
 							"host": [
-								"localhost"
+								"49.236.178.37"
+							],
+							"port": "8080",
+							"path": [
+								"projectManagement",
+								"addProject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addProject_#4",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"token\":\"abcd\", \"name\":\"pjm_test1\", \"source_ds_name\":\"source_source\", \"target_ds_name\":\"target_target\" }"
+						},
+						"url": {
+							"raw": "49.236.178.37:8080/projectManagement/addProject",
+							"host": [
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1335,9 +1689,9 @@
 							"raw": "{ \"token\":\"abcd\", \"id\":\"admin\", \"name\":\"dongwon\", \"password\":\"abcdefg\", \"new_password\":\"newpassword\",\"phone\":\"01011112222\",\"email\":\"dwpark@godenus.co.kr\", \"user_role\":1, \"locked\":0, \"description\":\"Normal User\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/userManagement/modifyUser",
+							"raw": "49.236.178.37:8080/userManagement/modifyUser",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
@@ -1364,9 +1718,9 @@
 							"raw": "{ \"token\":\"abcd\", \"id\":\"admin\" }"
 						},
 						"url": {
-							"raw": "localhost:8080/projectManagement/deleteProject",
+							"raw": "49.236.178.37:8080/projectManagement/deleteProject",
 							"host": [
-								"localhost"
+								"49.236.178.37"
 							],
 							"port": "8080",
 							"path": [
