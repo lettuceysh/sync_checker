@@ -17,6 +17,7 @@ import { getHeaderList } from './helper';
 import { useChecked } from '@/hooks/useChecked';
 import { cancelOOSPairs, reCompareOOSPairs } from '@/api/jobManagement';
 import { useAlertStore } from '@/store';
+import NoData from '@/components/Nodata';
 
 const Records = () => {
   const [isRepare, setIsRepare] = useState(false);
@@ -137,13 +138,14 @@ const Records = () => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
+      {!oosRecords?.length && <NoData>불일치 데이타가 없습니다.</NoData>}
       {isRepare && <Reaire onClose={() => setIsRepare(false)} />}
     </ItemWrapper>
   );
 };
 
 const ScrollContainer = styled.div`
-  height: 200px;
+  max-height: 200px;
   overflow-y: auto;
   margin-top: 5px;
 

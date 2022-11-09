@@ -16,6 +16,7 @@ import { colors } from '@/styles/colors';
 import { useMainStore } from '../../store/useMainStore';
 
 import classnames from 'classnames';
+import NoData from '@/components/Nodata';
 
 const operationStatus = ['', 'stop', 'Running', 'Abended'];
 
@@ -100,6 +101,7 @@ const JobBoard = ({ jobs }) => {
           </StyledTable>
         </StyledTableContainer>
       </ScrollContainer>
+      {!jobs?.length && <NoData>불일치 데이타가 없습니다.</NoData>}
     </ItemWrapper>
   );
 };
